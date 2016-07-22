@@ -80,6 +80,7 @@ public class AppWindow1 {
 	private static final String logoAppPath = "C:\\LogoApp\\Models";//;"C:/LogoApp/Models";
 	private static final String scaledLogoPath = "C:\\LogoApp\\ScaledLogos";
 	private static final String scaledAndProgressedPath = "C:\\LogoApp\\ScaledAndProgressed"; // Bu path iþlenmiþ ürünleri scale edilmiþ hallerinin bulunduðu path'tir. Ürünler iþlendikten sonra ekranda scale halini buradan alýyoruz
+	//private static final String scaledNonProgressedPath = "C:\\LogoApp\\ScaledAndNonProgressed"; // Bu path iþlenMEmis ürünleri scale edilmiþ hallerinin bulunduðu path'tir. Program çalistirildiktan sonra ekranda scale halini buradan aliyoruz
 	private static final String nonProgressedScaledProductPath = "C:\\LogoApp\\ScaledImages"; // Bu path ekran ilk açýldýðýnda default olan ürünlerin scale hallerinin tutulduðu path'i gösterir. Ekran ilk açýldýðýnda bu bos urunler gozlemlenir
 	private List<Model> modelList = null;
 	private static List<Composite> compositeList = new ArrayList<Composite>();
@@ -92,7 +93,7 @@ public class AppWindow1 {
 	 */
 	protected void createContents() {
 		shell = new Shell();
-		shell.setMinimumSize(new Point(1566, 1024));
+		shell.setMinimumSize(new Point(1024, 500));
 		shell.setSize(1354, 1012);
 		shell.setText("SWT Application");
 		shell.setLayout(null);
@@ -107,7 +108,7 @@ public class AppWindow1 {
 	    for (int i = 0; i < listOfFiles.length; i++) {
 	    	tempModel = new Model();
 	    	if (listOfFiles[i].isDirectory()) {
-	    		String modelFullPath = logoAppPath +"/"+listOfFiles[i].getName();
+	    		String modelFullPath = logoAppPath +"\\"+listOfFiles[i].getName();
 	    		String modelName = listOfFiles[i].getName();
 	    		tempModel.setModelFullPath(modelFullPath);
 	    		tempModel.setModelName(modelName);
@@ -130,7 +131,7 @@ public class AppWindow1 {
 		
 	 // Expandbar ve ExpandItem oluþturan kod bloðu
 	 	ExpandBar expandBar = new ExpandBar(shell, SWT.H_SCROLL | SWT.V_SCROLL);
-	 	expandBar.setBounds(10, 252, 1850, 680);		
+	 	expandBar.setBounds(10, 252, 820, 350);		
 	    
 	 	//ExpandItem oluþturma iþlemi
 	    Composite composite = null;
@@ -146,7 +147,7 @@ public class AppWindow1 {
 			
 			
 			xpndtmNewExpanditem = new ExpandItem(expandBar, SWT.NONE,i);
-			xpndtmNewExpanditem.setExpanded(true);
+			xpndtmNewExpanditem.setExpanded(false);
 			xpndtmNewExpanditem.setText(modelList.get(i).getModelName());
 			
 			
@@ -156,9 +157,7 @@ public class AppWindow1 {
 			coreTemplateList.add(coreTemplate);
 			expandItemList.add(xpndtmNewExpanditem);
 			
-			
-			
-			showAllProducts(nonProgressedScaledProductPath);
+			showProducts(modelList.get(i),coreTemplate); // Siradaki model altýndaki urunlerin ekrana basilmasi icin tetikleniyor
 			
 			xpndtmNewExpanditem.setHeight(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);//(coreTemplate.getAllRegionList().size() / 3) + 1) * 300);
 			xpndtmNewExpanditem.setControl(composite);
@@ -189,33 +188,33 @@ public class AppWindow1 {
 		
 		text = formToolkit.createText(shell, "New Text", SWT.NONE);
 		text.setText("");
-		text.setBounds(27, 90, 257, 20);
+		text.setBounds(27, 90, 151, 20);
 		
 		logoLabel = formToolkit.createLabel(shell, "", SWT.NONE);
 		
 		
-		logoLabel.setBounds(416, 51, 115, 115);
+		logoLabel.setBounds(239, 9, 115, 115);
 		
 		Label labelTemplate1 = new Label(shell, SWT.NONE);
 		labelTemplate1.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template1.jpg"));
-		labelTemplate1.setBounds(690, 37, 160, 185);
+		labelTemplate1.setBounds(444, 36, 160, 185);
 		formToolkit.adapt(labelTemplate1, true, true);
 		
 		Label labelTemplate2 = new Label(shell, SWT.NONE);
 		labelTemplate2.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template2.jpg"));
-		labelTemplate2.setBounds(885, 36, 160, 185);
+		labelTemplate2.setBounds(639, 35, 160, 185);
 		formToolkit.adapt(labelTemplate2, true, true);
 		
 		Label labelTemplate3 = new Label(shell, SWT.NONE);
 		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.jpg"));
-		labelTemplate3.setBounds(1082, 36, 160, 185);
+		labelTemplate3.setBounds(831, 37, 160, 185);
 		formToolkit.adapt(labelTemplate3, true, true);
 		
 		
 		
 		// radio button operations		
 		rdBtnSablon1 = new Button(shell, SWT.RADIO);
-		rdBtnSablon1.setBounds(716, 10, 111, 20);
+		rdBtnSablon1.setBounds(470, 9, 111, 20);
 		formToolkit.adapt(rdBtnSablon1, true, true);
 		rdBtnSablon1.setText("Sablon 1");
 		
@@ -228,7 +227,7 @@ public class AppWindow1 {
 		});
 		
 		rdBtnSablon2 = new Button(shell, SWT.RADIO);
-		rdBtnSablon2.setBounds(902, 10, 111, 20);
+		rdBtnSablon2.setBounds(656, 9, 111, 20);
 		formToolkit.adapt(rdBtnSablon2, true, true);
 		rdBtnSablon2.setText("Sablon 2");
 		
@@ -241,7 +240,7 @@ public class AppWindow1 {
 		});
 		
 		rdBtnSablon3 = new Button(shell, SWT.RADIO);
-		rdBtnSablon3.setBounds(1097, 10, 111, 20);
+		rdBtnSablon3.setBounds(857, 9, 111, 20);
 		formToolkit.adapt(rdBtnSablon3, true, true);
 		rdBtnSablon3.setText("Sablon 3");
 		
@@ -253,7 +252,7 @@ public class AppWindow1 {
 				applyToLogo();
 			}
 		});
-		btnApplyLogo.setBounds(1400, 122, 115, 30);
+		btnApplyLogo.setBounds(1024, 122, 115, 30);
 		formToolkit.adapt(btnApplyLogo, true, true);
 		btnApplyLogo.setText("Logoyu Uygula");
 		
@@ -398,9 +397,10 @@ public class AppWindow1 {
 		dlg.setMessage("Select a directory");
 		String createPath = dlg.open();
 		Model tempModel = null;
+		List<Product> productList = null;
 		for (int i = 0; i < modelList.size(); i++) {
 			tempModel = modelList.get(i);
-			List<Product> productList = tempModel.getProductList();
+			productList = tempModel.getProductList();
 			Product tempProduct = null;
 			for(int j = 0; j < productList.size();j++){
 				tempProduct = productList.get(j);
@@ -464,7 +464,6 @@ public class AppWindow1 {
 				modelDirectory.mkdir();
 			ImageIO.write(productBuff, "png", new File(createPath+"\\"+f.getParentFile().getName()+"\\"+getFileName(productPath)+".png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -492,6 +491,37 @@ public class AppWindow1 {
 		    	
 		    }
 		}
+	}
+	
+	private void showProducts(Model model, CoreTemplate coreTemplate){ 
+		BufferedImage originalImg = null;
+		List<Product> productList = model.getProductList();
+		List<Label> regionList = coreTemplate.getAllRegionList();
+		Label tempRegion = null;
+		Product tempProduct = null;
+		File folder = new File(nonProgressedScaledProductPath+"\\"+model.getModelName());
+		if(!folder.exists())// olcekli islenmemis modelin urunlerinin saklanabilmesi icin ilgili klasor yoksa olusturuluyor
+			folder.mkdir();
+		File[] listOfFiles = folder.listFiles();
+		int scaledImgcount = listOfFiles.length;
+		String productName = "";
+		for (int i = 0; i < productList.size(); i++) {
+			tempProduct = productList.get(i);
+			tempRegion = regionList.get(i);
+			productName = tempProduct.getProductName().split("\\.")[0];
+			try {
+				if(scaledImgcount == 0){ // Program ilk calistirildiginda scale edilip logo islenmemis urunlerin ilgili klasor altýnda olmamasina karsin burada o urunleri olusturuyor. Bunlar program acildiginda ekrana basilan ilk gorsellerdir
+					originalImg = ImageIO.read(new File(model.getModelFullPath()+"\\"+tempProduct.getProductName()));
+					tempRegion.setImage(scaleToImage(originalImg, 250, 300, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));
+				}else{
+					tempRegion.setImage(new Image(display, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));					
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 }
