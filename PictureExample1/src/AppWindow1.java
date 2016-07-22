@@ -77,9 +77,9 @@ public class AppWindow1 {
 	Button rdBtnSablon1 = null;
 	Button rdBtnSablon2 = null;
 	Button rdBtnSablon3 = null;
-	private static final String logoAppPath = "C:/LogoApp/Models";
+	private static final String logoAppPath = "C:\\LogoApp\\Models";//;"C:/LogoApp/Models";
 	private static final String scaledLogoPath = "C:\\LogoApp\\ScaledLogos";
-	private static final String scaledAndProgressedPath = "C:/LogoApp/ScaledAndProgressed"; // Bu path iþlenmiþ ürünleri scale edilmiþ hallerinin bulunduðu path'tir. Ürünler iþlendikten sonra ekranda scale halini buradan alýyoruz
+	private static final String scaledAndProgressedPath = "C:\\LogoApp\\ScaledAndProgressed"; // Bu path iþlenmiþ ürünleri scale edilmiþ hallerinin bulunduðu path'tir. Ürünler iþlendikten sonra ekranda scale halini buradan alýyoruz
 	private static final String nonProgressedScaledProductPath = "C:\\LogoApp\\ScaledImages"; // Bu path ekran ilk açýldýðýnda default olan ürünlerin scale hallerinin tutulduðu path'i gösterir. Ekran ilk açýldýðýnda bu bos urunler gozlemlenir
 	private List<Model> modelList = null;
 	private static List<Composite> compositeList = new ArrayList<Composite>();
@@ -143,18 +143,27 @@ public class AppWindow1 {
 			gridLayout.horizontalSpacing = 20;
 			composite.setLayout(gridLayout);
 			
-			coreTemplate = new CoreTemplate(composite, SWT.BORDER); // label'larý gride teker teker uygun sýrada dolduracaktýr
 			
-			xpndtmNewExpanditem = new ExpandItem(expandBar, SWT.NONE);
+			
+			xpndtmNewExpanditem = new ExpandItem(expandBar, SWT.NONE,i);
 			xpndtmNewExpanditem.setExpanded(true);
 			xpndtmNewExpanditem.setText(modelList.get(i).getModelName());
-			xpndtmNewExpanditem.setHeight(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);//(coreTemplate.getAllRegionList().size() / 3) + 1) * 300);
-			xpndtmNewExpanditem.setControl(composite);
 			
+			
+			coreTemplate = new CoreTemplate(composite, SWT.BORDER); // label'larý gride teker teker uygun sýrada dolduracaktýr
 			
 			compositeList.add(composite);
 			coreTemplateList.add(coreTemplate);
 			expandItemList.add(xpndtmNewExpanditem);
+			
+			
+			
+			showAllProducts(nonProgressedScaledProductPath);
+			
+			xpndtmNewExpanditem.setHeight(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);//(coreTemplate.getAllRegionList().size() / 3) + 1) * 300);
+			xpndtmNewExpanditem.setControl(composite);
+			
+			
 			
 		}
 		
@@ -164,7 +173,7 @@ public class AppWindow1 {
 	    // C:/LogoApp/ScaledImages altýna direk küçük hale scale edilmis halini koymak is yukunu hafifletir.
 	    
 
-	    showAllProducts(nonProgressedScaledProductPath);
+	    
 
 		
 		
@@ -471,7 +480,7 @@ public class AppWindow1 {
 			coreTemplate = coreTemplateList.get(i); // model-coretemlate-expanditem-composite listelerinin içine ayný anda elemanlar atýldýðý için indekslerindeki nesneler birbirleri ile tutarlýdýr (ArrayList)
 			tempRegionList = coreTemplate.getAllRegionList();
 			for(int x = 0; x < model.getProductList().size(); x++){
-		    	String productName = modelList.get(0).getProductList().get(x).getProductName();
+		    	String productName = model.getProductList().get(x).getProductName();
 		    	String productNameStr = productName.substring(0, productName.length()-4)+".png";
 		    	
 		    	try {
