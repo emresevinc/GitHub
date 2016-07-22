@@ -8,8 +8,6 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.MouseAdapter;
-import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
@@ -23,6 +21,7 @@ import org.eclipse.swt.widgets.ExpandBar;
 import org.eclipse.swt.widgets.ExpandItem;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -287,30 +286,6 @@ public class AppWindow1 {
 	
 	
 	
-	public void drawIt(String sourcePathImg,String sourcePathLogo,String destPathImg,String destPathLogo,String createPath,int widthScaleImg,int heigthScaleImg,int widthScaleLogo,int heigthScaleLogo,int logoCoordinatX,int logoCoordinatY,boolean withoutScale){
-		BufferedImage image = null;
-		BufferedImage logo = null;
-		try {
-			   image = ImageIO.read(new File(sourcePathImg));
-			   logo = ImageIO.read(new File(sourcePathLogo));
-			   if(!withoutScale){// ölçeklenecekse
-				   	scaleToImage(image, widthScaleImg, heigthScaleImg, destPathImg); // Ölçekleme yapýlýyor
-				   	
-			   }
-			   scaleToImage(logo, widthScaleLogo, heigthScaleLogo, destPathLogo);
-			   //image = ImageIO.read(new File(destPathImg)); // Ölçeklenmiþ kaynak dosyalara eriþiliyor.
-			   logo = ImageIO.read(new File(destPathLogo));
-
-			   Graphics2D imageGraphic = (Graphics2D) image.getGraphics();//createGraphics();
-			   imageGraphic.drawImage(logo, logoCoordinatX,logoCoordinatY, null);//(image, 260, 50, 400, 70, null);
-			   
-			   ImageIO.write(image, "png", new File(createPath));
-			   imageGraphic.dispose();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-	}
-	
 	public void dressToImg(String createPath,Label label){
 		Image imgx = new Image(display,createPath);
 		logoLabel.setImage(imgx);
@@ -322,9 +297,19 @@ public class AppWindow1 {
 		fd.setFilterPath("C:/");
         String[] filterExt = { "*.png", "*.jpg" };
         fd.setFilterExtensions(filterExt);
-        logoPath = fd.open();
-        text.setText(logoPath);
-        processLogo();
+        String fdStr =  fd.open();
+        
+        if(fdStr != null){
+        	logoPath = fdStr;
+        }else{
+        	logoPath = "";
+        }
+       
+        if(!logoPath.equals("")){
+            text.setText(logoPath);
+        	processLogo();
+        	
+        }
 	}
 	
 	public void processLogo(){
@@ -368,56 +353,70 @@ public class AppWindow1 {
 	}
 	
 	private void applyToLogo(){
-		int height=0, width = 0,coordinatX=0,coordinatY=0;
-		switch (selectedTemplate) {
-		case 1:
-			height = 500;
-			width = 600;
-			coordinatX = 660;
-			coordinatY = 600;
-			break;
-		case 2:
-			height = 150;
-			width = 70;
-			coordinatX = 88;
-			coordinatY = 93;
-			break;
-		case 3:
-			height = 50;
-			width = 60;
-			coordinatX = 95;
-			coordinatY = 132;
-			break;
-		default:
-			break;
-		}
-		DirectoryDialog dlg = new DirectoryDialog(shell);
-		dlg.setFilterPath("C:/");
-		dlg.setText("SWT's DirectoryDialog");
-		dlg.setMessage("Select a directory");
-		String createPath = dlg.open();
-		Model tempModel = null;
-		List<Product> productList = null;
-		for (int i = 0; i < modelList.size(); i++) {
-			tempModel = modelList.get(i);
-			productList = tempModel.getProductList();
-			Product tempProduct = null;
-			for(int j = 0; j < productList.size();j++){
-				tempProduct = productList.get(j);
-				scaleLogoForOriginalProduct(tempProduct.getProductFullPath(), logoPath, getFileName(logoPath), 5); 
-				
-				drawww(tempProduct.getProductFullPath(), scaledLogoPath+"\\"+getFileName(logoPath)+".png", createPath, coordinatX, coordinatY);
-				
-				//drawIt(tempProduct.getProductFullPath(), "", "", logoPath, createPath+"\\"+tempProduct.getProductName(), 0, 0, width, height, coordinatX, coordinatY, true);
+		if(!logoPath.equals("")){
+			int height=0, width = 0,coordinatX=0,coordinatY=0;
+			switch (selectedTemplate) {
+			case 1:
+				height = 500; // Alýnan koordinat degerleri burada guncellenecek
+				width = 550;
+				coordinatX = 660;
+				coordinatY = 600;
+				break;
+			case 2:
+				height = 1000;
+				width = 800;
+				coordinatX = 560;
+				coordinatY = 600;
+				break;
+			case 3:
+				height = 600;
+				width = 600;
+				coordinatX = 660;
+				coordinatY = 400;
+				break;
+			default:
+				break;
 			}
+			DirectoryDialog dlg = new DirectoryDialog(shell);
+			dlg.setFilterPath("C:/");
+			dlg.setText("SWT's DirectoryDialog");
+			dlg.setMessage("Select a directory");
+			String tmpCreate = dlg.open();
+			String createPath = "";
+			if(tmpCreate != null){
+				createPath = tmpCreate;
+			}
+			if(!createPath.equals("")){
+				Model tempModel = null;
+				List<Product> productList = null;
+				for (int i = 0; i < modelList.size(); i++) {
+					tempModel = modelList.get(i);
+					productList = tempModel.getProductList();
+					Product tempProduct = null;
+					for(int j = 0; j < productList.size();j++){
+						tempProduct = productList.get(j);
+						scaleLogoForOriginalProduct(tempProduct.getProductFullPath(), logoPath, getFileName(logoPath), 3); // Logoyu büyütmek icin measure parametresini kucultmeliyiz
+						
+						drawww(tempProduct.getProductFullPath(), scaledLogoPath+"\\"+getFileName(logoPath)+".png", createPath, coordinatX, coordinatY);
+						
+						//drawIt(tempProduct.getProductFullPath(), "", "", logoPath, createPath+"\\"+tempProduct.getProductName(), 0, 0, width, height, coordinatX, coordinatY, true);
+					}
+				}
+				showAllProducts(createPath);
+			}
+		}else{
+			 MessageBox messageBox = new MessageBox(shell, SWT.ERROR);
+			 messageBox.setText("HATA");
+			 messageBox.setMessage("Logo seçmelisiniz!");
+			 messageBox.open();
 		}
-		showAllProducts(createPath);
 	}
 	
 	// Logoyu ürünü içeren resim ile istenilen oranda küçültür
 	// Yalnýzca logo üzerinde iþlem yapmak yeterli olacaktýr
 	// Ekrana basýlan ölçeklenmiþ logolu ürünlerin buradan oluþturulacak logonun ürünün üzerine draw edilmiþ halinin ölçeklendirilmiþ hali olduðu bilinmelidir
 	// Ölceklenmis logo C:\LogoApp\ScaledLogos altýna sonunda -scaled.png/jpg olacak þekilde kaydedilecektir
+	// ScaleMeasure ile logonun boyutu belirlenebilir
 	private void scaleLogoForOriginalProduct(String productOriginalPath, String logoOriginalPath,String logoNameForPath,int scaleMeasure){ 
 		
 		BufferedImage productOriginal = null;
@@ -500,7 +499,7 @@ public class AppWindow1 {
 		Label tempRegion = null;
 		Product tempProduct = null;
 		File folder = new File(nonProgressedScaledProductPath+"\\"+model.getModelName());
-		if(!folder.exists())// olcekli islenmemis modelin urunlerinin saklanabilmesi icin ilgili klasor yoksa olusturuluyor
+		if(!folder.exists())// olceklenmis fakat islenmemis modelin urunlerinin saklanabilmesi icin ilgili klasor yoksa olusturuluyor
 			folder.mkdir();
 		File[] listOfFiles = folder.listFiles();
 		int scaledImgcount = listOfFiles.length;
