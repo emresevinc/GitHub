@@ -1,8 +1,10 @@
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -12,6 +14,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -22,6 +25,7 @@ import org.eclipse.swt.widgets.ExpandItem;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -30,11 +34,13 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import bean.CoreTemplate;
 import bean.Model;
 import bean.Product;
+import bean.modelTemplateCoordinate;
+import constant.ModelProductName;
 
 public class AppWindow1 {
 
-	protected Shell shell;
-
+	protected Shell shlLogoapp;
+	List<String> gildan5000SameProductList = Arrays.asList("_5000xB000","_5000xC000","_5000xHP00","_5000xIB00","_5000xLG00","_5000xLP00","_5000xMG00","_5000xNB00","_5000xR000","_5000xW000");
 	/**
 	 * Launch the application.
 	 * @param args
@@ -56,9 +62,9 @@ public class AppWindow1 {
 	public void open() {
 		display = Display.getDefault();
 		createContents();
-		shell.open();
-		shell.layout();
-		while (!shell.isDisposed()) {
+		shlLogoapp.open();
+		shlLogoapp.layout();
+		while (!shlLogoapp.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
@@ -85,18 +91,26 @@ public class AppWindow1 {
 	private static List<Composite> compositeList = new ArrayList<Composite>();
 	private static List<CoreTemplate> coreTemplateList = new ArrayList<CoreTemplate>();
 	private static List<ExpandItem> expandItemList = new ArrayList<ExpandItem>();
+	private Text txtLogoName;
 	
 
 	/**
 	 * Create contents of the window.
 	 */
 	protected void createContents() {
-		shell = new Shell();
-		shell.setMinimumSize(new Point(1024, 500));
-		shell.setSize(1354, 1012);
-		shell.setText("SWT Application");
-		shell.setLayout(null);
-	
+		shlLogoapp = new Shell();
+		shlLogoapp.setMinimumSize(new Point(1024, 500));
+		shlLogoapp.setSize(1354, 1012);
+		shlLogoapp.setText("LogoApp.1.0");
+		shlLogoapp.setLayout(null);
+		
+		// ilk Açýlýþta Ekranýn ortalanmasý için Hazýrlandý.
+		Monitor primary = display.getPrimaryMonitor();
+	    Rectangle bounds = primary.getBounds();
+	    Rectangle rect = shlLogoapp.getBounds();	    
+	    int x = bounds.x + (bounds.width - rect.width) / 2;
+	    int y = bounds.y + (bounds.height - rect.height) / 2;	    
+	    shlLogoapp.setLocation(x, y);
 		
 		// Bu kod bloðu model ürün hiyerarþisini saðlýyor ve model ürün bilgisini elde ediyor
 		modelList = new ArrayList<Model>();// Orjinal model bilgilerini alýyor
@@ -129,9 +143,9 @@ public class AppWindow1 {
 	    ////////////////////////////////////////////
 		
 	 // Expandbar ve ExpandItem oluþturan kod bloðu
-	 	ExpandBar expandBar = new ExpandBar(shell, SWT.H_SCROLL | SWT.V_SCROLL);
-	 	expandBar.setBounds(10, 252, 820, 350);		
-	    
+	 	ExpandBar expandBar = new ExpandBar(shlLogoapp, SWT.H_SCROLL | SWT.V_SCROLL);
+	 	expandBar.setBounds(10, 227, 820, 350);		
+
 	 	//ExpandItem oluþturma iþlemi
 	    Composite composite = null;
 		GridLayout gridLayout = null;
@@ -175,7 +189,7 @@ public class AppWindow1 {
 
 		
 		
-		Button btnBirLogoSeiniz = formToolkit.createButton(shell, "Bir logo seciniz", SWT.NONE);
+		Button btnBirLogoSeiniz = formToolkit.createButton(shlLogoapp, "Bir logo seciniz", SWT.NONE);
 		btnBirLogoSeiniz.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -183,36 +197,38 @@ public class AppWindow1 {
 			}
 		});
 		btnBirLogoSeiniz.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\fileChooser.png"));
-		btnBirLogoSeiniz.setBounds(27, 32, 151, 30);
+		btnBirLogoSeiniz.setBounds(10, 33, 155, 30);
 		
-		text = formToolkit.createText(shell, "New Text", SWT.NONE);
+		text = formToolkit.createText(shlLogoapp, "New Text", SWT.NONE);
 		text.setText("");
-		text.setBounds(27, 90, 151, 20);
+		text.setBounds(75, 88, 155, 20);
 		
-		logoLabel = formToolkit.createLabel(shell, "", SWT.NONE);
+		logoLabel = formToolkit.createLabel(shlLogoapp, "", SWT.NONE);
+		logoLabel.setAlignment(SWT.CENTER);
+		logoLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		
 		
-		logoLabel.setBounds(239, 9, 115, 115);
+		logoLabel.setBounds(250, 33, 160, 185);
 		
-		Label labelTemplate1 = new Label(shell, SWT.NONE);
+		Label labelTemplate1 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate1.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template1.jpg"));
-		labelTemplate1.setBounds(444, 36, 160, 185);
+		labelTemplate1.setBounds(444, 33, 160, 185);
 		formToolkit.adapt(labelTemplate1, true, true);
 		
-		Label labelTemplate2 = new Label(shell, SWT.NONE);
+		Label labelTemplate2 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate2.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template2.jpg"));
-		labelTemplate2.setBounds(639, 35, 160, 185);
+		labelTemplate2.setBounds(639, 32, 160, 185);
 		formToolkit.adapt(labelTemplate2, true, true);
 		
-		Label labelTemplate3 = new Label(shell, SWT.NONE);
+		Label labelTemplate3 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.jpg"));
-		labelTemplate3.setBounds(831, 37, 160, 185);
+		labelTemplate3.setBounds(831, 34, 160, 185);
 		formToolkit.adapt(labelTemplate3, true, true);
 		
 		
 		
 		// radio button operations		
-		rdBtnSablon1 = new Button(shell, SWT.RADIO);
+		rdBtnSablon1 = new Button(shlLogoapp, SWT.RADIO);
 		rdBtnSablon1.setBounds(470, 9, 111, 20);
 		formToolkit.adapt(rdBtnSablon1, true, true);
 		rdBtnSablon1.setText("Sablon 1");
@@ -225,7 +241,7 @@ public class AppWindow1 {
 			}
 		});
 		
-		rdBtnSablon2 = new Button(shell, SWT.RADIO);
+		rdBtnSablon2 = new Button(shlLogoapp, SWT.RADIO);
 		rdBtnSablon2.setBounds(656, 9, 111, 20);
 		formToolkit.adapt(rdBtnSablon2, true, true);
 		rdBtnSablon2.setText("Sablon 2");
@@ -238,13 +254,13 @@ public class AppWindow1 {
 			}
 		});
 		
-		rdBtnSablon3 = new Button(shell, SWT.RADIO);
+		rdBtnSablon3 = new Button(shlLogoapp, SWT.RADIO);
 		rdBtnSablon3.setBounds(857, 9, 111, 20);
 		formToolkit.adapt(rdBtnSablon3, true, true);
 		rdBtnSablon3.setText("Sablon 3");
 		
 		
-		Button btnApplyLogo = new Button(shell, SWT.NONE);
+		Button btnApplyLogo = new Button(shlLogoapp, SWT.NONE);
 		btnApplyLogo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -254,6 +270,20 @@ public class AppWindow1 {
 		btnApplyLogo.setBounds(1024, 122, 115, 30);
 		formToolkit.adapt(btnApplyLogo, true, true);
 		btnApplyLogo.setText("Logoyu Uygula");
+		
+		txtLogoName = new Text(shlLogoapp, SWT.BORDER);
+		txtLogoName.setBounds(75, 127, 155, 21);
+		formToolkit.adapt(txtLogoName, true, true);
+		
+		Label lblLogoDizini = new Label(shlLogoapp, SWT.NONE);
+		lblLogoDizini.setBounds(10, 91, 62, 15);
+		formToolkit.adapt(lblLogoDizini, true, true);
+		lblLogoDizini.setText("Logo Dizini:");
+		
+		Label lblLogoAd = new Label(shlLogoapp, SWT.NONE);
+		lblLogoAd.setBounds(10, 130, 55, 15);
+		formToolkit.adapt(lblLogoAd, true, true);
+		lblLogoAd.setText("Logo Ad\u0131:");
 		
 		
 		rdBtnSablon3.addSelectionListener(new SelectionAdapter() {
@@ -284,6 +314,23 @@ public class AppWindow1 {
         return imgx;
 	}
 	
+	public Image scaleToImageForLogo(BufferedImage img,int widthSc,int heightSc,String outPath,
+			int drawableX,int drawableY){
+		BufferedImage outputImage = new BufferedImage(widthSc,heightSc, img.getType());
+		Graphics2D g2d = outputImage.createGraphics();
+        g2d.drawImage(img, 0, 0, widthSc, heightSc, null);
+        g2d.dispose();
+        try {
+			ImageIO.write(outputImage, "png", new File(outPath));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        //Image imgx = SWTResourceManager.getImage(outPath).getImageData();
+        //Image imgx = new Image(display, SWTResourceManager.getImage(outPath).getImageData());
+        Image imgx = new Image(display, outPath);
+        return imgx;
+	}
+	
 	
 	
 	public void dressToImg(String createPath,Label label){
@@ -292,13 +339,14 @@ public class AppWindow1 {
 	}
 	
 	public void chooseLogo(){
-		FileDialog fd = new FileDialog(shell, SWT.OPEN);
+		FileDialog fd = new FileDialog(shlLogoapp, SWT.OPEN);
 		fd.setText("Logo seçiniz");
 		fd.setFilterPath("C:/");
         String[] filterExt = { "*.png", "*.jpg" };
         fd.setFilterExtensions(filterExt);
         String fdStr =  fd.open();
-        
+        String LogoName [];
+        String LogoNameStr="";
         if(fdStr != null){
         	logoPath = fdStr;
         }else{
@@ -307,6 +355,10 @@ public class AppWindow1 {
        
         if(!logoPath.equals("")){
             text.setText(logoPath);
+            LogoName = logoPath.split("\\\\");
+            LogoNameStr = LogoName[LogoName.length-1];
+            LogoNameStr = LogoNameStr.substring(0, LogoNameStr.indexOf('.'));
+            txtLogoName.setText(LogoNameStr);
         	processLogo();
         	
         }
@@ -315,10 +367,24 @@ public class AppWindow1 {
 	public void processLogo(){
 		BufferedImage choosenLogo = null;
 		String createPath = "C:\\LogoApp\\SmallLogos\\"+getFileName(logoPath)+"-sm.png";
+		List<Integer> calculatedPosition = new ArrayList();
 		try {
 			choosenLogo = ImageIO.read(new File(logoPath));
-			scaleToImage(choosenLogo, 115, 115, createPath); //C:/LogoApp/SmallLogos altýna ilgili logoyu sonunda -sm olacak þekilde ölçeklendirilmiþ halde kaydediyor
-			dressToImg(createPath, logoLabel); // Ekranda küçük logo önizlemesi için kullanýlýyor. 
+			
+			Dimension logoSize = new Dimension(choosenLogo.getWidth(), choosenLogo.getHeight());
+			Dimension templateSize = new Dimension(logoLabel.getBounds().width, logoLabel.getBounds().height);			
+			Dimension resizedLogoDimension = getScaledDimension(logoSize,templateSize);
+			
+			calculatedPosition = calculateLogoStartingPosition(calculatedPosition,resizedLogoDimension,
+					//33,	250,410);
+					logoLabel.getBounds().y,logoLabel.getBounds().x,logoLabel.getBounds().x+logoLabel.getBounds().width);
+			
+			
+			scaleToImageForLogo(choosenLogo, (int)resizedLogoDimension.getWidth(), (int)resizedLogoDimension.getHeight(), createPath,
+					calculatedPosition.get(0)-logoLabel.getBounds().x,calculatedPosition.get(1)); //C:/LogoApp/SmallLogos altýna ilgili logoyu sonunda -sm olacak þekilde ölçeklendirilmiþ halde kaydediyor
+			dressToImg(createPath, logoLabel); // Ekranda küçük logo önizlemesi için kullanýlýyor.
+			///Image imgx = new Image(display,createPath);
+			//logoLabel.setImage(imgx);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -356,7 +422,7 @@ public class AppWindow1 {
 		if(!logoPath.equals("")){
 			int height=0, width = 0,coordinatX=0,coordinatY=0;
 			switch (selectedTemplate) {
-			case 1:
+			case 1:				
 				height = 500; // Alýnan koordinat degerleri burada guncellenecek
 				width = 550;
 				coordinatX = 660;
@@ -377,7 +443,8 @@ public class AppWindow1 {
 			default:
 				break;
 			}
-			DirectoryDialog dlg = new DirectoryDialog(shell);
+			List<Integer> calculatedPosition = new ArrayList();
+			DirectoryDialog dlg = new DirectoryDialog(shlLogoapp);
 			dlg.setFilterPath("C:/");
 			dlg.setText("SWT's DirectoryDialog");
 			dlg.setMessage("Select a directory");
@@ -395,9 +462,15 @@ public class AppWindow1 {
 					Product tempProduct = null;
 					for(int j = 0; j < productList.size();j++){
 						tempProduct = productList.get(j);
-						scaleLogoForOriginalProduct(tempProduct.getProductFullPath(), logoPath, getFileName(logoPath), 3); // Logoyu büyütmek icin measure parametresini kucultmeliyiz
 						
-						drawww(tempProduct.getProductFullPath(), scaledLogoPath+"\\"+getFileName(logoPath)+".png", createPath, coordinatX, coordinatY);
+						//scaleLogoForOriginalProduct(tempProduct.getProductFullPath(), logoPath, getFileName(logoPath), 3); // Logoyu büyütmek icin measure parametresini kucultmeliyiz
+						
+					//scaleLogoForOriginalProductForTemplate: measure parametresi yerine selectedTemplate 
+					//kullanýlarak template'e göre modelTemplateCoordinate sabit sýnýfýndan ilgili ürün için sabitler okunarak
+					// logonun doðru orantýlý olarak küçültülmesi saðlanacak.
+						calculatedPosition = scaleLogoForOriginalProductForTemplate(tempProduct.getProductFullPath(), logoPath, getFileName(logoPath), selectedTemplate);  
+						
+						drawww(tempProduct.getProductFullPath(), scaledLogoPath+"\\"+getFileName(logoPath)+".png", createPath, calculatedPosition.get(0), calculatedPosition.get(1));
 						
 						//drawIt(tempProduct.getProductFullPath(), "", "", logoPath, createPath+"\\"+tempProduct.getProductName(), 0, 0, width, height, coordinatX, coordinatY, true);
 					}
@@ -405,7 +478,7 @@ public class AppWindow1 {
 				showAllProducts(createPath);
 			}
 		}else{
-			 MessageBox messageBox = new MessageBox(shell, SWT.ERROR);
+			 MessageBox messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
 			 messageBox.setText("HATA");
 			 messageBox.setMessage("Logo seçmelisiniz!");
 			 messageBox.open();
@@ -445,7 +518,223 @@ public class AppWindow1 {
 			e.printStackTrace();
 		}
 	}
+	//
+	private List<Integer> scaleLogoForOriginalProductForTemplate(String productOriginalPath, String logoOriginalPath,String logoNameForPath,int selectedTemplate){ 
+		
+		BufferedImage productOriginal = null;
+		BufferedImage logoOriginal = null;
+		List<Integer> productTemplateCoodinates = new ArrayList(); 
+		List<Integer> calculatedPosition = new ArrayList();
+		//düzenlenecek
+		try
+		{
+			//productOriginalPath: C:\LogoApp\Models\Gildan 18500 Unisex Hoodie\18500xB00.jpg
+			//String replacedProductPath = productOriginalPath.replace('\\', "\\");
+			String[] paths = productOriginalPath.split("\\\\");
+			String modelName = paths[paths.length-2].replace(" ", "_");
+			String productName = paths[paths.length-1];
+			productName = "_"+productName.substring(0, productName.indexOf('.'));
+			
+			productOriginal = ImageIO.read(new File(productOriginalPath));
+			logoOriginal = ImageIO.read(new File(logoOriginalPath));		
+			
+			//productTemplateCoodinates Seçilen þablona göre ilgili ürünün o þablona ait koordinatlarýný dönecek
+			// productTemplateCoodinates [Bottom_LeftX , Bottom_LeftY , Bottom_RightX , Bottom_RightY , TopLeftX , TopLeftY , TopRightX , TopRightY]
+			productTemplateCoodinates = getProductTemplateCoordinates(selectedTemplate,productTemplateCoodinates,modelName,productName);
+			
+			int templateHeight = productTemplateCoodinates.get(1) - productTemplateCoodinates.get(4); // Bottom_LeftY - TopLeftY
+			int templateWidth = productTemplateCoodinates.get(2) - productTemplateCoodinates.get(0);
+			
+			Dimension logoSize = new Dimension(logoOriginal.getWidth(), logoOriginal.getHeight());
+			Dimension templateSize = new Dimension(templateWidth, templateHeight);			
+			Dimension resizedLogoDimension = getScaledDimension(logoSize,templateSize); // Logo botunu template ve orjinal logo boyutuna göre belirler.
+			
+			calculatedPosition = calculateLogoStartingPosition(calculatedPosition,resizedLogoDimension,productTemplateCoodinates.get(5),productTemplateCoodinates.get(4),productTemplateCoodinates.get(6)); // Logo her zaman þablonun üst sýnýrýna dayalý olacak (Özcan Bey Öyle olmasýný istiyor.) 
+			
+			BufferedImage resizedLogo = new BufferedImage(resizedLogoDimension.width, resizedLogoDimension.height, logoOriginal.getType());
+			Graphics2D graphic = resizedLogo.createGraphics();
+			graphic.drawImage(logoOriginal, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
+			graphic.dispose();
+		
+		
+			ImageIO.write(resizedLogo, "png", new File(scaledLogoPath+"\\"+logoNameForPath+".png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return calculatedPosition;
+	}
 	
+	private List<Integer> calculateLogoStartingPosition(List<Integer> calculatedPosition,
+			Dimension resizedLogoDimension, Integer topLeftY,
+			Integer topLeftX, Integer topRightX) {
+		
+		int StartingX ,StartingY ;
+		
+		StartingY = topLeftY ;
+		
+		if( (topRightX-topLeftX)>resizedLogoDimension.getWidth()){
+			
+			StartingX = (int) ((int) topLeftX + (((topRightX-topLeftX)-resizedLogoDimension.getWidth())/2));
+		}else{
+			StartingX = topLeftX;
+		}
+		
+		calculatedPosition.add(StartingX);
+		calculatedPosition.add(StartingY);
+		
+		return calculatedPosition;
+	}
+
+	public static Dimension getScaledDimension(Dimension imgSize, Dimension boundary) {
+
+	    int original_width = imgSize.width;
+	    int original_height = imgSize.height;
+	    int bound_width = boundary.width;
+	    int bound_height = boundary.height;
+	    int new_width = original_width;
+	    int new_height = original_height;
+
+	    // first check if we need to scale width
+	    if (original_width > bound_width) {
+	        //scale width to fit
+	        new_width = bound_width;
+	        //scale height to maintain aspect ratio
+	        new_height = (new_width * original_height) / original_width;
+	    }
+
+	    // then check if we need to scale even with the new height
+	    if (new_height > bound_height) {
+	        //scale height to fit instead
+	        new_height = bound_height;
+	        //scale width to maintain aspect ratio
+	        new_width = (new_height * original_width) / original_height;
+	    }
+
+	    return new Dimension(new_width, new_height);
+	}
+	
+	private List<Integer> getProductTemplateCoordinates(int selectedTemplate,
+			List<Integer> productTemplateCoodinates, String modelName, String productName) {
+		
+		productTemplateCoodinates = new ArrayList<>();
+		
+		switch (selectedTemplate) {
+		case 1:
+			
+			if(modelName.equals(ModelProductName.modelName.Gildan_5000_Mens_Tee))
+			{
+				
+				if(isGildan5000SameProductList(productName)){
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xB000.Bottom_Left._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xB000.Bottom_Left._5000xB000_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xB000.Bottom_Right._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xB000.Bottom_Right._5000xB000_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xB000.Top_Left._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xB000.Top_Left._5000xB000_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_Y);
+										
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xOR00)){
+					
+					
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xRB00)){
+					
+					
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xSG00)){
+					
+					
+				}
+				
+			}
+			
+			break;
+			
+		case 2:
+			
+			if(modelName.equals(ModelProductName.modelName.Gildan_5000_Mens_Tee)){
+				
+				if(isGildan5000SameProductList(productName)){
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xB000.Bottom_Left._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xB000.Bottom_Left._5000xB000_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xB000.Bottom_Right._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xB000.Bottom_Right._5000xB000_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xB000.Top_Left._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xB000.Top_Left._5000xB000_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_Y);
+										
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xOR00)){
+					
+					
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xRB00)){
+					
+					
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xSG00)){
+					
+					
+				}		
+			}
+			
+			break;
+			
+		case 3:
+			
+			if(modelName.equals(ModelProductName.modelName.Gildan_5000_Mens_Tee)){
+				
+				if(isGildan5000SameProductList(productName)){
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xB000.Bottom_Left._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xB000.Bottom_Left._5000xB000_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xB000.Bottom_Right._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xB000.Bottom_Right._5000xB000_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xB000.Top_Left._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xB000.Top_Left._5000xB000_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_Y);
+										
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xOR00)){
+					
+					
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xRB00)){
+					
+					
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xSG00)){
+					
+					
+				}				
+			}
+			
+			break;
+			
+		default:
+			break;
+		}		
+		
+		return productTemplateCoodinates;
+	}
+
+	private boolean isGildan5000SameProductList(String productName) {	
+		
+		boolean returnVal=false;
+		
+		if(gildan5000SameProductList.contains(productName)){
+			return returnVal=true;
+		}
+		
+		return returnVal;		
+	}
+
 	public void drawww(String productPath,String logoPath,String createPath,int coordinatX,int coordinatY){
 		BufferedImage productBuff = null;
 		BufferedImage logoBuff = null;
@@ -461,7 +750,7 @@ public class AppWindow1 {
 			File modelDirectory = new File(createPath+"\\"+f.getParentFile().getName());
 			if(!modelDirectory.exists())
 				modelDirectory.mkdir();
-			ImageIO.write(productBuff, "png", new File(createPath+"\\"+f.getParentFile().getName()+"\\"+getFileName(productPath)+".png"));
+			ImageIO.write(productBuff, "png", new File(createPath+"\\"+f.getParentFile().getName()+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -522,5 +811,4 @@ public class AppWindow1 {
 		}
 		
 	}
-	
 }
