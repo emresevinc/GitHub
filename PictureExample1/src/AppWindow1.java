@@ -222,7 +222,7 @@ public class AppWindow1 {
 		
 		Label labelTemplate3 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.jpg"));
-		labelTemplate3.setBounds(831, 34, 160, 185);
+		labelTemplate3.setBounds(831, 32, 160, 185);
 		formToolkit.adapt(labelTemplate3, true, true);
 		
 		
@@ -376,15 +376,13 @@ public class AppWindow1 {
 			Dimension resizedLogoDimension = getScaledDimension(logoSize,templateSize);
 			
 			calculatedPosition = calculateLogoStartingPosition(calculatedPosition,resizedLogoDimension,
-					//33,	250,410);
 					logoLabel.getBounds().y,logoLabel.getBounds().x,logoLabel.getBounds().x+logoLabel.getBounds().width);
 			
 			
 			scaleToImageForLogo(choosenLogo, (int)resizedLogoDimension.getWidth(), (int)resizedLogoDimension.getHeight(), createPath,
 					calculatedPosition.get(0)-logoLabel.getBounds().x,calculatedPosition.get(1)); //C:/LogoApp/SmallLogos altýna ilgili logoyu sonunda -sm olacak þekilde ölçeklendirilmiþ halde kaydediyor
 			dressToImg(createPath, logoLabel); // Ekranda küçük logo önizlemesi için kullanýlýyor.
-			///Image imgx = new Image(display,createPath);
-			//logoLabel.setImage(imgx);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -638,15 +636,34 @@ public class AppWindow1 {
 					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_X);
 					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_Y);
 										
-				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xOR00)){
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xOR00)
+						||(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xRB00))){ // Gildan5000 Mavi-Turuncu Ayný
 					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Left._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Left._5000xOR00_Y);
 					
-				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xRB00)){
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Right._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Right._5000xOR00_Y);
 					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xOR00.Top_Left._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xOR00.Top_Left._5000xOR00_Y);
 					
-				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xSG00)){
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xOR00.Top_Right._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xOR00.Top_Right._5000xOR00_Y);
 					
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xSG00)){//Gildan5000 Gri T-Shirt
 					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Left._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Left._5000xSG00_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Right._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Right._5000xSG00_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xSG00.Top_Left._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xSG00.Top_Left._5000xSG00_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xSG00.Top_Right._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template1.Gildan_5000_Mens_Tee._5000xSG00.Top_Right._5000xSG00_Y);
 				}
 				
 			}
@@ -671,16 +688,35 @@ public class AppWindow1 {
 					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_X);
 					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_Y);
 										
-				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xOR00)){
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xOR00)
+						||(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xRB00))){ // Gildan5000 Mavi-Turuncu Ayný
 					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Left._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Left._5000xOR00_Y);
 					
-				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xRB00)){
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Right._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Right._5000xOR00_Y);
 					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xOR00.Top_Left._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xOR00.Top_Left._5000xOR00_Y);
 					
-				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xSG00)){
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xOR00.Top_Right._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xOR00.Top_Right._5000xOR00_Y);
 					
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xSG00)){//Gildan5000 Gri T-Shirt
 					
-				}		
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Left._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Left._5000xSG00_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Right._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Right._5000xSG00_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xSG00.Top_Left._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xSG00.Top_Left._5000xSG00_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xSG00.Top_Right._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template2.Gildan_5000_Mens_Tee._5000xSG00.Top_Right._5000xSG00_Y);
+				}
 			}
 			
 			break;
@@ -703,16 +739,35 @@ public class AppWindow1 {
 					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_X);
 					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xB000.Top_Right._5000xB000_Y);
 										
-				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xOR00)){
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xOR00)
+						||(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xRB00))){ // Gildan5000 Mavi-Turuncu Ayný
 					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Left._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Left._5000xOR00_Y);
 					
-				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xRB00)){
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Right._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xOR00.Bottom_Right._5000xOR00_Y);
 					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xOR00.Top_Left._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xOR00.Top_Left._5000xOR00_Y);
 					
-				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xSG00)){
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xOR00.Top_Right._5000xOR00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xOR00.Top_Right._5000xOR00_Y);
 					
+				}else if(productName.equals(ModelProductName.Gildan_5000_Mens_Tee._5000xSG00)){//Gildan5000 Gri T-Shirt
 					
-				}				
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Left._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Left._5000xSG00_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Right._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xSG00.Bottom_Right._5000xSG00_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xSG00.Top_Left._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xSG00.Top_Left._5000xSG00_Y);
+					
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xSG00.Top_Right._5000xSG00_X);
+					productTemplateCoodinates.add(modelTemplateCoordinate.Template3.Gildan_5000_Mens_Tee._5000xSG00.Top_Right._5000xSG00_Y);
+				}	
 			}
 			
 			break;
@@ -747,10 +802,11 @@ public class AppWindow1 {
 			graphicProduct.drawImage(logoBuff, coordinatX, coordinatY, null);
 			graphicProduct.dispose();
 			
-			File modelDirectory = new File(createPath+"\\"+f.getParentFile().getName());
-			if(!modelDirectory.exists())
-				modelDirectory.mkdir();
-			ImageIO.write(productBuff, "png", new File(createPath+"\\"+f.getParentFile().getName()+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
+//			File modelDirectory = new File(createPath+"\\"+f.getParentFile().getName());
+//			if(!modelDirectory.exists())
+//				modelDirectory.mkdir();
+//			ImageIO.write(productBuff, "png", new File(createPath+"\\"+f.getParentFile().getName()+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
+			ImageIO.write(productBuff, "png", new File(createPath+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
