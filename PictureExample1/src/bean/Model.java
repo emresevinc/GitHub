@@ -8,11 +8,12 @@ public class Model {
 	private String modelName;
 	private String modelFullPath;
 	private List<Product> productList;
+	private CoreTemplate coreTemplate = null;
 	
 	public Model() {
-		modelName = "";
-		modelFullPath = "";
-		productList = new ArrayList<Product>();
+		this.modelName = "";
+		this.modelFullPath = "";
+		this.productList = new ArrayList<Product>();
 	}
 
 	public String getModelName() {
@@ -37,6 +38,16 @@ public class Model {
 
 	public void setProductList(List<Product> productList) {
 		this.productList = productList;
+	}
+
+	public CoreTemplate getCoreTemplate() {
+		if (coreTemplate == null) 
+			return null;
+		return coreTemplate;
+	}
+
+	public void setCoreTemplate(CoreTemplate coreTemplate) {
+		this.coreTemplate = coreTemplate;
 	}
 	
 	

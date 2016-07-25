@@ -34,6 +34,7 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import bean.CoreTemplate;
 import bean.Model;
 import bean.Product;
+import bean.ProductUI;
 import bean.modelTemplateCoordinate;
 import constant.ModelProductName;
 
@@ -143,17 +144,20 @@ public class AppWindow1 {
 	    ////////////////////////////////////////////
 		
 	 // Expandbar ve ExpandItem oluþturan kod bloðu
-	 	ExpandBar expandBar = new ExpandBar(shlLogoapp, SWT.H_SCROLL | SWT.V_SCROLL);
-	 	expandBar.setBounds(10, 227, 820, 350);		
+	 	ExpandBar expandBar = new ExpandBar(shlLogoapp, SWT.V_SCROLL);
+	 	expandBar.setBounds(10, 227, 980, 350);		
 
 	 	//ExpandItem oluþturma iþlemi
 	    Composite composite = null;
 		GridLayout gridLayout = null;
 		CoreTemplate coreTemplate = null;
 		ExpandItem xpndtmNewExpanditem = null; 
+		Model currentModel = null;
 		for (int i = 0; i < modelList.size(); i++) {
+			currentModel = modelList.get(i);
+			
 			composite = new Composite(expandBar, SWT.NONE);
-			gridLayout = new GridLayout(3, false);
+			gridLayout = new GridLayout(9, false); //3
 			gridLayout.horizontalSpacing = 20;
 			composite.setLayout(gridLayout);
 			
@@ -164,13 +168,13 @@ public class AppWindow1 {
 			xpndtmNewExpanditem.setText(modelList.get(i).getModelName());
 			
 			
-			coreTemplate = new CoreTemplate(composite, SWT.BORDER); // label'larý gride teker teker uygun sýrada dolduracaktýr
+			coreTemplate = new CoreTemplate(composite,currentModel); // label'larý gride teker teker uygun sýrada dolduracaktýr
 			
 			compositeList.add(composite);
 			coreTemplateList.add(coreTemplate);
 			expandItemList.add(xpndtmNewExpanditem);
 			
-			showProducts(modelList.get(i),coreTemplate); // Siradaki model altýndaki urunlerin ekrana basilmasi icin tetikleniyor
+			showProducts(coreTemplate); // Siradaki model altýndaki urunlerin ekrana basilmasi icin tetikleniyor
 			
 			xpndtmNewExpanditem.setHeight(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);//(coreTemplate.getAllRegionList().size() / 3) + 1) * 300);
 			xpndtmNewExpanditem.setControl(composite);
@@ -817,31 +821,37 @@ public class AppWindow1 {
 		BufferedImage originalImage = null;
 		Model model = null;
 		CoreTemplate coreTemplate = null;
-		List<Label> tempRegionList = null;
-		for(int i = 0; i<modelList.size(); i++){
-			model = modelList.get(i);
-			coreTemplate = coreTemplateList.get(i); // model-coretemlate-expanditem-composite listelerinin içine ayný anda elemanlar atýldýðý için indekslerindeki nesneler birbirleri ile tutarlýdýr (ArrayList)
-			tempRegionList = coreTemplate.getAllRegionList();
-			for(int x = 0; x < model.getProductList().size(); x++){
-		    	String productName = model.getProductList().get(x).getProductName();
-		    	String productNameStr = productName.substring(0, productName.length()-4)+".png";
-		    	
-		    	try {
-					originalImage = ImageIO.read(new File(parentPath+"\\"+model.getModelName()+"\\"+productNameStr));
-					tempRegionList.get(x).setImage(scaleToImage(originalImage, 250, 300, scaledAndProgressedPath+"\\"+productNameStr));
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-		    	
+		List<ProductUI> tempProductUIList = null;
+		int coreTemplateSize = coreTemplateList.size();
+		for(int i = 0; i<coreTemplateSize; i++){
+			model = coreTemplateList.get(i).getModel();
+			coreTemplate = coreTemplateList.get(i);
+			tempProductUIList = coreTemplate.getProductUIList();
+			int productSize = tempProductUIList.size();
+			ProductUI productUI = null;
+			for(int x = 0; x < productSize; x++){
+		    	productUI = tempProductUIList.get(x);
+		    	if(productUI.getCheckIsApply().getSelection()){
+					String productName = productUI.getProductName();
+			    	String productNameStr = productName.substring(0, productName.length()-4)+".png";
+			    	
+			    	try {
+						originalImage = ImageIO.read(new File(parentPath+"\\"+model.getModelName()+"\\"+productNameStr));
+						tempProductUIList.get(x).getLblProductImg().setImage(scaleToImage(originalImage, 250, 300, scaledAndProgressedPath+"\\"+productNameStr));
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+		    	}
 		    }
 		}
 	}
 	
-	private void showProducts(Model model, CoreTemplate coreTemplate){ 
+	private void showProducts(CoreTemplate coreTemplate){ 
 		BufferedImage originalImg = null;
+		Model model = coreTemplate.getModel();
 		List<Product> productList = model.getProductList();
-		List<Label> regionList = coreTemplate.getAllRegionList();
-		Label tempRegion = null;
+		List<ProductUI> regionList = coreTemplate.getProductUIList();
+		ProductUI tempProductUI = null;
 		Product tempProduct = null;
 		File folder = new File(nonProgressedScaledProductPath+"\\"+model.getModelName());
 		if(!folder.exists())// olceklenmis fakat islenmemis modelin urunlerinin saklanabilmesi icin ilgili klasor yoksa olusturuluyor
@@ -851,14 +861,14 @@ public class AppWindow1 {
 		String productName = "";
 		for (int i = 0; i < productList.size(); i++) {
 			tempProduct = productList.get(i);
-			tempRegion = regionList.get(i);
+			tempProductUI = regionList.get(i);
 			productName = tempProduct.getProductName().split("\\.")[0];
 			try {
 				if(scaledImgcount == 0){ // Program ilk calistirildiginda scale edilip logo islenmemis urunlerin ilgili klasor altýnda olmamasina karsin burada o urunleri olusturuyor. Bunlar program acildiginda ekrana basilan ilk gorsellerdir
 					originalImg = ImageIO.read(new File(model.getModelFullPath()+"\\"+tempProduct.getProductName()));
-					tempRegion.setImage(scaleToImage(originalImg, 250, 300, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));
+					tempProductUI.getLblProductImg().setImage(scaleToImage(originalImg, 250, 300, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));
 				}else{
-					tempRegion.setImage(new Image(display, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));					
+					tempProductUI.getLblProductImg().setImage(new Image(display, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));					
 				}
 				
 			} catch (Exception e) {
