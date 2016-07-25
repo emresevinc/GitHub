@@ -19,6 +19,7 @@ public class ProductUI {
 		this.lblProductImg = new Label(composite, SWT.NONE);
 		this.radioParent = new Button(composite, SWT.RADIO);
 		this.checkIsApply = new Button(composite, SWT.CHECK);
+		this.checkIsApply.setSelection(true);
 	}
 
 	public String getProductName() {

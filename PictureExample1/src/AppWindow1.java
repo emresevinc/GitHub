@@ -83,7 +83,7 @@ public class AppWindow1 {
 	Button rdBtnSablon1 = null;
 	Button rdBtnSablon2 = null;
 	Button rdBtnSablon3 = null;
-	private static final String logoAppPath = "C:\\LogoApp\\Models";//;"C:/LogoApp/Models";
+	private static final String logoAppModelsPath = "C:\\LogoApp\\Models";//;"C:/LogoApp/Models";
 	private static final String scaledLogoPath = "C:\\LogoApp\\ScaledLogos";
 	private static final String scaledAndProgressedPath = "C:\\LogoApp\\ScaledAndProgressed"; // Bu path iþlenmiþ ürünleri scale edilmiþ hallerinin bulunduðu path'tir. Ürünler iþlendikten sonra ekranda scale halini buradan alýyoruz
 	//private static final String scaledNonProgressedPath = "C:\\LogoApp\\ScaledAndNonProgressed"; // Bu path iþlenMEmis ürünleri scale edilmiþ hallerinin bulunduðu path'tir. Program çalistirildiktan sonra ekranda scale halini buradan aliyoruz
@@ -116,13 +116,13 @@ public class AppWindow1 {
 		// Bu kod bloðu model ürün hiyerarþisini saðlýyor ve model ürün bilgisini elde ediyor
 		modelList = new ArrayList<Model>();// Orjinal model bilgilerini alýyor
 		
-		File folder = new File(logoAppPath);
+		File folder = new File(logoAppModelsPath);
 		File[] listOfFiles = folder.listFiles();
 		Model tempModel = null;
 	    for (int i = 0; i < listOfFiles.length; i++) {
 	    	tempModel = new Model();
 	    	if (listOfFiles[i].isDirectory()) {
-	    		String modelFullPath = logoAppPath +"\\"+listOfFiles[i].getName();
+	    		String modelFullPath = logoAppModelsPath +"\\"+listOfFiles[i].getName();
 	    		String modelName = listOfFiles[i].getName();
 	    		tempModel.setModelFullPath(modelFullPath);
 	    		tempModel.setModelName(modelName);
@@ -201,11 +201,11 @@ public class AppWindow1 {
 			}
 		});
 		btnBirLogoSeiniz.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\fileChooser.png"));
-		btnBirLogoSeiniz.setBounds(10, 33, 155, 30);
+		btnBirLogoSeiniz.setBounds(10, 33, 155, 35);
 		
-		text = formToolkit.createText(shlLogoapp, "New Text", SWT.NONE);
+		text = formToolkit.createText(shlLogoapp, "New Text", SWT.BORDER | SWT.WRAP | SWT.MULTI);
 		text.setText("");
-		text.setBounds(75, 88, 155, 20);
+		text.setBounds(90, 91, 145, 55);
 		
 		logoLabel = formToolkit.createLabel(shlLogoapp, "", SWT.NONE);
 		logoLabel.setAlignment(SWT.CENTER);
@@ -271,23 +271,34 @@ public class AppWindow1 {
 				applyToLogo();
 			}
 		});
-		btnApplyLogo.setBounds(1024, 122, 115, 30);
+		btnApplyLogo.setBounds(875, 612, 115, 39);
 		formToolkit.adapt(btnApplyLogo, true, true);
 		btnApplyLogo.setText("Logoyu Uygula");
 		
-		txtLogoName = new Text(shlLogoapp, SWT.BORDER);
-		txtLogoName.setBounds(75, 127, 155, 21);
+		txtLogoName = new Text(shlLogoapp, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		txtLogoName.setBounds(90, 162, 145, 55);
 		formToolkit.adapt(txtLogoName, true, true);
 		
 		Label lblLogoDizini = new Label(shlLogoapp, SWT.NONE);
-		lblLogoDizini.setBounds(10, 91, 62, 15);
+		lblLogoDizini.setBounds(10, 91, 75, 20);
 		formToolkit.adapt(lblLogoDizini, true, true);
 		lblLogoDizini.setText("Logo Dizini:");
 		
 		Label lblLogoAd = new Label(shlLogoapp, SWT.NONE);
-		lblLogoAd.setBounds(10, 130, 55, 15);
+		lblLogoAd.setBounds(10, 165, 75, 20);
 		formToolkit.adapt(lblLogoAd, true, true);
 		lblLogoAd.setText("Logo Ad\u0131:");
+		
+		Button btnTemizle = new Button(shlLogoapp, SWT.NONE);
+		btnTemizle.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// sayfayi ilk acildigi hale getirecek
+			}
+		});
+		btnTemizle.setBounds(732, 612, 111, 39);
+		formToolkit.adapt(btnTemizle, true, true);
+		btnTemizle.setText("Temizle");
 		
 		
 		rdBtnSablon3.addSelectionListener(new SelectionAdapter() {
@@ -458,22 +469,32 @@ public class AppWindow1 {
 			if(!createPath.equals("")){
 				Model tempModel = null;
 				List<Product> productList = null;
-				for (int i = 0; i < modelList.size(); i++) {
-					tempModel = modelList.get(i);
+				CoreTemplate coreTemplate = null;
+				List<ProductUI> productUIList = null;
+				int coreTemplateSize = coreTemplateList.size();
+				for (int i = 0; i < coreTemplateSize; i++) {
+					coreTemplate = coreTemplateList.get(i);
+					tempModel = coreTemplate.getModel();
 					productList = tempModel.getProductList();
-					Product tempProduct = null;
-					for(int j = 0; j < productList.size();j++){
-						tempProduct = productList.get(j);
-						
-						//scaleLogoForOriginalProduct(tempProduct.getProductFullPath(), logoPath, getFileName(logoPath), 3); // Logoyu büyütmek icin measure parametresini kucultmeliyiz
-						
+					productUIList = coreTemplate.getProductUIList();
+					ProductUI tempProductUI = null;
+					int productUIListSize = productUIList.size();
+					
 					//scaleLogoForOriginalProductForTemplate: measure parametresi yerine selectedTemplate 
 					//kullanýlarak template'e göre modelTemplateCoordinate sabit sýnýfýndan ilgili ürün için sabitler okunarak
 					// logonun doðru orantýlý olarak küçültülmesi saðlanacak.
-						calculatedPosition = scaleLogoForOriginalProductForTemplate(tempProduct.getProductFullPath(), logoPath, getFileName(logoPath), selectedTemplate);  
-						
-						drawww(tempProduct.getProductFullPath(), scaledLogoPath+"\\"+getFileName(logoPath)+".png", createPath, calculatedPosition.get(0), calculatedPosition.get(1));
-						
+					
+					for(int j = 0; j < productUIListSize;j++){
+						tempProductUI = productUIList.get(j);
+						if(tempProductUI.getCheckIsApply().getSelection()){
+							String productFullPath = logoAppModelsPath +"\\"+tempProductUI.getModelName()+"\\"+tempProductUI.getProductName();
+							calculatedPosition = scaleLogoForOriginalProductForTemplate(productFullPath, logoPath, getFileName(logoPath), selectedTemplate);  
+							drawww(productFullPath, scaledLogoPath+"\\"+getFileName(logoPath)+".png", createPath, calculatedPosition.get(0), calculatedPosition.get(1));
+						}else{
+							tempProductUI.getCheckIsApply().setVisible(false);
+							tempProductUI.getRadioParent().setVisible(false);
+							tempProductUI.getLblProductImg().setVisible(false);
+						}
 						//drawIt(tempProduct.getProductFullPath(), "", "", logoPath, createPath+"\\"+tempProduct.getProductName(), 0, 0, width, height, coordinatX, coordinatY, true);
 					}
 				}
@@ -836,8 +857,8 @@ public class AppWindow1 {
 			    	String productNameStr = productName.substring(0, productName.length()-4)+".png";
 			    	
 			    	try {
-						originalImage = ImageIO.read(new File(parentPath+"\\"+model.getModelName()+"\\"+productNameStr));
-						tempProductUIList.get(x).getLblProductImg().setImage(scaleToImage(originalImage, 250, 300, scaledAndProgressedPath+"\\"+productNameStr));
+						originalImage = ImageIO.read(new File(parentPath+"\\"+txtLogoName.getText()+productNameStr));
+						tempProductUIList.get(x).getLblProductImg().setImage(scaleToImage(originalImage, 163, 163, scaledAndProgressedPath+"\\"+productNameStr));
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
