@@ -182,6 +182,36 @@ public interface modelTemplateCoordinate {
 			
 		}
 		
+		public interface Gildan_18500_Unisex_Hoodie{
+			
+			public interface _18{
+				
+				public interface Top_Left{
+					
+					public static final int _5000xB000_X =320;
+					public static final int _5000xB000_Y =430;				
+				}
+				
+				public interface Top_Right{
+					
+					public static final int _5000xB000_X =700;
+					public static final int _5000xB000_Y =430;				
+				}
+				
+				public interface Bottom_Left{
+					
+					public static final int _5000xB000_X =320;
+					public static final int _5000xB000_Y =750;				
+				}
+				
+				public interface Bottom_Right{
+					
+					public static final int _5000xB000_X =700;
+					public static final int _5000xB000_Y =750;				
+				}
+			}
+		}
+		
 		
 	}// End of Template2
 	

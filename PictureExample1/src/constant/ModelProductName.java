@@ -26,4 +26,22 @@ public interface ModelProductName {
 		
 	}
 	
+public interface Gildan_18500_Unisex_Hoodie{
+		
+		public static final String _18500xB00 = "_18500xB00";		
+		public static final String _18500xDHG = "_18500xDHG";
+		public static final String _18500xHP0 = "_18500xHP0";
+		public static final String _18500xIB0 = "_18500xIB0";
+		public static final String _18500xIG0 = "_18500xIG0";
+		public static final String _18500xMG0 = "_18500xMG0";
+		public static final String _18500xNB0 = "_18500xNB0";
+		public static final String _18500xOR0 = "_18500xOR0";
+		public static final String _18500xR00 = "_18500xR00";
+		public static final String _18500xRB0 = "_18500xRB0";
+		public static final String _18500xSG0 = "_18500xSG0"; // Turuncu
+		public static final String _18500xSP0 = "_18500xSP0"; // Mavi
+		public static final String _18500xW00 = "_18500xW00"; // Gri
+		
+	}
+	
 }
