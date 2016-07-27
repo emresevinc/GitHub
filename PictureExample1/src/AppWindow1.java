@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -42,8 +41,6 @@ import bean.CoreTemplate;
 import bean.Model;
 import bean.Product;
 import bean.ProductUI;
-import bean.modelTemplateCoordinate;
-import constant.ModelProductName;
 
 public class AppWindow1 {
 
@@ -153,7 +150,7 @@ public class AppWindow1 {
 		
 	 // Expandbar ve ExpandItem oluþturan kod bloðu
 	 	ExpandBar expandBar = new ExpandBar(shlLogoapp, SWT.V_SCROLL);
-	 	expandBar.setBounds(10, 227, 980, 350);		
+	 	expandBar.setBounds(10, 249, 980, 357);		
 
 	 	//ExpandItem oluþturma iþlemi
 	    Composite composite = null;
@@ -220,28 +217,28 @@ public class AppWindow1 {
 		logoLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		
 		
-		logoLabel.setBounds(250, 33, 160, 185);
+		logoLabel.setBounds(254, 33, 200, 200);
 		
 		labelTemplate1 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate1.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template1.jpg"));
-		labelTemplate1.setBounds(444, 33, 160, 185);
+		labelTemplate1.setBounds(477, 33, 200, 200);
 		formToolkit.adapt(labelTemplate1, true, true);
 		
 		labelTemplate2 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate2.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template2.jpg"));
-		labelTemplate2.setBounds(639, 32, 160, 185);
+		labelTemplate2.setBounds(696, 33, 200, 200);
 		formToolkit.adapt(labelTemplate2, true, true);
 		
 		labelTemplate3 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.jpg"));
-		labelTemplate3.setBounds(831, 32, 160, 185);
+		labelTemplate3.setBounds(914, 33, 200, 200);
 		formToolkit.adapt(labelTemplate3, true, true);
 		
 		
 		
 		// radio button operations		
 		rdBtnSablon1 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon1.setBounds(470, 9, 111, 20);
+		rdBtnSablon1.setBounds(495, 9, 111, 20);
 		formToolkit.adapt(rdBtnSablon1, true, true);
 		rdBtnSablon1.setText("Sablon 1");
 		
@@ -254,7 +251,7 @@ public class AppWindow1 {
 		});
 		
 		rdBtnSablon2 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon2.setBounds(656, 9, 111, 20);
+		rdBtnSablon2.setBounds(715, 9, 111, 20);
 		formToolkit.adapt(rdBtnSablon2, true, true);
 		rdBtnSablon2.setText("Sablon 2");
 		
@@ -267,7 +264,7 @@ public class AppWindow1 {
 		});
 		
 		rdBtnSablon3 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon3.setBounds(857, 9, 111, 20);
+		rdBtnSablon3.setBounds(950, 9, 111, 20);
 		formToolkit.adapt(rdBtnSablon3, true, true);
 		rdBtnSablon3.setText("Sablon 3");
 		
@@ -279,7 +276,7 @@ public class AppWindow1 {
 				applyToLogo();
 			}
 		});
-		btnApplyLogo.setBounds(875, 612, 115, 39);
+		btnApplyLogo.setBounds(875, 629, 115, 39);
 		formToolkit.adapt(btnApplyLogo, true, true);
 		btnApplyLogo.setText("Logoyu Uygula");
 		
@@ -307,7 +304,7 @@ public class AppWindow1 {
 				shlLogoapp.dispose();
 			}
 		});
-		btnTemizle.setBounds(732, 612, 111, 39);
+		btnTemizle.setBounds(728, 629, 111, 39);
 		formToolkit.adapt(btnTemizle, true, true);
 		btnTemizle.setText("Temizle");
 		
@@ -405,13 +402,13 @@ public class AppWindow1 {
 				drawww(productPath, scaledLogoPath+"\\LogoForTemplate"+i+".png", changedTemplatesPath+"\\Template"+i, calculatedPosition.get(0), calculatedPosition.get(1));
 				if(i == 1){
 					tempBufferedImage = ImageIO.read(new File(changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
-					labelTemplate1.setImage(scaleToImage(tempBufferedImage, 160, 185, changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+"__"+i+".png"));
+					labelTemplate1.setImage(scaleToImage(tempBufferedImage, 200, 200, changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+"__"+i+".png"));
 				}else if(i == 2){
 					tempBufferedImage = ImageIO.read(new File(changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
-					labelTemplate2.setImage(scaleToImage(tempBufferedImage, 160, 185, changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+"__"+i+".png"));
+					labelTemplate2.setImage(scaleToImage(tempBufferedImage, 200, 200, changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+"__"+i+".png"));
 				}else if(i == 3){
 					tempBufferedImage = ImageIO.read(new File(changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
-					labelTemplate3.setImage(scaleToImage(tempBufferedImage, 160, 185, changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+"__"+i+".png"));
+					labelTemplate3.setImage(scaleToImage(tempBufferedImage, 200, 200, changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+"__"+i+".png"));
 				}
 			}
 				
@@ -563,8 +560,8 @@ public class AppWindow1 {
 			// productTemplateCoodinates [Bottom_LeftX , Bottom_LeftY , Bottom_RightX , Bottom_RightY , TopLeftX , TopLeftY , TopRightX , TopRightY]
 			productTemplateCoodinates = getProductTemplateCoordinates(selectedTemplate,productTemplateCoodinates,modelName,productName);
 			
-			int templateHeight = productTemplateCoodinates.get(1) - productTemplateCoodinates.get(4); // Bottom_LeftY - TopLeftY
-			int templateWidth = productTemplateCoodinates.get(2) - productTemplateCoodinates.get(0);
+			int templateHeight = productTemplateCoodinates.get(1) - productTemplateCoodinates.get(5); // Bottom_LeftY - TopLeftY
+			int templateWidth = productTemplateCoodinates.get(2) - productTemplateCoodinates.get(0); //Bottom_rightX - BottomWidthX
 			
 			Dimension logoSize = new Dimension(logoOriginal.getWidth(), logoOriginal.getHeight());
 			Dimension templateSize = new Dimension(templateWidth, templateHeight);			
@@ -778,7 +775,7 @@ public class AppWindow1 {
 			try {
 				if(scaledImgcount == 0){ // Program ilk calistirildiginda scale edilip logo islenmemis urunlerin ilgili klasor altýnda olmamasina karsin burada o urunleri olusturuyor. Bunlar program acildiginda ekrana basilan ilk gorsellerdir
 					originalImg = ImageIO.read(new File(model.getModelFullPath()+"\\"+tempProduct.getProductName()));
-					tempProductUI.getLblProductImg().setImage(scaleToImage(originalImg, 250, 300, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));
+					tempProductUI.getLblProductImg().setImage(scaleToImage(originalImg, 200, 200, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));
 				}else{
 					tempProductUI.getLblProductImg().setImage(new Image(display, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));					
 				}
