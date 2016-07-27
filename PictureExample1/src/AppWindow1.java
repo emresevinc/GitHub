@@ -48,7 +48,6 @@ import constant.ModelProductName;
 public class AppWindow1 {
 
 	protected Shell shlLogoapp;
-	List<String> gildan5000SameProductList = Arrays.asList("_5000xB000","_5000xC000","_5000xHP00","_5000xIB00","_5000xLG00","_5000xLP00","_5000xMG00","_5000xNB00","_5000xR000","_5000xW000");
 	/**
 	 * Launch the application.
 	 * @param args
@@ -90,17 +89,19 @@ public class AppWindow1 {
 	Button rdBtnSablon1 = null;
 	Button rdBtnSablon2 = null;
 	Button rdBtnSablon3 = null;
-	private static final String logoAppModelsPath = "C:\\LogoApp\\Models";//;"C:/LogoApp/Models";
+	private static final String logoAppModelsPath = "C:\\LogoApp\\Models";
 	private static final String scaledLogoPath = "C:\\LogoApp\\ScaledLogos";
 	private static final String scaledAndProgressedPath = "C:\\LogoApp\\ScaledAndProgressed"; // Bu path iþlenmiþ ürünleri scale edilmiþ hallerinin bulunduðu path'tir. Ürünler iþlendikten sonra ekranda scale halini buradan alýyoruz
-	//private static final String scaledNonProgressedPath = "C:\\LogoApp\\ScaledAndNonProgressed"; // Bu path iþlenMEmis ürünleri scale edilmiþ hallerinin bulunduðu path'tir. Program çalistirildiktan sonra ekranda scale halini buradan aliyoruz
 	private static final String nonProgressedScaledProductPath = "C:\\LogoApp\\ScaledImages"; // Bu path ekran ilk açýldýðýnda default olan ürünlerin scale hallerinin tutulduðu path'i gösterir. Ekran ilk açýldýðýnda bu bos urunler gozlemlenir
+	private static final String changedTemplatesPath ="C:\\LogoApp\\ChangedTemplates";
 	private List<Model> modelList = null;
 	private static List<Composite> compositeList = new ArrayList<Composite>();
 	private static List<CoreTemplate> coreTemplateList = new ArrayList<CoreTemplate>();
 	private static List<ExpandItem> expandItemList = new ArrayList<ExpandItem>();
 	private Text txtLogoName;
-	
+	Label labelTemplate1 = null;
+	Label labelTemplate2 = null;
+	Label labelTemplate3 = null;
 
 	/**
 	 * Create contents of the window.
@@ -221,17 +222,17 @@ public class AppWindow1 {
 		
 		logoLabel.setBounds(250, 33, 160, 185);
 		
-		Label labelTemplate1 = new Label(shlLogoapp, SWT.NONE);
+		labelTemplate1 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate1.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template1.jpg"));
 		labelTemplate1.setBounds(444, 33, 160, 185);
 		formToolkit.adapt(labelTemplate1, true, true);
 		
-		Label labelTemplate2 = new Label(shlLogoapp, SWT.NONE);
+		labelTemplate2 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate2.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template2.jpg"));
 		labelTemplate2.setBounds(639, 32, 160, 185);
 		formToolkit.adapt(labelTemplate2, true, true);
 		
-		Label labelTemplate3 = new Label(shlLogoapp, SWT.NONE);
+		labelTemplate3 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.jpg"));
 		labelTemplate3.setBounds(831, 32, 160, 185);
 		formToolkit.adapt(labelTemplate3, true, true);
@@ -300,7 +301,10 @@ public class AppWindow1 {
 		btnTemizle.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// sayfayi ilk acildigi hale getirecek
+				shlLogoapp.setVisible(false);
+				AppWindow1 app = new AppWindow1();
+				app.open();
+				shlLogoapp.dispose();
 			}
 		});
 		btnTemizle.setBounds(732, 612, 111, 39);
@@ -336,24 +340,6 @@ public class AppWindow1 {
         return imgx;
 	}
 	
-	public Image scaleToImageForLogo(BufferedImage img,int widthSc,int heightSc,String outPath,
-			int drawableX,int drawableY){
-		BufferedImage outputImage = new BufferedImage(widthSc,heightSc, img.getType());
-		Graphics2D g2d = outputImage.createGraphics();
-        g2d.drawImage(img, 0, 0, widthSc, heightSc, null);
-        g2d.dispose();
-        try {
-			ImageIO.write(outputImage, "png", new File(outPath));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-        //Image imgx = SWTResourceManager.getImage(outPath).getImageData();
-        //Image imgx = new Image(display, SWTResourceManager.getImage(outPath).getImageData());
-        Image imgx = new Image(display, outPath);
-        return imgx;
-	}
-	
-	
 	
 	public void dressToImg(String createPath,Label label){
 		Image imgx = new Image(display,createPath);
@@ -382,10 +368,59 @@ public class AppWindow1 {
             LogoNameStr = LogoNameStr.substring(0, LogoNameStr.indexOf('.'));
             txtLogoName.setText(LogoNameStr);
         	processLogo();
-        	
+        	processTemplates();
         }
 	}
 	
+	private void processTemplates() {// Ek gelistirme ile istedikleri urunun sablon olmasý istenirse bu metoda 'modelName' ve 'productName' parametre olarak gelmesi yeterli olur
+		String modelName = "Gildan 5000 Mens Tee"; //"Gildan 18500 Unisex Hoodie";
+		String modelNameStr = modelName.replace(" ", "_");
+		String productName = "5000xC000"; //"18500xB00";
+		List<Integer> templateCoordinates = null;
+		List<Integer> calculatedPosition = new ArrayList<Integer>();
+		BufferedImage logoOriginal = null;
+		BufferedImage tempBufferedImage = null;
+		String productPath = logoAppModelsPath+"\\"+modelName+"\\"+productName+".jpg";
+		try{
+			logoOriginal = ImageIO.read(new File(logoPath));
+			
+			for(int i = 1; i < 4; i++){
+				calculatedPosition.clear();
+				templateCoordinates = getProductTemplateCoordinates(i, templateCoordinates, modelNameStr, productName);
+				int templateHeight = templateCoordinates.get(1) - templateCoordinates.get(4); // Bottom_LeftY - TopLeftY
+				int templateWidth = templateCoordinates.get(2) - templateCoordinates.get(0);
+				
+				Dimension logoSize = new Dimension(logoOriginal.getWidth(), logoOriginal.getHeight());
+				Dimension templateSize = new Dimension(templateWidth, templateHeight);			
+				Dimension resizedLogoDimension = getScaledDimension(logoSize,templateSize); // Logo botunu template ve orjinal logo boyutuna göre belirler.
+				
+				calculatedPosition = calculateLogoStartingPosition(calculatedPosition,resizedLogoDimension,templateCoordinates.get(5),templateCoordinates.get(4),templateCoordinates.get(6)); // Logo her zaman þablonun üst sýnýrýna dayalý olacak (Özcan Bey Öyle olmasýný istiyor.) 
+				
+				BufferedImage resizedLogo = new BufferedImage(resizedLogoDimension.width, resizedLogoDimension.height, logoOriginal.getType());
+				Graphics2D graphic = resizedLogo.createGraphics();
+				graphic.drawImage(logoOriginal, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
+				graphic.dispose();
+			
+				ImageIO.write(resizedLogo, "png", new File(scaledLogoPath+"\\LogoForTemplate"+i+".png"));
+				drawww(productPath, scaledLogoPath+"\\LogoForTemplate"+i+".png", changedTemplatesPath+"\\Template"+i, calculatedPosition.get(0), calculatedPosition.get(1));
+				if(i == 1){
+					tempBufferedImage = ImageIO.read(new File(changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
+					labelTemplate1.setImage(scaleToImage(tempBufferedImage, 160, 185, changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+"__"+i+".png"));
+				}else if(i == 2){
+					tempBufferedImage = ImageIO.read(new File(changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
+					labelTemplate2.setImage(scaleToImage(tempBufferedImage, 160, 185, changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+"__"+i+".png"));
+				}else if(i == 3){
+					tempBufferedImage = ImageIO.read(new File(changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
+					labelTemplate3.setImage(scaleToImage(tempBufferedImage, 160, 185, changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+"__"+i+".png"));
+				}
+			}
+				
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
 	public void processLogo(){
 		BufferedImage choosenLogo = null;
 		String createPath = "C:\\LogoApp\\SmallLogos\\"+getFileName(logoPath)+"-sm.png";
@@ -401,8 +436,7 @@ public class AppWindow1 {
 					logoLabel.getBounds().y,logoLabel.getBounds().x,logoLabel.getBounds().x+logoLabel.getBounds().width);
 			
 			
-			scaleToImageForLogo(choosenLogo, (int)resizedLogoDimension.getWidth(), (int)resizedLogoDimension.getHeight(), createPath,
-					calculatedPosition.get(0)-logoLabel.getBounds().x,calculatedPosition.get(1)); //C:/LogoApp/SmallLogos altýna ilgili logoyu sonunda -sm olacak þekilde ölçeklendirilmiþ halde kaydediyor
+			scaleToImage(choosenLogo, (int)resizedLogoDimension.getWidth(), (int)resizedLogoDimension.getHeight(), createPath); 
 			dressToImg(createPath, logoLabel); // Ekranda küçük logo önizlemesi için kullanýlýyor.
 
 		} catch (IOException e) {
@@ -505,40 +539,8 @@ public class AppWindow1 {
 		}
 	}
 	
-	// Logoyu ürünü içeren resim ile istenilen oranda küçültür
-	// Yalnýzca logo üzerinde iþlem yapmak yeterli olacaktýr
-	// Ekrana basýlan ölçeklenmiþ logolu ürünlerin buradan oluþturulacak logonun ürünün üzerine draw edilmiþ halinin ölçeklendirilmiþ hali olduðu bilinmelidir
-	// Ölceklenmis logo C:\LogoApp\ScaledLogos altýna sonunda -scaled.png/jpg olacak þekilde kaydedilecektir
-	// ScaleMeasure ile logonun boyutu belirlenebilir
-	private void scaleLogoForOriginalProduct(String productOriginalPath, String logoOriginalPath,String logoNameForPath,int scaleMeasure){ 
-		
-		BufferedImage productOriginal = null;
-		BufferedImage logoOriginal = null;
-		//düzenlenecek
-		try
-		{
-			productOriginal = ImageIO.read(new File(productOriginalPath));
-			logoOriginal = ImageIO.read(new File(logoOriginalPath));
-			int productOriginalWidth = productOriginal.getWidth();
-			int productOriginalHeight = productOriginal.getHeight();
-	//		int logoOriginalWidth = logoOriginal.getWidth();
-	//		int logoOriginalHeight = logoOriginal.getHeight();
-			
-			int createdLogoWidth = productOriginalWidth / scaleMeasure;
-			int createdLogoHeight = productOriginalHeight / scaleMeasure;
-			
-			BufferedImage resizedLogo = new BufferedImage(createdLogoWidth, createdLogoHeight, logoOriginal.getType());
-			Graphics2D graphic = resizedLogo.createGraphics();
-			graphic.drawImage(logoOriginal, 0, 0, createdLogoWidth, createdLogoHeight, null);
-			graphic.dispose();
-		
-		
-			ImageIO.write(resizedLogo, "png", new File(scaledLogoPath+"\\"+logoNameForPath+".png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	//
+	
+	
 	private List<Integer> scaleLogoForOriginalProductForTemplate(String productOriginalPath, String logoOriginalPath,String logoNameForPath,int selectedTemplate){ 
 		
 		BufferedImage productOriginal = null;
@@ -555,7 +557,6 @@ public class AppWindow1 {
 			String productName = paths[paths.length-1];
 			productName = productName.substring(0, productName.indexOf('.'));
 			
-			productOriginal = ImageIO.read(new File(productOriginalPath));
 			logoOriginal = ImageIO.read(new File(logoOriginalPath));		
 			
 			//productTemplateCoodinates Seçilen þablona göre ilgili ürünün o þablona ait koordinatlarýný dönecek
@@ -633,6 +634,8 @@ public class AppWindow1 {
 	    return new Dimension(new_width, new_height);
 	}
 	
+	
+	
 	private List<Integer> getProductTemplateCoordinates(int selectedTemplate,
 			List<Integer> productTemplateCoodinates, String modelName, String productName) {
 		
@@ -656,7 +659,7 @@ public class AppWindow1 {
 		JSONParser parser = new JSONParser();
 		
 		try {
-			Object obj = parser.parse(new FileReader(new File(getClass().getClassLoader().getResource("ProductInfo.json").getFile())));//getClass().getClassLoader().getResource("").getFile()));
+			Object obj = parser.parse(new FileReader(new File("res\\ProductInfo.json")));//getClass().getClassLoader().getResource("ProductInfo.json").getFile())));//getClass().getClassLoader().getResource("").getFile()));
 			
 			JSONObject job = (JSONObject) obj;
 			
@@ -700,17 +703,8 @@ public class AppWindow1 {
 		
 		return productTemplateCoodinates;
 	}
-
-	private boolean isGildan5000SameProductList(String productName) {	
-		
-		boolean returnVal=false;
-		
-		if(gildan5000SameProductList.contains(productName)){
-			return returnVal=true;
-		}
-		
-		return returnVal;		
-	}
+	
+	
 
 	public void drawww(String productPath,String logoPath,String createPath,int coordinatX,int coordinatY){
 		BufferedImage productBuff = null;
