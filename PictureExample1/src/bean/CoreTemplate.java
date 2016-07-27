@@ -24,7 +24,7 @@ public class CoreTemplate {
 		
 		// ExpandItem icerisinde hic bir urune logo uygulanmasýn butonu
 		this.isApplyAllOfThem = new Button(composite, SWT.NONE);
-		this.isApplyAllOfThem.setText("Bu Modele Uygulama");
+		this.isApplyAllOfThem.setText("Bu Modelin Bütününe Uygulama");
 		GridData gridData = new GridData();
 		gridData.horizontalSpan = 9;
 		this.isApplyAllOfThem.setLayoutData(gridData);
@@ -33,11 +33,19 @@ public class CoreTemplate {
 			public void widgetSelected(SelectionEvent e) {
 				List<ProductUI> productUIList = getProductUIList();
 				int size = productUIList.size();
+				boolean control = true;
+				if(isApplyAllOfThem.getText().equals("Bu Modelin Bütününe Uygulama")){
+					control = false;
+					isApplyAllOfThem.setText("Bu Modelin Bütününe Uygula");
+				}else{
+					isApplyAllOfThem.setText("Bu Modelin Bütününe Uygulama");
+				}
 				ProductUI productUI = null;
 				for (int i = 0; i < size; i++) {
 					productUI = productUIList.get(i);
-					productUI.getCheckIsApply().setSelection(false);
-					productUI.getRadioParent().setSelection(false);
+					productUI.getCheckIsApply().setSelection(control);
+					if(control == false)
+						productUI.getRadioParent().setSelection(control);
 				}
 			}
 		});
