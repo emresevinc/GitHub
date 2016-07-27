@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -513,7 +514,7 @@ public class AppWindow1 {
 								File source = new File(createPath+"\\"+txtLogoName.getText()+getFileName(productFullPath)+".png");
 								File dest =  new File(createPath+"\\Parents\\"+txtLogoName.getText()+getFileName(productFullPath)+".png");
 								try {
-									Files.copy(source.toPath(), dest.toPath());
+									Files.copy(source.toPath(), dest.toPath(),StandardCopyOption.REPLACE_EXISTING);
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
@@ -715,7 +716,7 @@ public class AppWindow1 {
 			graphicProduct.drawImage(logoBuff, coordinatX, coordinatY, null);
 			graphicProduct.dispose();
 			
-//			File modelDirectory = new File(createPath+"\\"+f.getParentFile().getName());
+//			File modelDirectory = new File(createPath+"\\"F+f.getParentFile().getName());
 //			if(!modelDirectory.exists())
 //				modelDirectory.mkdir();
 //			ImageIO.write(productBuff, "png", new File(createPath+"\\"+f.getParentFile().getName()+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
@@ -746,7 +747,7 @@ public class AppWindow1 {
 			    	
 			    	try {
 						originalImage = ImageIO.read(new File(parentPath+"\\"+txtLogoName.getText()+productNameStr));
-						tempProductUIList.get(x).getLblProductImg().setImage(scaleToImage(originalImage, 163, 195, scaledAndProgressedPath+"\\"+productNameStr));
+						tempProductUIList.get(x).getLblProductImg().setImage(scaleToImage(originalImage, 200, 200, scaledAndProgressedPath+"\\"+productNameStr));
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}

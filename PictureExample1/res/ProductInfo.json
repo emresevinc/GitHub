@@ -22,19 +22,19 @@
 		{
 			"Gildan_18500_Unisex_Hoodie":
 			[
-				{"ProductName":"18500xB00", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xDHG", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xHP0", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xIB0", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xIG0", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xMG0", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xNB0", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xOR0", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xR00", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xRB0", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xSG0", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xSP0", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"},
-				{"ProductName":"18500xW00", "Top_Left":"300,400", "Top_Right":"690,400", "Bottom_Left":"300,550", "Bottom_Right":"690,550"}
+				{"ProductName":"18500xB00", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xDHG", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xHP0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xIB0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xIG0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xMG0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xNB0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xOR0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xR00", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xRB0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xSG0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xSP0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,730", "Bottom_Right":"705,730"},
+				{"ProductName":"18500xW00", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"}
 			]
 		}
 	],
@@ -62,19 +62,19 @@
 		{
 			"Gildan_18500_Unisex_Hoodie":
 			[
-				{"ProductName":"18500xB00", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xDHG", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xHP0", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xIB0", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xIG0", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xMG0", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xNB0", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xOR0", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xR00", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xRB0", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xSG0", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xSP0", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"},
-				{"ProductName":"18500xW00", "Top_Left":"320,430", "Top_Right":"700,430", "Bottom_Left":"320,750", "Bottom_Right":"700,750"}
+				{"ProductName":"18500xB00", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xDHG", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xHP0", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xIB0", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xIG0", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xMG0", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xNB0", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xOR0", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xR00", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xRB0", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xSG0", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xSP0", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,730", "Bottom_Right":"705,730"},
+				{"ProductName":"18500xW00", "Top_Left":"300,380", "Top_Right":"705,380", "Bottom_Left":"300,750", "Bottom_Right":"705,750"}
 			]
 		}
 	],
@@ -101,19 +101,19 @@
 		{
 			"Gildan_18500_Unisex_Hoodie":
 			[
-				{"ProductName":"18500xB00", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xDHG", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xHP0", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xIB0", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xIG0", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xMG0", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xNB0", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xOR0", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xR00", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xRB0", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xSG0", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xSP0", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"},
-				{"ProductName":"18500xW00", "Top_Left":"320,540", "Top_Right":"650,540", "Bottom_Left":"320,740", "Bottom_Right":"650,740"}
+				{"ProductName":"18500xB00", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xDHG", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xHP0", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xIB0", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xIG0", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xMG0", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xNB0", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xOR0", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xR00", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xRB0", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xSG0", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xSP0", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,730", "Bottom_Right":"705,730"},
+				{"ProductName":"18500xW00", "Top_Left":"300,430", "Top_Right":"705,430", "Bottom_Left":"300,750", "Bottom_Right":"705,750"}
 			]
 		}
 	]
