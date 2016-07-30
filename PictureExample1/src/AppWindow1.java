@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -53,6 +55,7 @@ import bean.ProcessImage;
 import bean.ProcessImagePreview;
 import bean.Product;
 import bean.ProductUI;
+import org.eclipse.swt.widgets.Group;
 
 public class AppWindow1 {
 
@@ -241,85 +244,22 @@ public class AppWindow1 {
 		logoLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		
 		
-		logoLabel.setBounds(254, 33, 200, 200);
+		logoLabel.setBounds(254, 43, 200, 200);
 		
 		labelTemplate1 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate1.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template1.jpg"));
-		labelTemplate1.setBounds(477, 33, 200, 200);
+		labelTemplate1.setBounds(475, 43, 200, 200);
 		formToolkit.adapt(labelTemplate1, true, true);
 		
 		labelTemplate2 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate2.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template2.jpg"));
-		labelTemplate2.setBounds(696, 33, 200, 200);
+		labelTemplate2.setBounds(696, 43, 200, 200);
 		formToolkit.adapt(labelTemplate2, true, true);
 		
 		labelTemplate3 = new Label(shlLogoapp, SWT.NONE);
 		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.jpg"));
-		labelTemplate3.setBounds(914, 33, 200, 200);
+		labelTemplate3.setBounds(914, 43, 200, 200);
 		formToolkit.adapt(labelTemplate3, true, true);
-		
-		
-		
-		// radio button operations	
-		rdBtnSablon1 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon1.setSelection(true);
-		rdBtnSablon1.setBounds(495, 9, 111, 20);
-		rdBtnSablon1.setSelection(true);
-		formToolkit.adapt(rdBtnSablon1, true, true);
-		rdBtnSablon1.setText("Sablon 1");
-		
-		rdBtnSablon1.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				selectedTemplate = 1;
-				try {
-					try {
-						manageRadioButtons();
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (ExecutionException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}
-		});
-		
-		rdBtnSablon2 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon2.setBounds(715, 9, 111, 20);
-		formToolkit.adapt(rdBtnSablon2, true, true);
-		rdBtnSablon2.setText("Sablon 2");
-		
-		rdBtnSablon2.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				selectedTemplate = 2;
-				try {
-					try {
-						manageRadioButtons();
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (ExecutionException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		
-		rdBtnSablon3 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon3.setBounds(950, 9, 111, 20);
-		formToolkit.adapt(rdBtnSablon3, true, true);
-		rdBtnSablon3.setText("Sablon 3");
 		
 		
 		Button btnApplyLogo = new Button(shlLogoapp, SWT.NONE);
@@ -366,14 +306,41 @@ public class AppWindow1 {
 		formToolkit.adapt(btnTemizle, true, true);
 		btnTemizle.setText("Temizle");
 		
+		Group group = new Group(shlLogoapp, SWT.BORDER);
+		group.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW));
+		group.setBounds(475, 10, 639, 27);
+		formToolkit.adapt(group);
+		formToolkit.paintBordersFor(group);
+		
+		
+		
+		// radio button operations	
+		rdBtnSablon1 = new Button(group, SWT.RADIO);
+		rdBtnSablon1.setBounds(45, 6, 72, 20);
+		formToolkit.adapt(rdBtnSablon1, true, true);
+		rdBtnSablon1.setText("\u015Eablon 1");
+		
+		rdBtnSablon2 = new Button(group, SWT.RADIO);
+		rdBtnSablon2.setBounds(264, 6, 72, 20);
+		formToolkit.adapt(rdBtnSablon2, true, true);
+		rdBtnSablon2.setText("\u015Eablon 2");
+		
+		rdBtnSablon3 = new Button(group, SWT.RADIO);
+		rdBtnSablon3.setBounds(482, 6, 72, 20);
+		formToolkit.adapt(rdBtnSablon3, true, true);
+		rdBtnSablon3.setText("\u015Eablon 3");
+		
 		
 		rdBtnSablon3.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				boolean isSelected = ((Button)e.getSource()).getSelection();
+				
+				if(isSelected){
 				selectedTemplate = 3;
 				try {
 					try {
-						manageRadioButtons();
+						preview();
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -385,6 +352,61 @@ public class AppWindow1 {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+			}
+			}
+		});
+		
+		rdBtnSablon2.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+				boolean isSelected = ((Button)e.getSource()).getSelection();
+				
+				if(isSelected){
+				selectedTemplate = 2;
+				try {
+					try {
+						preview();
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ExecutionException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			}
+		});
+		
+		rdBtnSablon1.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+				boolean isSelected = ((Button)e.getSource()).getSelection();
+				
+				if(isSelected){
+					
+				selectedTemplate = 1;
+				try {
+					try {
+						preview();
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ExecutionException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
 			}
 		});
 		//radio button operations
@@ -543,6 +565,7 @@ public class AppWindow1 {
 		return fileName;
 	}
 	
+	// RadioButtonlar Group içerisine alýndý bu methoda gerek kalmadý.
 	private void manageRadioButtons() throws IOException, InterruptedException, ExecutionException {
 		switch (selectedTemplate) {
 		case 1:
@@ -685,6 +708,10 @@ public class AppWindow1 {
 			 messageBox.setText("HATA");
 			 messageBox.setMessage("Logo seçmelisiniz!");
 			 messageBox.open();
+			 rdBtnSablon1.setSelection(false);
+			 rdBtnSablon2.setSelection(false);
+			 rdBtnSablon3.setSelection(false);
+			 
 		}
 		
 		
@@ -754,7 +781,27 @@ public class AppWindow1 {
 	    int bound_height = boundary.height;
 	    int new_width = original_width;
 	    int new_height = original_height;
+	    float aspect =0;
+	    
+	    if(original_width>original_height)
+	       aspect = original_width /original_height;
+	    else
+	    	aspect = original_height/original_width;
+	    
+	    if( (original_width < bound_width) && (original_height<bound_height)){
 
+	    	new_width = bound_width;
+	    	
+	    	new_height = (int)(new_width  / aspect);
+	    	
+	    	if(new_height>bound_height){
+	    		aspect = new_width/new_height;
+	    		new_height = bound_height;
+	    		new_width = (int)(new_height *aspect);
+	    	}
+	    	
+	    }else{
+	    
 	    // first check if we need to scale width
 	    if (original_width > bound_width) {
 	        //scale width to fit
@@ -769,6 +816,8 @@ public class AppWindow1 {
 	        new_height = bound_height;
 	        //scale width to maintain aspect ratio
 	        new_width = (new_height * original_width) / original_height;
+	    }
+	    
 	    }
 
 	    return new Dimension(new_width, new_height);
