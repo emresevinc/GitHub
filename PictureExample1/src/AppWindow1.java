@@ -250,8 +250,8 @@ public class AppWindow1 {
 		
 		
 		// radio button operations	
-		rdBtnSablon1.setSelection(true);
 		rdBtnSablon1 = new Button(shlLogoapp, SWT.RADIO);
+		rdBtnSablon1.setSelection(true);
 		rdBtnSablon1.setBounds(495, 9, 111, 20);
 		rdBtnSablon1.setSelection(true);
 		formToolkit.adapt(rdBtnSablon1, true, true);
