@@ -6,12 +6,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
@@ -44,6 +50,7 @@ import org.json.simple.parser.ParseException;
 import bean.CoreTemplate;
 import bean.Model;
 import bean.ProcessImage;
+import bean.ProcessImagePreview;
 import bean.Product;
 import bean.ProductUI;
 
@@ -107,6 +114,10 @@ public class AppWindow1 {
 	BufferedImage logoOriginal = null;
 	BufferedImage resizedLogo = null;
 	BufferedImage logoOriginalForTemplate = null;
+	private static final String previewPath ="C:\\LogoApp\\Preview";
+//	Map previewBuffer = new HashMap();
+	private static HashMap<String, BufferedImage> previewBuffer;
+
 
 	/**
 	 * Create contents of the window.
@@ -261,7 +272,21 @@ public class AppWindow1 {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				selectedTemplate = 1;
-				manageRadioButtons();
+				try {
+					try {
+						manageRadioButtons();
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ExecutionException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		
@@ -274,7 +299,20 @@ public class AppWindow1 {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				selectedTemplate = 2;
-				manageRadioButtons();
+				try {
+					try {
+						manageRadioButtons();
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ExecutionException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		
@@ -333,7 +371,20 @@ public class AppWindow1 {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				selectedTemplate = 3;
-				manageRadioButtons();
+				try {
+					try {
+						manageRadioButtons();
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ExecutionException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		//radio button operations
@@ -492,22 +543,25 @@ public class AppWindow1 {
 		return fileName;
 	}
 	
-	private void manageRadioButtons() {
+	private void manageRadioButtons() throws IOException, InterruptedException, ExecutionException {
 		switch (selectedTemplate) {
 		case 1:
 			rdBtnSablon1.setSelection(true);
 			rdBtnSablon2.setSelection(false);
 			rdBtnSablon3.setSelection(false);
+			preview();
 			break;
 		case 2:
 			rdBtnSablon1.setSelection(false);
 			rdBtnSablon2.setSelection(true);
 			rdBtnSablon3.setSelection(false);
+			preview();
 			break;
 		case 3:
 			rdBtnSablon1.setSelection(false);
 			rdBtnSablon2.setSelection(false);
 			rdBtnSablon3.setSelection(true);
+			preview();
 			break;
 		default:
 			break;
@@ -565,7 +619,7 @@ public class AppWindow1 {
 					}
 					executor.shutdown();
 				}
-				showAllProducts(createPath);
+				//showAllProducts(createPath); preview'da kullanýlacak.
 			}
 		}else{
 			 MessageBox messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
@@ -575,6 +629,66 @@ public class AppWindow1 {
 		}
 	}
 	
+	private void preview() throws IOException, InterruptedException, ExecutionException{
+		
+		List<Integer> calculatedPosition = new ArrayList();
+		if(!logoPath.equals("")){
+			
+			logoOriginal = ImageIO.read(new File(logoPath)); 
+		
+			Model tempModel = null;
+			List<Product> productList = null;
+			CoreTemplate coreTemplate = null;
+			List<ProductUI> productUIList = null;
+			int coreTemplateSize = coreTemplateList.size();
+			previewBuffer = new HashMap<String, BufferedImage>();
+			for (int i = 0; i < coreTemplateSize; i++) {
+				coreTemplate = coreTemplateList.get(i);
+				tempModel = coreTemplate.getModel();
+				productList = tempModel.getProductList();
+				productUIList = coreTemplate.getProductUIList();
+				ProductUI tempProductUI = null;
+				int productUIListSize = productUIList.size();
+
+				ExecutorService call = Executors.newFixedThreadPool(productUIListSize);
+				Set<Future<HashMap<String, BufferedImage>>> set = new HashSet<Future<HashMap<String, BufferedImage>>>();
+				
+				for(int j = 0; j < productUIListSize;j++){
+					tempProductUI = productUIList.get(j);
+					if(tempProductUI.getCheckIsApply().getSelection()){
+						String productFullPath = logoAppModelsPath +"\\"+tempProductUI.getModelName()+"\\"+tempProductUI.getProductName();
+						calculatedPosition = scaleLogoForOriginalProductForTemplate(productFullPath, getFileName(logoPath), selectedTemplate);  
+						
+						Callable<HashMap<String, BufferedImage>> callable = new ProcessImagePreview(productFullPath, scaledLogoPath+"\\"+getFileName(logoPath)+".png", previewPath+"\\"+tempProductUI.getModelName(),
+								calculatedPosition.get(0), calculatedPosition.get(1),txtLogoName.getText(),getFileName(productFullPath),resizedLogo,tempProductUI.getRadioParent().getSelection());
+						
+						Future<HashMap<String, BufferedImage>> future = call.submit(callable);
+					      set.add(future);
+					}
+
+				}
+				call.shutdown();
+				try {
+					call.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+				} catch (InterruptedException e) {
+					
+				}
+				for (Future<HashMap<String, BufferedImage>> future : set) {
+					//if(future.get()!=null)
+						previewBuffer.putAll(future.get());
+				    }
+				
+			}
+			showAllProducts(previewPath,previewBuffer);
+		}else{
+			MessageBox messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
+			 messageBox.setText("HATA");
+			 messageBox.setMessage("Logo seçmelisiniz!");
+			 messageBox.open();
+		}
+		
+		
+	}
 	
 	
 	private List<Integer> scaleLogoForOriginalProductForTemplate(String productOriginalPath, String logoNameForPath,int selectedTemplate){ 
@@ -766,7 +880,7 @@ public class AppWindow1 {
 		
 	}
 	
-	private void showAllProducts(String parentPath){
+	private void showAllProducts(String parentPath, HashMap<String, BufferedImage> previewBuffer){
 		BufferedImage originalImage = null;
 		Model model = null;
 		CoreTemplate coreTemplate = null;
@@ -784,12 +898,8 @@ public class AppWindow1 {
 					String productName = productUI.getProductName();
 			    	String productNameStr = productName.substring(0, productName.length()-4)+".png";
 			    	
-			    	try {
-						originalImage = ImageIO.read(new File(parentPath+"\\"+txtLogoName.getText()+productNameStr));
-						tempProductUIList.get(x).getLblProductImg().setImage(scaleToImage(originalImage, 200, 200, scaledAndProgressedPath+"\\"+productNameStr));
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+			    	//originalImage = ImageIO.read(new File(parentPath+"\\"+model.getModelName()+"\\"+productNameStr));
+					tempProductUIList.get(x).getLblProductImg().setImage(scaleToImage(previewBuffer.get(productName.substring(0, productName.indexOf("."))), 200, 200, scaledAndProgressedPath+"\\"+productNameStr));
 		    	}
 		    }
 		}
