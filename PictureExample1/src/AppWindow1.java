@@ -1,6 +1,10 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -426,7 +430,7 @@ public class AppWindow1 {
 		}
         //Image imgx = SWTResourceManager.getImage(outPath).getImageData();
         //Image imgx = new Image(display, SWTResourceManager.getImage(outPath).getImageData());
-        Image imgx = new Image(display, outPath);
+        Image imgx = new Image(display, outPath);        
         return imgx;
 	}
 	
@@ -652,6 +656,26 @@ public class AppWindow1 {
 		}
 	}
 	
+	public static BufferedImage rotate(BufferedImage image, double angle) {
+	    double sin = Math.abs(Math.sin(angle)), cos = Math.abs(Math.cos(angle));
+	    int w = image.getWidth(), h = image.getHeight();
+	    int neww = (int)Math.floor(w*cos+h*sin), newh = (int) Math.floor(h * cos + w * sin);
+	    GraphicsConfiguration gc = getDefaultConfiguration();
+	    BufferedImage result = gc.createCompatibleImage(neww, newh, Transparency.TRANSLUCENT);
+	    Graphics2D g = result.createGraphics();
+	    g.translate((neww - w) / 2, (newh - h) / 2);
+	    g.rotate(angle, w / 2, h / 2);
+	    g.drawRenderedImage(image, null);
+	    g.dispose();
+	    return result;
+	}
+
+	private static GraphicsConfiguration getDefaultConfiguration() {
+	    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	    GraphicsDevice gd = ge.getDefaultScreenDevice();
+	    return gd.getDefaultConfiguration();
+	}
+	
 	private void preview() throws IOException, InterruptedException, ExecutionException{
 		
 		List<Integer> calculatedPosition = new ArrayList();
@@ -746,10 +770,42 @@ public class AppWindow1 {
 		calculatedPosition = calculateLogoStartingPosition(calculatedPosition,resizedLogoDimension,productTemplateCoodinates.get(5),productTemplateCoodinates.get(4),productTemplateCoodinates.get(6)); // Logo her zaman þablonun üst sýnýrýna dayalý olacak (Özcan Bey Öyle olmasýný istiyor.) 
 		
 		resizedLogo = new BufferedImage(resizedLogoDimension.width, resizedLogoDimension.height, logoOriginal.getType());
-		Graphics2D graphic = resizedLogo.createGraphics();
-		graphic.drawImage(logoOriginal, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
-		graphic.dispose();
+		
+		if(!productTemplateCoodinates.get(5).equals(productTemplateCoodinates.get(7))){
+			BufferedImage tempLogoOriginal = null ;
+			tempLogoOriginal = logoOriginal;
+			double angle = 0 ;
+//			double angle = getAngle(new Point(productTemplateCoodinates.get(4),productTemplateCoodinates.get(5)),
+//					new Point(productTemplateCoodinates.get(6),productTemplateCoodinates.get(7)));
+			
+			if(productTemplateCoodinates.get(7)>productTemplateCoodinates.get(5)){
+				angle = getAngle(new Point(productTemplateCoodinates.get(0),productTemplateCoodinates.get(1)),
+						new Point(productTemplateCoodinates.get(6),productTemplateCoodinates.get(7)));				
+			}else{
+				angle = getAngle(new Point(productTemplateCoodinates.get(4),productTemplateCoodinates.get(5)),
+						new Point(productTemplateCoodinates.get(2),productTemplateCoodinates.get(3)));			
+			}
+				
+			tempLogoOriginal = rotate(tempLogoOriginal,angle);
+			
+			Graphics2D graphic = resizedLogo.createGraphics();
+			graphic.drawImage(tempLogoOriginal, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
+			graphic.dispose();
+			
+		}else{
+			
+			Graphics2D graphic = resizedLogo.createGraphics();
+			graphic.drawImage(logoOriginal, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
+			graphic.dispose();
+		}
+		
 		return calculatedPosition;
+	}
+	
+	public double getAngle(Point p1,Point p2) {
+		double xDiff = p2.x - p1.x;
+        double yDiff = p2.y - p1.y;
+        return Math.toDegrees(Math.atan2(yDiff, xDiff));
 	}
 	
 	private List<Integer> calculateLogoStartingPosition(List<Integer> calculatedPosition,
