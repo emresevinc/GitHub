@@ -59,6 +59,8 @@ import bean.ProcessImage;
 import bean.ProcessImagePreview;
 import bean.Product;
 import bean.ProductUI;
+import bean.WriteImagePreview;
+
 import org.eclipse.swt.widgets.Group;
 
 public class AppWindow1 {
@@ -122,8 +124,8 @@ public class AppWindow1 {
 	BufferedImage resizedLogo = null;
 	BufferedImage logoOriginalForTemplate = null;
 	private static final String previewPath ="C:\\LogoApp\\Preview";
-//	Map previewBuffer = new HashMap();
 	private static HashMap<String, BufferedImage> previewBuffer;
+	private static HashMap<String, Image> labelImage;
 
 
 	/**
@@ -775,17 +777,10 @@ public class AppWindow1 {
 			BufferedImage tempLogoOriginal = null ;
 			tempLogoOriginal = logoOriginal;
 			double angle = 0 ;
-//			double angle = getAngle(new Point(productTemplateCoodinates.get(4),productTemplateCoodinates.get(5)),
-//					new Point(productTemplateCoodinates.get(6),productTemplateCoodinates.get(7)));
 			
-			if(productTemplateCoodinates.get(7)>productTemplateCoodinates.get(5)){
 				angle = getAngle(new Point(productTemplateCoodinates.get(4),productTemplateCoodinates.get(5)),
 						new Point(productTemplateCoodinates.get(6),productTemplateCoodinates.get(7)));				
-			}else{
-				angle = getAngle(new Point(productTemplateCoodinates.get(4),productTemplateCoodinates.get(5)),
-						new Point(productTemplateCoodinates.get(6),productTemplateCoodinates.get(7)));			
-			}
-//			angle = angle +180;
+
 			tempLogoOriginal = rotate(tempLogoOriginal,angle);
 			
 			Graphics2D graphic = resizedLogo.createGraphics();
@@ -985,31 +980,74 @@ public class AppWindow1 {
 		
 	}
 	
-	private void showAllProducts(String parentPath, HashMap<String, BufferedImage> previewBuffer){
-		BufferedImage originalImage = null;
+	private void showAllProducts(String parentPath, HashMap<String, BufferedImage> previewBuffer) throws InterruptedException, ExecutionException{
 		Model model = null;
 		CoreTemplate coreTemplate = null;
 		List<ProductUI> tempProductUIList = null;
 		int coreTemplateSize = coreTemplateList.size();
+		labelImage = new HashMap<String, Image>();
 		for(int i = 0; i<coreTemplateSize; i++){
 			model = coreTemplateList.get(i).getModel();
 			coreTemplate = coreTemplateList.get(i);
 			tempProductUIList = coreTemplate.getProductUIList();
 			int productSize = tempProductUIList.size();
 			ProductUI productUI = null;
+			
+			ExecutorService call = Executors.newFixedThreadPool(productSize);
+			Set<Future<HashMap<String, Image>>> imageSet = new HashSet<Future<HashMap<String, Image>>>();
+			
 			for(int x = 0; x < productSize; x++){
 		    	productUI = tempProductUIList.get(x);
 		    	if(productUI.getCheckIsApply().getSelection()){
 					String productName = productUI.getProductName();
 			    	String productNameStr = productName.substring(0, productName.length()-4)+".png";
-			    	
-			    	//originalImage = ImageIO.read(new File(parentPath+"\\"+model.getModelName()+"\\"+productNameStr));
-					tempProductUIList.get(x).getLblProductImg().setImage(scaleToImage(previewBuffer.get(productName.substring(0, productName.indexOf("."))), 200, 200, scaledAndProgressedPath+"\\"+productNameStr));
+			    
+			    	Callable<HashMap<String, Image>> callable = new WriteImagePreview(previewBuffer.get(productName.substring(0, productName.indexOf("."))), 200, 200, scaledAndProgressedPath+"\\"+productNameStr,productName.substring(0, productName.indexOf(".")),display);					
+					Future<HashMap<String, Image>> future = call.submit(callable);
+					imageSet.add(future);
+		    	
 		    	}
 		    }
+			call.shutdown();
+			try {
+				call.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+			} catch (InterruptedException e) {
+				
+			}
+			for (Future<HashMap<String, Image>> future : imageSet) {
+					labelImage.putAll(future.get());
+			    }
 		}
+		
+		setImagesToLabel();
 	}
 	
+	private void setImagesToLabel() {
+		
+		Model model = null;
+		CoreTemplate coreTemplate = null;
+		List<ProductUI> tempProductUIList = null;
+		int coreTemplateSize = coreTemplateList.size();
+
+		for(int i = 0; i<coreTemplateSize; i++){
+			model = coreTemplateList.get(i).getModel();
+			coreTemplate = coreTemplateList.get(i);
+			tempProductUIList = coreTemplate.getProductUIList();
+			int productSize = tempProductUIList.size();
+			ProductUI productUI = null;
+
+			for(int x = 0; x < productSize; x++){
+		    	productUI = tempProductUIList.get(x);
+		    	if(productUI.getCheckIsApply().getSelection()){
+					String productName = productUI.getProductName();
+			    	
+					tempProductUIList.get(x).getLblProductImg().setImage(labelImage.get(productName.substring(0, productName.indexOf("."))));	    	
+		    	}
+			}
+		}
+		
+	}
+
 	private void showProducts(CoreTemplate coreTemplate){ 
 		BufferedImage originalImg = null;
 		Model model = coreTemplate.getModel();
