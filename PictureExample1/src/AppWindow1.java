@@ -779,13 +779,13 @@ public class AppWindow1 {
 //					new Point(productTemplateCoodinates.get(6),productTemplateCoodinates.get(7)));
 			
 			if(productTemplateCoodinates.get(7)>productTemplateCoodinates.get(5)){
-				angle = getAngle(new Point(productTemplateCoodinates.get(0),productTemplateCoodinates.get(1)),
+				angle = getAngle(new Point(productTemplateCoodinates.get(4),productTemplateCoodinates.get(5)),
 						new Point(productTemplateCoodinates.get(6),productTemplateCoodinates.get(7)));				
 			}else{
 				angle = getAngle(new Point(productTemplateCoodinates.get(4),productTemplateCoodinates.get(5)),
-						new Point(productTemplateCoodinates.get(2),productTemplateCoodinates.get(3)));			
+						new Point(productTemplateCoodinates.get(6),productTemplateCoodinates.get(7)));			
 			}
-				
+//			angle = angle +180;
 			tempLogoOriginal = rotate(tempLogoOriginal,angle);
 			
 			Graphics2D graphic = resizedLogo.createGraphics();
