@@ -22,8 +22,8 @@
 		{
 			"Gildan_18500_Unisex_Hoodie":
 			[
-				{"ProductName":"18500xB00", "Top_Left":"300,330", "Top_Right":"705,350", "Bottom_Left":"300,750", "Bottom_Right":"705,730"},
-				{"ProductName":"18500xDHG", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
+				{"ProductName":"18500xB00", "Top_Left":"300,330", "Top_Right":"705,340", "Bottom_Left":"300,750", "Bottom_Right":"705,740"},
+				{"ProductName":"18500xDHG", "Top_Left":"300,340", "Top_Right":"705,330", "Bottom_Left":"300,740", "Bottom_Right":"705,750"},
 				{"ProductName":"18500xHP0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
 				{"ProductName":"18500xIB0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
 				{"ProductName":"18500xIG0", "Top_Left":"300,330", "Top_Right":"705,330", "Bottom_Left":"300,750", "Bottom_Right":"705,750"},
