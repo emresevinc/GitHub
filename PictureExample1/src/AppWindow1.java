@@ -335,7 +335,7 @@ public class AppWindow1 {
 		btnTemizle.setText("Temizle");
 		
 		Group group = new Group(shlLogoapp, SWT.BORDER);
-		group.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
+		group.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		group.setBounds(610, 10, 639, 27);
 		formToolkit.adapt(group);
 		formToolkit.paintBordersFor(group);
@@ -503,6 +503,9 @@ public class AppWindow1 {
         }
        
         if(!logoPath.equals("")){
+        	rdBtnSablon1.setSelection(false);
+			rdBtnSablon2.setSelection(false);
+			rdBtnSablon3.setSelection(false);
         	txtLogo.setText(logoPath);
             LogoName = logoPath.split("\\\\");
             LogoNameStr = LogoName[LogoName.length-1];
