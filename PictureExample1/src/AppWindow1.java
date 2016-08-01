@@ -100,7 +100,7 @@ public class AppWindow1 {
 	
 	Label label = null;
 	private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
-	private Text text;
+	private Text txtLogo;
 	private static String logoPath = "";
 	Label logoLabel = null;
 	private static int selectedTemplate = 1;
@@ -126,6 +126,7 @@ public class AppWindow1 {
 	private static final String previewPath ="C:\\LogoApp\\Preview";
 	private static HashMap<String, BufferedImage> previewBuffer;
 	private static HashMap<String, Image> labelImage;
+	private Text txtSaveDirectory;
 
 
 	/**
@@ -241,30 +242,31 @@ public class AppWindow1 {
 		btnBirLogoSeiniz.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\fileChooser.png"));
 		btnBirLogoSeiniz.setBounds(10, 33, 155, 35);
 		
-		text = formToolkit.createText(shlLogoapp, "New Text", SWT.BORDER | SWT.WRAP | SWT.MULTI);
-		text.setText("");
-		text.setBounds(90, 91, 145, 55);
+		txtLogo = formToolkit.createText(shlLogoapp, "New Text", SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		txtLogo.setText("");
+		txtLogo.setBounds(90, 91, 145, 55);
+		txtLogo.setVisible(false);
 		
 		logoLabel = formToolkit.createLabel(shlLogoapp, "", SWT.NONE);
 		logoLabel.setAlignment(SWT.CENTER);
 		logoLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		
 		
-		logoLabel.setBounds(254, 43, 200, 200);
+		logoLabel.setBounds(389, 43, 200, 200);
 		
-		labelTemplate1 = new Label(shlLogoapp, SWT.NONE);
+		labelTemplate1 = new Label(shlLogoapp, SWT.BORDER);
 		labelTemplate1.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template1.jpg"));
-		labelTemplate1.setBounds(475, 43, 200, 200);
+		labelTemplate1.setBounds(610, 43, 200, 200);
 		formToolkit.adapt(labelTemplate1, true, true);
 		
-		labelTemplate2 = new Label(shlLogoapp, SWT.NONE);
+		labelTemplate2 = new Label(shlLogoapp, SWT.BORDER);
 		labelTemplate2.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template2.jpg"));
-		labelTemplate2.setBounds(696, 43, 200, 200);
+		labelTemplate2.setBounds(831, 43, 200, 200);
 		formToolkit.adapt(labelTemplate2, true, true);
 		
-		labelTemplate3 = new Label(shlLogoapp, SWT.NONE);
+		labelTemplate3 = new Label(shlLogoapp, SWT.BORDER);
 		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.jpg"));
-		labelTemplate3.setBounds(914, 43, 200, 200);
+		labelTemplate3.setBounds(1049, 43, 200, 200);
 		formToolkit.adapt(labelTemplate3, true, true);
 		
 		
@@ -274,8 +276,7 @@ public class AppWindow1 {
 			public void widgetSelected(SelectionEvent e) {
 				try {
 					applyToLogo();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 			}
@@ -285,16 +286,17 @@ public class AppWindow1 {
 		btnApplyLogo.setText("Logoyu Uygula");
 		
 		txtLogoName = new Text(shlLogoapp, SWT.BORDER | SWT.WRAP | SWT.MULTI);
-		txtLogoName.setBounds(90, 162, 145, 55);
+		txtLogoName.setBounds(90, 91, 145, 55);
 		formToolkit.adapt(txtLogoName, true, true);
 		
 		Label lblLogoDizini = new Label(shlLogoapp, SWT.NONE);
 		lblLogoDizini.setBounds(10, 91, 75, 20);
 		formToolkit.adapt(lblLogoDizini, true, true);
 		lblLogoDizini.setText("Logo Dizini:");
+		lblLogoDizini.setVisible(false);
 		
 		Label lblLogoAd = new Label(shlLogoapp, SWT.NONE);
-		lblLogoAd.setBounds(10, 165, 75, 20);
+		lblLogoAd.setBounds(10, 94, 75, 20);
 		formToolkit.adapt(lblLogoAd, true, true);
 		lblLogoAd.setText("Logo Ad\u0131:");
 		
@@ -313,8 +315,8 @@ public class AppWindow1 {
 		btnTemizle.setText("Temizle");
 		
 		Group group = new Group(shlLogoapp, SWT.BORDER);
-		group.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW));
-		group.setBounds(475, 10, 639, 27);
+		group.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
+		group.setBounds(610, 10, 639, 27);
 		formToolkit.adapt(group);
 		formToolkit.paintBordersFor(group);
 		
@@ -322,19 +324,42 @@ public class AppWindow1 {
 		
 		// radio button operations	
 		rdBtnSablon1 = new Button(group, SWT.RADIO);
-		rdBtnSablon1.setBounds(45, 6, 72, 20);
+		rdBtnSablon1.setBounds(38, 6, 106, 20);
 		formToolkit.adapt(rdBtnSablon1, true, true);
 		rdBtnSablon1.setText("\u015Eablon 1");
 		
 		rdBtnSablon2 = new Button(group, SWT.RADIO);
-		rdBtnSablon2.setBounds(264, 6, 72, 20);
+		rdBtnSablon2.setBounds(254, 6, 90, 20);
 		formToolkit.adapt(rdBtnSablon2, true, true);
 		rdBtnSablon2.setText("\u015Eablon 2");
 		
 		rdBtnSablon3 = new Button(group, SWT.RADIO);
-		rdBtnSablon3.setBounds(482, 6, 72, 20);
+		rdBtnSablon3.setBounds(462, 6, 82, 20);
 		formToolkit.adapt(rdBtnSablon3, true, true);
 		rdBtnSablon3.setText("\u015Eablon 3");
+		
+		txtSaveDirectory = new Text(shlLogoapp, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		txtSaveDirectory.setEditable(false);
+		txtSaveDirectory.setBounds(141, 174, 200, 55);
+		formToolkit.adapt(txtSaveDirectory, true, true);
+		
+		Button btnKaydedilecekYer = new Button(shlLogoapp, SWT.NONE);
+		btnKaydedilecekYer.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				DirectoryDialog dlg = new DirectoryDialog(shlLogoapp);
+				dlg.setFilterPath("C:/");
+				dlg.setText("SWT's DirectoryDialog");
+				dlg.setMessage("Select a directory");
+				String tmpCreate = dlg.open();
+				if(tmpCreate != null){
+					txtSaveDirectory.setText(tmpCreate);
+				}
+			}
+		});
+		btnKaydedilecekYer.setBounds(10, 174, 125, 55);
+		formToolkit.adapt(btnKaydedilecekYer, true, true);
+		btnKaydedilecekYer.setText("Kaydedilecek Yer");
 		
 		
 		rdBtnSablon3.addSelectionListener(new SelectionAdapter() {
@@ -458,7 +483,7 @@ public class AppWindow1 {
         }
        
         if(!logoPath.equals("")){
-            text.setText(logoPath);
+        	txtLogo.setText(logoPath);
             LogoName = logoPath.split("\\\\");
             LogoNameStr = LogoName[LogoName.length-1];
             LogoNameStr = LogoNameStr.substring(0, LogoNameStr.indexOf('.'));
@@ -597,17 +622,20 @@ public class AppWindow1 {
 		}
 	}
 	
-	private void applyToLogo() throws IOException{
-		if(!logoPath.equals("")){
+	private void applyToLogo() throws Exception{
+		MessageBox messageBox = null;
+		if(!logoPath.equals("") && !(rdBtnSablon1.getSelection() == false && rdBtnSablon2.getSelection() == false && rdBtnSablon3.getSelection() == false)){
 			List<Integer> calculatedPosition = new ArrayList();
-			DirectoryDialog dlg = new DirectoryDialog(shlLogoapp);
-			dlg.setFilterPath("C:/");
-			dlg.setText("SWT's DirectoryDialog");
-			dlg.setMessage("Select a directory");
-			String tmpCreate = dlg.open();
+			String tmpCreate = txtSaveDirectory.getText();
 			String createPath = "";
-			if(tmpCreate != null){
+			if(tmpCreate != null && !tmpCreate.equals("")){
 				createPath = tmpCreate;
+			}else{
+			    messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
+				messageBox.setText("HATA");
+				messageBox.setMessage("Kaydedilecek dizini belirlemelisiniz!");
+				messageBox.open();
+				throw new Exception("Kaydedilecek yer secilirken hata!!!");
 			}
 			
 			// her ürün için ayný logoyu tekrar tekrar okumamak için for un dýþýna alýndý.
@@ -648,12 +676,16 @@ public class AppWindow1 {
 					}
 					executor.shutdown();
 				}
+				messageBox = new MessageBox(shlLogoapp, SWT.ICON_WORKING);
+				messageBox.setText("BASARILI ISLEM");
+				messageBox.setMessage("ISLEM BASARILI, DIZINI KONTROL EDINIZ!");
+				messageBox.open();
 				//showAllProducts(createPath); preview'da kullanýlacak.
 			}
 		}else{
-			 MessageBox messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
+			 messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
 			 messageBox.setText("HATA");
-			 messageBox.setMessage("Logo seçmelisiniz!");
+			 messageBox.setMessage("Logo seçmelisiniz ve bir sablon belirlemelisiniz!");
 			 messageBox.open();
 		}
 	}
