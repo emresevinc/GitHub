@@ -11,12 +11,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -27,6 +26,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.io.Charsets;
+import org.apache.commons.io.IOUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -41,6 +42,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.ExpandBar;
 import org.eclipse.swt.widgets.ExpandItem;
 import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Monitor;
@@ -60,8 +62,6 @@ import bean.ProcessImagePreview;
 import bean.Product;
 import bean.ProductUI;
 import bean.WriteImagePreview;
-
-import org.eclipse.swt.widgets.Group;
 
 public class AppWindow1 {
 
@@ -134,7 +134,11 @@ public class AppWindow1 {
 	{
 	JSONParser parser = new JSONParser();
 		try {
-			jsonMainobj = parser.parse(new FileReader(new File("res\\ProductInfo.json")));
+			InputStream is = AppWindow1.class.getClassLoader().getResourceAsStream("ProductInfo.json");
+			String json = null;
+			if(is != null)
+				json = IOUtils.toString(is);
+			jsonMainobj = parser.parse(json);//new FileReader(new File("res\\ProductInfo.json")));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
