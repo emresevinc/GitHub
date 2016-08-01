@@ -8,10 +8,8 @@ import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -26,7 +24,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.Charsets;
 import org.apache.commons.io.IOUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -506,6 +503,7 @@ public class AppWindow1 {
         	rdBtnSablon1.setSelection(false);
 			rdBtnSablon2.setSelection(false);
 			rdBtnSablon3.setSelection(false);
+			clearAllTemplates();
         	txtLogo.setText(logoPath);
             LogoName = logoPath.split("\\\\");
             LogoNameStr = LogoName[LogoName.length-1];
@@ -759,7 +757,7 @@ public class AppWindow1 {
 				
 				for(int j = 0; j < productUIListSize;j++){
 					tempProductUI = productUIList.get(j);
-					if(tempProductUI.getCheckIsApply().getSelection()){
+					//if(tempProductUI.getCheckIsApply().getSelection()){
 						String productFullPath = logoAppModelsPath +"\\"+tempProductUI.getModelName()+"\\"+tempProductUI.getProductName();
 						calculatedPosition = scaleLogoForOriginalProductForTemplate(productFullPath, getFileName(logoPath), selectedTemplate);  
 						
@@ -768,7 +766,7 @@ public class AppWindow1 {
 						
 						Future<HashMap<String, BufferedImage>> future = call.submit(callable);
 					      set.add(future);
-					}
+					//}
 
 				}
 				call.shutdown();
@@ -1041,7 +1039,7 @@ public class AppWindow1 {
 			
 			for(int x = 0; x < productSize; x++){
 		    	productUI = tempProductUIList.get(x);
-		    	if(productUI.getCheckIsApply().getSelection()){
+		    	//if(productUI.getCheckIsApply().getSelection()){
 					String productName = productUI.getProductName();
 			    	String productNameStr = productName.substring(0, productName.length()-4)+".png";
 			    
@@ -1049,7 +1047,7 @@ public class AppWindow1 {
 					Future<HashMap<String, Image>> future = call.submit(callable);
 					imageSet.add(future);
 		    	
-		    	}
+		    	//}
 		    }
 			call.shutdown();
 			try {
@@ -1081,11 +1079,11 @@ public class AppWindow1 {
 
 			for(int x = 0; x < productSize; x++){
 		    	productUI = tempProductUIList.get(x);
-		    	if(productUI.getCheckIsApply().getSelection()){
+		    	//if(productUI.getCheckIsApply().getSelection()){
 					String productName = productUI.getProductName();
 			    	
 					tempProductUIList.get(x).getLblProductImg().setImage(labelImage.get(productName.substring(0, productName.indexOf("."))));	    	
-		    	}
+		    	//}
 			}
 		}
 		
@@ -1122,4 +1120,29 @@ public class AppWindow1 {
 		}
 		
 	}
+	
+	
+	private void clearAllTemplates(){
+		
+		Model model = null;
+		CoreTemplate coreTemplate = null;
+		List<ProductUI> tempProductUIList = null;
+		int coreTemplateSize = coreTemplateList.size();
+
+		for(int i = 0; i<coreTemplateSize; i++){
+			model = coreTemplateList.get(i).getModel();
+			coreTemplate = coreTemplateList.get(i);
+			tempProductUIList = coreTemplate.getProductUIList();
+			int productSize = tempProductUIList.size();
+			ProductUI productUI = null;
+
+			for(int x = 0; x < productSize; x++){
+		    	productUI = tempProductUIList.get(x);
+				productUI.getCheckIsApply().setSelection(true);
+				productUI.getRadioParent().setSelection(false);
+			}
+		}
+		
+	}
+	
 }
