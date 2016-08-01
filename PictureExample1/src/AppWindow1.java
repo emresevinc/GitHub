@@ -127,6 +127,22 @@ public class AppWindow1 {
 	private static HashMap<String, BufferedImage> previewBuffer;
 	private static HashMap<String, Image> labelImage;
 	private Text txtSaveDirectory;
+	
+	//Program ilk çalistiginda bu static blok ilk json dosyasý sadece bir kereye mahsus read edilir
+	static Object jsonMainobj = null;
+	static
+	{
+	JSONParser parser = new JSONParser();
+		try {
+			jsonMainobj = parser.parse(new FileReader(new File("res\\ProductInfo.json")));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
 
 
 	/**
@@ -907,7 +923,6 @@ public class AppWindow1 {
 	}
 	
 	
-	
 	private List<Integer> getProductTemplateCoordinates(int selectedTemplate,
 			List<Integer> productTemplateCoodinates, String modelName, String productName) {
 		
@@ -928,49 +943,38 @@ public class AppWindow1 {
 			break;
 		}
 		
-		JSONParser parser = new JSONParser();
 		
-		try {
-			Object obj = parser.parse(new FileReader(new File("res\\ProductInfo.json")));//getClass().getClassLoader().getResource("ProductInfo.json").getFile())));//getClass().getClassLoader().getResource("").getFile()));
 			
-			JSONObject job = (JSONObject) obj;
-			
-			JSONArray jar = (JSONArray)job.get(selectedTemplateStr);
-			int size = jar.size();
-			JSONObject jobj = null;
-			for (int i = 0; i < size; i++) {
-				jobj = (JSONObject)jar.get(i);
-				JSONArray jsonArr = (JSONArray) jobj.get(modelName);
-				if(jsonArr != null){
-					int size2 = jsonArr.size();
-					for (int j = 0; j < size2; j++) {
-						JSONObject jobjk = (JSONObject) jsonArr.get(j);
-						if (jobjk.get("ProductName").equals(productName)) {
-							String[] coordinatesTopLeft = jobjk.get("Top_Left").toString().split(",");
-							String[] coordinatesBottomLeft = jobjk.get("Bottom_Left").toString().split(",");
-							String[] coordinatesTopRight = jobjk.get("Top_Right").toString().split(",");
-							String[] coordinatesBottomRight = jobjk.get("Bottom_Right").toString().split(",");
-							
-							productTemplateCoodinates.add(Integer.parseInt(coordinatesBottomLeft[0]));
-							productTemplateCoodinates.add(Integer.parseInt(coordinatesBottomLeft[1]));
-							productTemplateCoodinates.add(Integer.parseInt(coordinatesBottomRight[0]));
-							productTemplateCoodinates.add(Integer.parseInt(coordinatesBottomRight[1]));
-							productTemplateCoodinates.add(Integer.parseInt(coordinatesTopLeft[0]));
-							productTemplateCoodinates.add(Integer.parseInt(coordinatesTopLeft[1]));
-							productTemplateCoodinates.add(Integer.parseInt(coordinatesTopRight[0]));
-							productTemplateCoodinates.add(Integer.parseInt(coordinatesTopRight[1]));
-							break;
-						}
+		JSONObject job = (JSONObject) jsonMainobj;
+		
+		JSONArray jar = (JSONArray)job.get(selectedTemplateStr);
+		int size = jar.size();
+		JSONObject jobj = null;
+		for (int i = 0; i < size; i++) {
+			jobj = (JSONObject)jar.get(i);
+			JSONArray jsonArr = (JSONArray) jobj.get(modelName);
+			if(jsonArr != null){
+				int size2 = jsonArr.size();
+				for (int j = 0; j < size2; j++) {
+					JSONObject jobjk = (JSONObject) jsonArr.get(j);
+					if (jobjk.get("ProductName").equals(productName)) {
+						String[] coordinatesTopLeft = jobjk.get("Top_Left").toString().split(",");
+						String[] coordinatesBottomLeft = jobjk.get("Bottom_Left").toString().split(",");
+						String[] coordinatesTopRight = jobjk.get("Top_Right").toString().split(",");
+						String[] coordinatesBottomRight = jobjk.get("Bottom_Right").toString().split(",");
+						
+						productTemplateCoodinates.add(Integer.parseInt(coordinatesBottomLeft[0]));
+						productTemplateCoodinates.add(Integer.parseInt(coordinatesBottomLeft[1]));
+						productTemplateCoodinates.add(Integer.parseInt(coordinatesBottomRight[0]));
+						productTemplateCoodinates.add(Integer.parseInt(coordinatesBottomRight[1]));
+						productTemplateCoodinates.add(Integer.parseInt(coordinatesTopLeft[0]));
+						productTemplateCoodinates.add(Integer.parseInt(coordinatesTopLeft[1]));
+						productTemplateCoodinates.add(Integer.parseInt(coordinatesTopRight[0]));
+						productTemplateCoodinates.add(Integer.parseInt(coordinatesTopRight[1]));
+						break;
 					}
 				}
 			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
 		}
 		
 		return productTemplateCoodinates;

@@ -6,7 +6,6 @@ import java.util.List;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -22,7 +21,7 @@ public class CoreTemplate {
 		this.productUIList = new ArrayList<ProductUI>();
 		this.model = model;
 		
-		// ExpandItem icerisinde hic bir urune logo uygulanmasýn butonu
+		// ExpandItem icerisinde hic bir urune logo uygulansýn-masýn butonu
 		this.isApplyAllOfThem = new Button(composite, SWT.NONE);
 		this.isApplyAllOfThem.setText("Bu Modele Uygulama");
 		GridData gridData = new GridData();
@@ -34,11 +33,20 @@ public class CoreTemplate {
 				List<ProductUI> productUIList = getProductUIList();
 				int size = productUIList.size();
 				ProductUI productUI = null;
+				String nowStatu = isApplyAllOfThem.getText();
 				for (int i = 0; i < size; i++) {
 					productUI = productUIList.get(i);
-					productUI.getCheckIsApply().setSelection(false);
-					productUI.getRadioParent().setSelection(false);
+					if(nowStatu.equals("Bu Modele Uygulama")){
+						productUI.getCheckIsApply().setSelection(false);
+						productUI.getRadioParent().setSelection(false);
+					}else{
+						productUI.getCheckIsApply().setSelection(true);
+					}
 				}
+				if(nowStatu.equals("Bu Modele Uygulama"))
+					isApplyAllOfThem.setText("Bu Modele Uygula");
+				else
+					isApplyAllOfThem.setText("Bu Modele Uygulama");
 			}
 		});
 		
