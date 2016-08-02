@@ -36,11 +36,13 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.ExpandBar;
 import org.eclipse.swt.widgets.ExpandItem;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
@@ -59,6 +61,8 @@ import bean.ProcessImagePreview;
 import bean.Product;
 import bean.ProductUI;
 import bean.WriteImagePreview;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableItem;
 
 public class AppWindow1 {
 
@@ -124,9 +128,12 @@ public class AppWindow1 {
 	private static HashMap<String, BufferedImage> previewBuffer;
 	private static HashMap<String, Image> labelImage;
 	private Text txtSaveDirectory;
+	private HashMap<TableItem, CoreTemplate> mapControlModel = null;
 	
 	//Program ilk çalistiginda bu static blok ilk json dosyasý sadece bir kereye mahsus read edilir
 	static Object jsonMainobj = null;
+	private Table tblModels = null;
+	
 	static
 	{
 	JSONParser parser = new JSONParser();
@@ -193,10 +200,18 @@ public class AppWindow1 {
 	    	}
 	    }
 	    ////////////////////////////////////////////
+	    
+	    tblModels = new Table(shlLogoapp, SWT.BORDER | SWT.CHECK);
+	    tblModels.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		tblModels.setBounds(10, 249, 252, 357);
+		formToolkit.adapt(tblModels);
+		formToolkit.paintBordersFor(tblModels);
+		tblModels.setHeaderVisible(false);
+		mapControlModel = new HashMap<TableItem,CoreTemplate>();
 		
 	 // Expandbar ve ExpandItem oluþturan kod bloðu
 	 	ExpandBar expandBar = new ExpandBar(shlLogoapp, SWT.V_SCROLL);
-	 	expandBar.setBounds(10, 249, 980, 357);		
+	 	expandBar.setBounds(269, 249, 980, 357);		
 
 	 	//ExpandItem oluþturma iþlemi
 	    Composite composite = null;
@@ -204,6 +219,7 @@ public class AppWindow1 {
 		CoreTemplate coreTemplate = null;
 		ExpandItem xpndtmNewExpanditem = null; 
 		Model currentModel = null;
+		TableItem tableItem = null;
 		for (int i = 0; i < modelList.size(); i++) {
 			currentModel = modelList.get(i);
 			
@@ -212,6 +228,9 @@ public class AppWindow1 {
 			gridLayout.horizontalSpacing = 20;
 			composite.setLayout(gridLayout);
 			
+			tableItem = new TableItem(tblModels, SWT.NONE);
+			tableItem.setText(currentModel.getModelName());
+			tableItem.setChecked(true);
 			
 			
 			xpndtmNewExpanditem = new ExpandItem(expandBar, SWT.NONE,i);
@@ -220,6 +239,8 @@ public class AppWindow1 {
 			
 			
 			coreTemplate = new CoreTemplate(composite,currentModel); // label'larý gride teker teker uygun sýrada dolduracaktýr
+			
+			mapControlModel.put(tableItem, coreTemplate);
 			
 			compositeList.add(composite);
 			coreTemplateList.add(coreTemplate);
@@ -240,7 +261,34 @@ public class AppWindow1 {
 	    // C:/LogoApp/ScaledImages altýna direk küçük hale scale edilmis halini koymak is yukunu hafifletir.
 	    
 
-	    
+	    tblModels.addListener(SWT.Selection, new Listener(){
+	    	public void handleEvent(Event event){
+		    	boolean control = false;
+		    	TableItem tableItem = (TableItem) event.item;
+		    	
+		    	//if(event.detail == SWT.CHECK)
+		    	if(tableItem.getChecked())	
+		    		control = true;
+		    	
+		    	
+		    	CoreTemplate currentCoreTemplate = mapControlModel.get(event.item);
+		    	int checkSize = currentCoreTemplate.getProductUIList().size();
+		    	ProductUI tempProductUI = null;
+		    	if(control){
+		    		for (int i = 0; i < checkSize; i++) {
+		    			tempProductUI = currentCoreTemplate.getProductUIList().get(i);
+		    			tempProductUI.getCheckIsApply().setSelection(true);
+		    			tempProductUI.getCheckIsApply().setEnabled(true);
+		    		}
+		    	}else{
+		    		for (int i = 0; i < checkSize; i++) {
+		    			tempProductUI = currentCoreTemplate.getProductUIList().get(i);
+		    			tempProductUI.getCheckIsApply().setSelection(false);
+		    			tempProductUI.getCheckIsApply().setEnabled(false);
+		    		}
+		    	}
+	    	}
+	    });
 
 		
 		
@@ -298,7 +346,7 @@ public class AppWindow1 {
 				}
 			}
 		});
-		btnApplyLogo.setBounds(875, 629, 115, 39);
+		btnApplyLogo.setBounds(1134, 629, 115, 39);
 		formToolkit.adapt(btnApplyLogo, true, true);
 		btnApplyLogo.setText("Logoyu Uygula");
 		
@@ -327,7 +375,7 @@ public class AppWindow1 {
 				shlLogoapp.dispose();
 			}
 		});
-		btnTemizle.setBounds(728, 629, 111, 39);
+		btnTemizle.setBounds(978, 629, 111, 39);
 		formToolkit.adapt(btnTemizle, true, true);
 		btnTemizle.setText("Temizle");
 		
@@ -1144,5 +1192,4 @@ public class AppWindow1 {
 		}
 		
 	}
-	
 }
