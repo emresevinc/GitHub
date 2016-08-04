@@ -108,6 +108,7 @@ public class AppWindow1 {
 	Button rdBtnSablon1 = null;
 	Button rdBtnSablon2 = null;
 	Button rdBtnSablon3 = null;
+	Button rdBtnSablon4 = null;
 	private static final String logoAppModelsPath = "C:\\LogoApp\\Models";
 	private static final String scaledLogoPath = "C:\\LogoApp\\ScaledLogos";
 	private static final String scaledAndProgressedPath = "C:\\LogoApp\\ScaledAndProgressed"; // Bu path iþlenmiþ ürünleri scale edilmiþ hallerinin bulunduðu path'tir. Ürünler iþlendikten sonra ekranda scale halini buradan alýyoruz
@@ -121,6 +122,7 @@ public class AppWindow1 {
 	Label labelTemplate1 = null;
 	Label labelTemplate2 = null;
 	Label labelTemplate3 = null;
+	Label labelTemplate4 = null;
 	BufferedImage logoOriginal = null;
 	BufferedImage resizedLogo = null;
 	BufferedImage logoOriginalForTemplate = null;
@@ -203,7 +205,7 @@ public class AppWindow1 {
 	    
 	    tblModels = new Table(shlLogoapp, SWT.BORDER | SWT.CHECK);
 	    tblModels.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		tblModels.setBounds(10, 249, 252, 357);
+		tblModels.setBounds(10, 280, 252, 357);
 		formToolkit.adapt(tblModels);
 		formToolkit.paintBordersFor(tblModels);
 		tblModels.setHeaderVisible(false);
@@ -211,7 +213,8 @@ public class AppWindow1 {
 		
 	 // Expandbar ve ExpandItem oluþturan kod bloðu
 	 	ExpandBar expandBar = new ExpandBar(shlLogoapp, SWT.V_SCROLL);
-	 	expandBar.setBounds(269, 249, 980, 357);		
+	 	expandBar.setSpacing(6);
+	 	expandBar.setBounds(269, 280, 1036, 357);		
 
 	 	//ExpandItem oluþturma iþlemi
 	    Composite composite = null;
@@ -228,16 +231,17 @@ public class AppWindow1 {
 			gridLayout.horizontalSpacing = 20;
 			composite.setLayout(gridLayout);
 			
+			//model bazlý logo isleme checkbox kontrolu icin duzenleme
 			tableItem = new TableItem(tblModels, SWT.NONE);
 			tableItem.setText(currentModel.getModelName());
 			tableItem.setChecked(true);
 			
-			
+			//ExpandBar'a ExpandItem eklenmesi
 			xpndtmNewExpanditem = new ExpandItem(expandBar, SWT.NONE,i);
 			xpndtmNewExpanditem.setExpanded(false);
 			xpndtmNewExpanditem.setText(modelList.get(i).getModelName());
 			
-			
+			//ExpandItem icin componentleri iceren CoreTemplate nesnesinin olusturulmasi
 			coreTemplate = new CoreTemplate(composite,currentModel); // label'larý gride teker teker uygun sýrada dolduracaktýr
 			
 			mapControlModel.put(tableItem, coreTemplate);
@@ -305,11 +309,11 @@ public class AppWindow1 {
 			}
 		});
 		btnBirLogoSeiniz.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\fileChooser.png"));
-		btnBirLogoSeiniz.setBounds(10, 33, 155, 35);
+		btnBirLogoSeiniz.setBounds(10, 36, 155, 35);
 		
 		txtLogo = formToolkit.createText(shlLogoapp, "New Text", SWT.BORDER | SWT.WRAP | SWT.MULTI);
 		txtLogo.setText("");
-		txtLogo.setBounds(90, 91, 145, 55);
+		txtLogo.setBounds(211, 28, 145, 55);
 		txtLogo.setVisible(false);
 		
 		logoLabel = formToolkit.createLabel(shlLogoapp, "", SWT.NONE);
@@ -317,22 +321,27 @@ public class AppWindow1 {
 		logoLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 		
 		
-		logoLabel.setBounds(389, 43, 200, 200);
+		logoLabel.setBounds(269, 43, 200, 200);
 		
 		labelTemplate1 = new Label(shlLogoapp, SWT.BORDER);
-		labelTemplate1.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template1.jpg"));
-		labelTemplate1.setBounds(610, 43, 200, 200);
+		labelTemplate1.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template1.png"));
+		labelTemplate1.setBounds(487, 43, 200, 200);
 		formToolkit.adapt(labelTemplate1, true, true);
 		
 		labelTemplate2 = new Label(shlLogoapp, SWT.BORDER);
-		labelTemplate2.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template2.jpg"));
-		labelTemplate2.setBounds(831, 43, 200, 200);
+		labelTemplate2.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template2.png"));
+		labelTemplate2.setBounds(693, 43, 200, 200);
 		formToolkit.adapt(labelTemplate2, true, true);
 		
 		labelTemplate3 = new Label(shlLogoapp, SWT.BORDER);
-		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.jpg"));
-		labelTemplate3.setBounds(1049, 43, 200, 200);
+		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.png"));
+		labelTemplate3.setBounds(899, 43, 200, 200);
 		formToolkit.adapt(labelTemplate3, true, true);
+		
+		labelTemplate4 = new Label(shlLogoapp, SWT.BORDER);
+		labelTemplate4.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template4.png"));
+		labelTemplate4.setBounds(1105, 43, 200, 200);
+		formToolkit.adapt(labelTemplate4, true, true);
 		
 		
 		Button btnApplyLogo = new Button(shlLogoapp, SWT.NONE);
@@ -346,22 +355,22 @@ public class AppWindow1 {
 				}
 			}
 		});
-		btnApplyLogo.setBounds(1134, 629, 115, 39);
+		btnApplyLogo.setBounds(1190, 664, 115, 39);
 		formToolkit.adapt(btnApplyLogo, true, true);
 		btnApplyLogo.setText("Logoyu Uygula");
 		
 		txtLogoName = new Text(shlLogoapp, SWT.BORDER | SWT.WRAP | SWT.MULTI);
-		txtLogoName.setBounds(90, 91, 145, 55);
+		txtLogoName.setBounds(10, 122, 200, 27);
 		formToolkit.adapt(txtLogoName, true, true);
 		
 		Label lblLogoDizini = new Label(shlLogoapp, SWT.NONE);
-		lblLogoDizini.setBounds(10, 91, 75, 20);
+		lblLogoDizini.setBounds(9, 129, 75, 20);
 		formToolkit.adapt(lblLogoDizini, true, true);
 		lblLogoDizini.setText("Logo Dizini:");
 		lblLogoDizini.setVisible(false);
 		
 		Label lblLogoAd = new Label(shlLogoapp, SWT.NONE);
-		lblLogoAd.setBounds(10, 94, 75, 20);
+		lblLogoAd.setBounds(10, 96, 75, 20);
 		formToolkit.adapt(lblLogoAd, true, true);
 		lblLogoAd.setText("Logo Ad\u0131:");
 		
@@ -375,13 +384,13 @@ public class AppWindow1 {
 				shlLogoapp.dispose();
 			}
 		});
-		btnTemizle.setBounds(978, 629, 111, 39);
+		btnTemizle.setBounds(1046, 664, 111, 39);
 		formToolkit.adapt(btnTemizle, true, true);
 		btnTemizle.setText("Temizle");
 		
 		Group group = new Group(shlLogoapp, SWT.BORDER);
 		group.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		group.setBounds(610, 10, 639, 27);
+		group.setBounds(487, 10, 818, 27);
 		formToolkit.adapt(group);
 		formToolkit.paintBordersFor(group);
 		
@@ -403,9 +412,14 @@ public class AppWindow1 {
 		formToolkit.adapt(rdBtnSablon3, true, true);
 		rdBtnSablon3.setText("\u015Eablon 3");
 		
+		rdBtnSablon4 = new Button(group, SWT.RADIO);
+		rdBtnSablon4.setBounds(710, 6, 82, 20);
+		formToolkit.adapt(rdBtnSablon4, true, true);
+		rdBtnSablon4.setText("\u015Eablon 4");
+		
 		txtSaveDirectory = new Text(shlLogoapp, SWT.BORDER | SWT.WRAP | SWT.MULTI);
 		txtSaveDirectory.setEditable(false);
-		txtSaveDirectory.setBounds(141, 174, 200, 55);
+		txtSaveDirectory.setBounds(10, 216, 200, 27);
 		formToolkit.adapt(txtSaveDirectory, true, true);
 		
 		Button btnKaydedilecekYer = new Button(shlLogoapp, SWT.NONE);
@@ -422,10 +436,35 @@ public class AppWindow1 {
 				}
 			}
 		});
-		btnKaydedilecekYer.setBounds(10, 174, 125, 55);
+		btnKaydedilecekYer.setBounds(10, 175, 125, 35);
 		formToolkit.adapt(btnKaydedilecekYer, true, true);
 		btnKaydedilecekYer.setText("Kaydedilecek Yer");
 		
+		
+		rdBtnSablon4.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				boolean isSelected = ((Button)e.getSource()).getSelection();
+				
+				if(isSelected){
+				selectedTemplate = 4;
+				try {
+					try {
+						preview();
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ExecutionException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			}
+		});
 		
 		rdBtnSablon3.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -551,6 +590,7 @@ public class AppWindow1 {
         	rdBtnSablon1.setSelection(false);
 			rdBtnSablon2.setSelection(false);
 			rdBtnSablon3.setSelection(false);
+			rdBtnSablon4.setSelection(false);
 			clearAllTemplates();
         	txtLogo.setText(logoPath);
             LogoName = logoPath.split("\\\\");
@@ -563,18 +603,18 @@ public class AppWindow1 {
 	}
 	
 	private void processTemplates() throws IOException {// Ek gelistirme ile istedikleri urunun sablon olmasý istenirse bu metoda 'modelName' ve 'productName' parametre olarak gelmesi yeterli olur
-		String modelName = "Gildan 5000 Mens Tee"; //"Gildan 18500 Unisex Hoodie";
+		String modelName = "BaseTemplate"; //"Gildan 18500 Unisex Hoodie";
 		String modelNameStr = modelName.replace(" ", "_");
-		String productName = "5000xC000"; //"18500xB00";
+		String productName = "BaseTemplate"; //"18500xB00";
 		List<Integer> templateCoordinates = null;
 		List<Integer> calculatedPosition = new ArrayList<Integer>();
 
-		String productPath = logoAppModelsPath+"\\"+modelName+"\\"+productName+".jpg";
+		String productPath = "C:\\LogoApp\\Templates\\SizeChart.png";// logoAppModelsPath+"\\"+modelName+"\\"+productName+".jpg";
 		File f = null;
 		BufferedImage productBuffer = ImageIO.read(f = new File(productPath));
 		try{
 
-			for(int i = 1; i < 4; i++){
+			for(int i = 1; i < 5; i++){
 				calculatedPosition.clear();
 
 				BufferedImage originalProductBuffer = copyImage(productBuffer);
@@ -604,6 +644,9 @@ public class AppWindow1 {
 				}else if(i == 3){
 					//tempBufferedImage = ImageIO.read(new File(changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
 					labelTemplate3.setImage(scaleToImage(productWithTemplate, 200, 200, changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+"__"+i+".png"));
+				}else if(i == 4){
+					//tempBufferedImage = ImageIO.read(new File(changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
+					labelTemplate4.setImage(scaleToImage(productWithTemplate, 200, 200, changedTemplatesPath+"\\Template"+i+"\\"+txtLogoName.getText()+getFileName(productPath)+"__"+i+".png"));
 				}
 			}
 				
@@ -619,21 +662,6 @@ public class AppWindow1 {
 	    g.drawImage(source, 0, 0, null);
 	    g.dispose();
 	    return b;
-	}
-
-	private Label getTemplateLabel(int i) {
-		
-		switch (i) {
-		case 1:
-			return labelTemplate1;
-		case 2:	
-			return labelTemplate2;
-		case 3:
-			return labelTemplate3;
-		default:
-			break;
-		}
-		return labelTemplate1;
 	}
 
 	public void processLogo(){
@@ -672,18 +700,28 @@ public class AppWindow1 {
 			rdBtnSablon1.setSelection(true);
 			rdBtnSablon2.setSelection(false);
 			rdBtnSablon3.setSelection(false);
+			rdBtnSablon4.setSelection(false);
 			preview();
 			break;
 		case 2:
 			rdBtnSablon1.setSelection(false);
 			rdBtnSablon2.setSelection(true);
 			rdBtnSablon3.setSelection(false);
+			rdBtnSablon4.setSelection(false);
 			preview();
 			break;
 		case 3:
 			rdBtnSablon1.setSelection(false);
 			rdBtnSablon2.setSelection(false);
 			rdBtnSablon3.setSelection(true);
+			rdBtnSablon4.setSelection(false);
+			preview();
+			break;
+		case 4:
+			rdBtnSablon1.setSelection(false);
+			rdBtnSablon2.setSelection(false);
+			rdBtnSablon3.setSelection(false);
+			rdBtnSablon4.setSelection(true);
 			preview();
 			break;
 		default:
@@ -693,7 +731,7 @@ public class AppWindow1 {
 	
 	private void applyToLogo() throws Exception{
 		MessageBox messageBox = null;
-		if(!logoPath.equals("") && !(rdBtnSablon1.getSelection() == false && rdBtnSablon2.getSelection() == false && rdBtnSablon3.getSelection() == false)){
+		if(!logoPath.equals("") && !(rdBtnSablon1.getSelection() == false && rdBtnSablon2.getSelection() == false && rdBtnSablon3.getSelection() == false && rdBtnSablon4.getSelection() == false)){
 			List<Integer> calculatedPosition = new ArrayList();
 			String tmpCreate = txtSaveDirectory.getText();
 			String createPath = "";
@@ -991,6 +1029,9 @@ public class AppWindow1 {
 			break;
 		case 3:
 			selectedTemplateStr = "Template3";
+			break;
+		case 4:
+			selectedTemplateStr = "Template4";
 			break;
 		default:
 			break;

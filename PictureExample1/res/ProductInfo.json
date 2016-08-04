@@ -2,6 +2,12 @@
 	"Template1" :
 	[
 		{
+			"BaseTemplate":
+			[
+				{"ProductName":"BaseTemplate", "Top_Left":"111,75", "Top_Right":"291,75", "Bottom_Left":"111,269", "Bottom_Right":"288,269"}
+			]
+		},
+		{
 			"Gildan_5000_Mens_Tee":
 			[
 				{"ProductName":"5000xB000", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},				
@@ -60,6 +66,12 @@
 	"Template2" :
 	[
 		{
+			"BaseTemplate":
+			[
+				{"ProductName":"BaseTemplate", "Top_Left":"111,95", "Top_Right":"291,95", "Bottom_Left":"111,245", "Bottom_Right":"291,245"}
+			]
+		},
+		{
 			"Gildan_5000_Mens_Tee":
 			[
 				{"ProductName":"5000xB000", "Top_Left":"550,487", "Top_Right":"1128,487", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},				
@@ -117,6 +129,13 @@
 	"Template3" :
 	[
 		{
+			"BaseTemplate":
+			[
+				{"ProductName":"BaseTemplate", "Top_Left":"111,117", "Top_Right":"291,117", "Bottom_Left":"111,221", "Bottom_Right":"291,221"}
+			]
+		},
+		{
+			"Gildan_5000_Mens_Tee":
 			[
 				{"ProductName":"5000xB000", "Top_Left":"550,554", "Top_Right":"1128,554", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},				
 				{"ProductName":"5000xOR00", "Top_Left":"614,405", "Top_Right":"1022,405", "Bottom_Left":"614,770", "Bottom_Right":"1022,770"},
@@ -172,6 +191,12 @@
 	],
 	"Template4" :
 	[
+		{
+			"BaseTemplate":
+			[
+				{"ProductName":"BaseTemplate", "Top_Left":"126,105", "Top_Right":"276,105", "Bottom_Left":"126,257", "Bottom_Right":"276,257"}
+			]
+		},
 		{
 			"Gildan_5000_Mens_Tee":
 			[
