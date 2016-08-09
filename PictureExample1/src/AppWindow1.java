@@ -204,7 +204,7 @@ public class AppWindow1 {
 	    
 	    tblModels = new Table(shlLogoapp, SWT.BORDER | SWT.CHECK);
 	    tblModels.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		tblModels.setBounds(10, 280, 252, 544);
+		tblModels.setBounds(10, 280, 252, 312);
 		formToolkit.adapt(tblModels);
 		formToolkit.paintBordersFor(tblModels);
 		tblModels.setHeaderVisible(false);
@@ -213,7 +213,7 @@ public class AppWindow1 {
 	 // Expandbar ve ExpandItem oluþturan kod bloðu
 	 	ExpandBar expandBar = new ExpandBar(shlLogoapp, SWT.V_SCROLL);
 	 	expandBar.setSpacing(6);
-	 	expandBar.setBounds(269, 280, 1036, 544);		
+	 	expandBar.setBounds(269, 280, 1036, 312);		
 
 	 	//ExpandItem oluþturma iþlemi
 	    Composite composite = null;
@@ -352,7 +352,7 @@ public class AppWindow1 {
 				}
 			}
 		});
-		btnApplyLogo.setBounds(1190, 850, 115, 39);
+		btnApplyLogo.setBounds(1190, 650, 115, 39);
 		formToolkit.adapt(btnApplyLogo, true, true);
 		btnApplyLogo.setText("Logoyu Uygula");
 		

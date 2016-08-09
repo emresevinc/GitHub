@@ -4,7 +4,7 @@
 		{
 			"BaseTemplate":
 			[
-				{"ProductName":"BaseTemplate", "Top_Left":"111,75", "Top_Right":"291,75", "Bottom_Left":"111,269", "Bottom_Right":"288,269"}
+				{"ProductName":"BaseTemplate", "Top_Left":"114,69", "Top_Right":"287,69", "Bottom_Left":"114,293", "Bottom_Right":"287,293"}
 			]
 		},
 		{
@@ -22,7 +22,9 @@
 				{"ProductName":"5000xMG00", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
 				{"ProductName":"5000xNB00", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
 				{"ProductName":"5000xR000", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
-				{"ProductName":"5000xW000", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"}
+				{"ProductName":"5000xW000", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xGLD0", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xMAR0", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"}
 			]
 		},
 		{
@@ -68,7 +70,7 @@
 		{
 			"BaseTemplate":
 			[
-				{"ProductName":"BaseTemplate", "Top_Left":"111,95", "Top_Right":"291,95", "Bottom_Left":"111,245", "Bottom_Right":"291,245"}
+				{"ProductName":"BaseTemplate", "Top_Left":"114,91", "Top_Right":"287,91", "Bottom_Left":"114,293", "Bottom_Right":"287,293"}
 			]
 		},
 		{
@@ -86,7 +88,9 @@
 				{"ProductName":"5000xMG00", "Top_Left":"550,487", "Top_Right":"1128,487", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
 				{"ProductName":"5000xNB00", "Top_Left":"550,487", "Top_Right":"1128,487", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
 				{"ProductName":"5000xR000", "Top_Left":"550,487", "Top_Right":"1128,487", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
-				{"ProductName":"5000xW000", "Top_Left":"550,487", "Top_Right":"1128,487", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"}
+				{"ProductName":"5000xW000", "Top_Left":"550,487", "Top_Right":"1128,487", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xGLD0", "Top_Left":"550,487", "Top_Right":"1128,487", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xMAR0", "Top_Left":"550,487", "Top_Right":"1128,487", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"}
 			]
 		},
 		{
@@ -131,7 +135,7 @@
 		{
 			"BaseTemplate":
 			[
-				{"ProductName":"BaseTemplate", "Top_Left":"111,117", "Top_Right":"291,117", "Bottom_Left":"111,221", "Bottom_Right":"291,221"}
+				{"ProductName":"BaseTemplate", "Top_Left":"114,115", "Top_Right":"287,115", "Bottom_Left":"114,293", "Bottom_Right":"287,293"}
 			]
 		},
 		{
@@ -149,7 +153,9 @@
 				{"ProductName":"5000xMG00", "Top_Left":"550,554", "Top_Right":"1128,554", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
 				{"ProductName":"5000xNB00", "Top_Left":"550,554", "Top_Right":"1128,554", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
 				{"ProductName":"5000xR000", "Top_Left":"550,554", "Top_Right":"1128,554", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
-				{"ProductName":"5000xW000", "Top_Left":"550,554", "Top_Right":"1128,554", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"}
+				{"ProductName":"5000xW000", "Top_Left":"550,554", "Top_Right":"1128,554", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xGLD0", "Top_Left":"550,554", "Top_Right":"1128,554", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xMAR0", "Top_Left":"550,554", "Top_Right":"1128,554", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"}
 			]
 		},
 		{
@@ -194,7 +200,7 @@
 		{
 			"BaseTemplate":
 			[
-				{"ProductName":"BaseTemplate", "Top_Left":"126,105", "Top_Right":"276,105", "Bottom_Left":"126,257", "Bottom_Right":"276,257"}
+				{"ProductName":"BaseTemplate", "Top_Left":"125,103", "Top_Right":"273,103", "Bottom_Left":"125,277", "Bottom_Right":"273,277"}
 			]
 		},
 		{
@@ -212,7 +218,9 @@
 				{"ProductName":"5000xMG00", "Top_Left":"585,517", "Top_Right":"1074,517", "Bottom_Left":"585,1024", "Bottom_Right":"1074,1024"},
 				{"ProductName":"5000xNB00", "Top_Left":"585,517", "Top_Right":"1074,517", "Bottom_Left":"585,1024", "Bottom_Right":"1074,1024"},
 				{"ProductName":"5000xR000", "Top_Left":"585,517", "Top_Right":"1074,517", "Bottom_Left":"585,1024", "Bottom_Right":"1074,1024"},
-				{"ProductName":"5000xW000", "Top_Left":"585,517", "Top_Right":"1074,517", "Bottom_Left":"585,1024", "Bottom_Right":"1074,1024"}
+				{"ProductName":"5000xW000", "Top_Left":"585,517", "Top_Right":"1074,517", "Bottom_Left":"585,1024", "Bottom_Right":"1074,1024"},
+				{"ProductName":"5000xGLD0", "Top_Left":"585,517", "Top_Right":"1074,517", "Bottom_Left":"585,1024", "Bottom_Right":"1074,1024"},
+				{"ProductName":"5000xMAR0", "Top_Left":"585,517", "Top_Right":"1074,517", "Bottom_Left":"585,1024", "Bottom_Right":"1074,1024"}
 			]
 		},
 		{
