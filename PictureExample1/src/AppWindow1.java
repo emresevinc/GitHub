@@ -381,7 +381,7 @@ public class AppWindow1 {
 				shlLogoapp.dispose();
 			}
 		});
-		btnTemizle.setBounds(1046, 850, 111, 39);
+		btnTemizle.setBounds(1045, 650, 111, 39);
 		formToolkit.adapt(btnTemizle, true, true);
 		btnTemizle.setText("Temizle");
 		
