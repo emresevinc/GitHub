@@ -967,23 +967,16 @@ public class AppWindow1 {
 	    int bound_height = boundary.height;
 	    int new_width = original_width;
 	    int new_height = original_height;
-	    float aspect =0;
-	    
-	    if(original_width>original_height)
-	       aspect = original_width /original_height;
-	    else
-	    	aspect = original_height/original_width;
 	    
 	    if( (original_width < bound_width) && (original_height<bound_height)){
 
 	    	new_width = bound_width;
 	    	
-	    	new_height = (int)(new_width  / aspect);
+	    	new_height = (new_width * original_height) / original_width;
 	    	
 	    	if(new_height>bound_height){
-	    		aspect = new_width/new_height;
 	    		new_height = bound_height;
-	    		new_width = (int)(new_height *aspect);
+	    		new_width = (new_height * original_width) / original_height;
 	    	}
 	    	
 	    }else{
