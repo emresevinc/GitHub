@@ -10,21 +10,21 @@
 		{
 			"Gildan_5000_Mens_Tee":
 			[
-				{"ProductName":"5000xB000", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"},				
-				{"ProductName":"5000xOR00", "Top_Left":"639,379", "Top_Right":"997,379", "Bottom_Left":"639,741", "Bottom_Right":"997,741"},
-				{"ProductName":"5000xRB00", "Top_Left":"639,379", "Top_Right":"997,379", "Bottom_Left":"639,741", "Bottom_Right":"997,741"},				
-				{"ProductName":"5000xSG00", "Top_Left":"574,522", "Top_Right":"1078,522", "Bottom_Left":"574,1027", "Bottom_Right":"1078,1027"},				
-				{"ProductName":"5000xC000", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"},
-				{"ProductName":"5000xHP00", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"},
-				{"ProductName":"5000xIB00", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"},
-				{"ProductName":"5000xLG00", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"},
-				{"ProductName":"5000xLP00", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"},
-				{"ProductName":"5000xMG00", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"},
-				{"ProductName":"5000xNB00", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"},
-				{"ProductName":"5000xR000", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"},
-				{"ProductName":"5000xW000", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"},
-				{"ProductName":"5000xGLD0", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"},
-				{"ProductName":"5000xMAR0", "Top_Left":"585,517", "Top_Right":"1093,517", "Bottom_Left":"585,1024", "Bottom_Right":"1093,1024"}
+				{"ProductName":"5000xB000", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},				
+				{"ProductName":"5000xOR00", "Top_Left":"614,315", "Top_Right":"1022,315", "Bottom_Left":"614,770", "Bottom_Right":"1022,770"},
+				{"ProductName":"5000xRB00", "Top_Left":"614,315", "Top_Right":"1022,315", "Bottom_Left":"614,770", "Bottom_Right":"1022,770"},
+				{"ProductName":"5000xSG00", "Top_Left":"539,432", "Top_Right":"1113,432", "Bottom_Left":"539,1069", "Bottom_Right":"1113,1069"},				
+				{"ProductName":"5000xC000", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xHP00", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xIB00", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xLG00", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xLP00", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xMG00", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xNB00", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xR000", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xW000", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xGLD0", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"},
+				{"ProductName":"5000xMAR0", "Top_Left":"550,425", "Top_Right":"1128,425", "Bottom_Left":"550,1065", "Bottom_Right":"1128,1065"}
 			]
 		},
 		{

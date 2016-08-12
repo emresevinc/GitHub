@@ -415,7 +415,6 @@ public class AppWindow1 {
 		rdBtnSablon4.setText("\u015Eablon 4");
 		
 		txtSaveDirectory = new Text(shlLogoapp, SWT.BORDER);
-		txtSaveDirectory.setEditable(false);
 		txtSaveDirectory.setBounds(10, 216, 200, 27);
 		formToolkit.adapt(txtSaveDirectory, true, true);
 		
