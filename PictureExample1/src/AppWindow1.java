@@ -880,9 +880,10 @@ public class AppWindow1 {
 	
 	private List<Integer> scaleLogoForOriginalProductForTemplate(String productOriginalPath, String logoNameForPath,int selectedTemplate){ 
 		
+		List<Integer> calculatedPosition = new ArrayList();
+		try {			
 		BufferedImage productOriginal = null;		
 		List<Integer> productTemplateCoodinates = new ArrayList(); 
-		List<Integer> calculatedPosition = new ArrayList();
 		//productOriginalPath: C:\LogoApp\Models\Gildan 18500 Unisex Hoodie\18500xB00.jpg
 		//String replacedProductPath = productOriginalPath.replace('\\', "\\");
 		String[] paths = productOriginalPath.split("\\\\");
@@ -894,6 +895,7 @@ public class AppWindow1 {
 		
 		//productTemplateCoodinates Seçilen þablona göre ilgili ürünün o þablona ait koordinatlarýný dönecek
 		// productTemplateCoodinates [Bottom_LeftX , Bottom_LeftY , Bottom_RightX , Bottom_RightY , TopLeftX , TopLeftY , TopRightX , TopRightY]
+		System.out.println("productName:"+productName+" modelName:"+modelName);
 		productTemplateCoodinates = getProductTemplateCoordinates(selectedTemplate,productTemplateCoodinates,modelName,productName);
 		
 		int templateHeight = productTemplateCoodinates.get(1) - productTemplateCoodinates.get(5); // Bottom_LeftY - TopLeftY
@@ -928,6 +930,10 @@ public class AppWindow1 {
 			graphic.dispose();
 		}
 		
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return calculatedPosition;
 	}
 	
