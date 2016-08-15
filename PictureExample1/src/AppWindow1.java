@@ -32,6 +32,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
@@ -159,9 +160,13 @@ public class AppWindow1 {
 	 */
 	protected void createContents() {
 		shlLogoapp = new Shell();
+		shlLogoapp.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\Background.png"));
 		shlLogoapp.setMinimumSize(new Point(1024, 500));
 		shlLogoapp.setSize(1354, 1012);
 		shlLogoapp.setText("LogoApp.1.0");
+//		Image imageBack = new Image(display,"C:\\LogoApp\\ButtonIcons\\Background.jpg");
+//		Composite composite1 = new Composite(shlLogoapp, SWT.NONE);
+//		composite1.setBackgroundImage(imageBack);
 		shlLogoapp.setLayout(null);
 		
 		// ilk Açýlýþta Ekranýn ortalanmasý için Hazýrlandý.
@@ -385,34 +390,39 @@ public class AppWindow1 {
 		formToolkit.adapt(btnTemizle, true, true);
 		btnTemizle.setText("Temizle");
 		
-		Group group = new Group(shlLogoapp, SWT.BORDER);
-		group.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		group.setBounds(487, 10, 818, 27);
-		formToolkit.adapt(group);
-		formToolkit.paintBordersFor(group);
+		
+//		Composite groupComposite = new Composite(shlLogoapp, SWT.NULL);
+		
+		
+//		Group group = new Group(shlLogoapp, SWT.SHADOW_NONE);
+//		group.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+//		group.setBounds(487, 10, 818, 27);
+//		formToolkit.adapt(group);
+//		formToolkit.paintBordersFor(group);
 		
 		
 		
 		// radio button operations	
-		rdBtnSablon1 = new Button(group, SWT.RADIO);
-		rdBtnSablon1.setBounds(38, 6, 82, 20);
+		rdBtnSablon1 = new Button(shlLogoapp, SWT.RADIO);
+		rdBtnSablon1.setBounds(533, 10, 82, 20);
 		formToolkit.adapt(rdBtnSablon1, true, true);
 		rdBtnSablon1.setText("\u015Eablon 1");
 		
-		rdBtnSablon2 = new Button(group, SWT.RADIO);
-		rdBtnSablon2.setBounds(254, 6, 82, 20);
+		rdBtnSablon2 = new Button(shlLogoapp, SWT.RADIO);
+		rdBtnSablon2.setBounds(749, 10, 82, 20);
 		formToolkit.adapt(rdBtnSablon2, true, true);
 		rdBtnSablon2.setText("\u015Eablon 2");
 		
-		rdBtnSablon3 = new Button(group, SWT.RADIO);
-		rdBtnSablon3.setBounds(462, 6, 82, 20);
+		rdBtnSablon3 = new Button(shlLogoapp, SWT.RADIO);
+		rdBtnSablon3.setBounds(957, 10, 82, 20);
 		formToolkit.adapt(rdBtnSablon3, true, true);
 		rdBtnSablon3.setText("\u015Eablon 3");
 		
-		rdBtnSablon4 = new Button(group, SWT.RADIO);
-		rdBtnSablon4.setBounds(670, 6, 82, 20);
+		rdBtnSablon4 = new Button(shlLogoapp, SWT.RADIO);
+		rdBtnSablon4.setBounds(1165, 10, 82, 20);
 		formToolkit.adapt(rdBtnSablon4, true, true);
 		rdBtnSablon4.setText("\u015Eablon 4");
+		
 		
 		txtSaveDirectory = new Text(shlLogoapp, SWT.BORDER);
 		txtSaveDirectory.setBounds(10, 216, 200, 27);
@@ -446,6 +456,7 @@ public class AppWindow1 {
 				selectedTemplate = 4;
 				try {
 					try {
+						manageRadioButtons();
 						preview();
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
@@ -471,6 +482,7 @@ public class AppWindow1 {
 				selectedTemplate = 3;
 				try {
 					try {
+						manageRadioButtons();
 						preview();
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
@@ -497,6 +509,7 @@ public class AppWindow1 {
 				selectedTemplate = 2;
 				try {
 					try {
+						manageRadioButtons();
 						preview();
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
@@ -524,6 +537,7 @@ public class AppWindow1 {
 				selectedTemplate = 1;
 				try {
 					try {
+						manageRadioButtons();
 						preview();
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
@@ -696,28 +710,24 @@ public class AppWindow1 {
 			rdBtnSablon2.setSelection(false);
 			rdBtnSablon3.setSelection(false);
 			rdBtnSablon4.setSelection(false);
-			preview();
 			break;
 		case 2:
 			rdBtnSablon1.setSelection(false);
 			rdBtnSablon2.setSelection(true);
 			rdBtnSablon3.setSelection(false);
 			rdBtnSablon4.setSelection(false);
-			preview();
 			break;
 		case 3:
 			rdBtnSablon1.setSelection(false);
 			rdBtnSablon2.setSelection(false);
 			rdBtnSablon3.setSelection(true);
 			rdBtnSablon4.setSelection(false);
-			preview();
 			break;
 		case 4:
 			rdBtnSablon1.setSelection(false);
 			rdBtnSablon2.setSelection(false);
 			rdBtnSablon3.setSelection(false);
 			rdBtnSablon4.setSelection(true);
-			preview();
 			break;
 		default:
 			break;
@@ -871,7 +881,7 @@ public class AppWindow1 {
 			 rdBtnSablon1.setSelection(false);
 			 rdBtnSablon2.setSelection(false);
 			 rdBtnSablon3.setSelection(false);
-			 
+			 rdBtnSablon4.setSelection(false);
 		}
 		
 		
