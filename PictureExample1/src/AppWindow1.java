@@ -32,7 +32,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
@@ -41,12 +40,13 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.ExpandBar;
 import org.eclipse.swt.widgets.ExpandItem;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.wb.swt.SWTResourceManager;
@@ -62,8 +62,6 @@ import bean.ProcessImagePreview;
 import bean.Product;
 import bean.ProductUI;
 import bean.WriteImagePreview;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableItem;
 
 public class AppWindow1 {
 
@@ -100,7 +98,6 @@ public class AppWindow1 {
 	
 	
 	
-	Label label = null;
 	private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
 	private Text txtLogo;
 	private static String logoPath = "";
@@ -160,13 +157,10 @@ public class AppWindow1 {
 	 */
 	protected void createContents() {
 		shlLogoapp = new Shell();
-		shlLogoapp.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\Background.png"));
+		shlLogoapp.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\Logo.png"));
 		shlLogoapp.setMinimumSize(new Point(1024, 500));
 		shlLogoapp.setSize(1354, 1012);
 		shlLogoapp.setText("LogoApp.1.0");
-//		Image imageBack = new Image(display,"C:\\LogoApp\\ButtonIcons\\Background.jpg");
-//		Composite composite1 = new Composite(shlLogoapp, SWT.NONE);
-//		composite1.setBackgroundImage(imageBack);
 		shlLogoapp.setLayout(null);
 		
 		// ilk Açýlýþta Ekranýn ortalanmasý için Hazýrlandý.
@@ -347,6 +341,7 @@ public class AppWindow1 {
 		
 		
 		Button btnApplyLogo = new Button(shlLogoapp, SWT.NONE);
+		btnApplyLogo.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\Apply.png"));
 		btnApplyLogo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -357,7 +352,7 @@ public class AppWindow1 {
 				}
 			}
 		});
-		btnApplyLogo.setBounds(1190, 650, 115, 39);
+		btnApplyLogo.setBounds(1143, 650, 162, 39);
 		formToolkit.adapt(btnApplyLogo, true, true);
 		btnApplyLogo.setText("Logoyu Uygula");
 		
@@ -377,6 +372,7 @@ public class AppWindow1 {
 		lblLogoAd.setText("Logo Ad\u0131:");
 		
 		Button btnTemizle = new Button(shlLogoapp, SWT.NONE);
+		btnTemizle.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\Clean.png"));
 		btnTemizle.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -386,19 +382,9 @@ public class AppWindow1 {
 				shlLogoapp.dispose();
 			}
 		});
-		btnTemizle.setBounds(1045, 650, 111, 39);
+		btnTemizle.setBounds(957, 650, 132, 39);
 		formToolkit.adapt(btnTemizle, true, true);
 		btnTemizle.setText("Temizle");
-		
-		
-//		Composite groupComposite = new Composite(shlLogoapp, SWT.NULL);
-		
-		
-//		Group group = new Group(shlLogoapp, SWT.SHADOW_NONE);
-//		group.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-//		group.setBounds(487, 10, 818, 27);
-//		formToolkit.adapt(group);
-//		formToolkit.paintBordersFor(group);
 		
 		
 		
