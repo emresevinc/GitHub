@@ -758,7 +758,7 @@ public class AppWindow1 {
 					//scaleLogoForOriginalProductForTemplate: measure parametresi yerine selectedTemplate 
 					//kullanýlarak template'e göre modelTemplateCoordinate sabit sýnýfýndan ilgili ürün için sabitler okunarak
 					// logonun doðru orantýlý olarak küçültülmesi saðlanacak.
-					ExecutorService executor = Executors.newFixedThreadPool(25);
+					ExecutorService executor = Executors.newFixedThreadPool(100);
 					for(int j = 0; j < productUIListSize;j++){
 						tempProductUI = productUIList.get(j);
 						if(tempProductUI.getCheckIsApply().getSelection()){
