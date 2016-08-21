@@ -821,6 +821,8 @@ public class AppWindow1 {
 			List<ProductUI> productUIList = null;
 			int coreTemplateSize = coreTemplateList.size();
 			previewBuffer = new HashMap<String, BufferedImage>();
+			ExecutorService call = Executors.newFixedThreadPool(100);
+			Set<Future<HashMap<String, BufferedImage>>> set = new HashSet<Future<HashMap<String, BufferedImage>>>();
 			for (int i = 0; i < coreTemplateSize; i++) {
 				coreTemplate = coreTemplateList.get(i);
 				tempModel = coreTemplate.getModel();
@@ -829,8 +831,6 @@ public class AppWindow1 {
 				ProductUI tempProductUI = null;
 				int productUIListSize = productUIList.size();
 
-				ExecutorService call = Executors.newFixedThreadPool(productUIListSize);
-				Set<Future<HashMap<String, BufferedImage>>> set = new HashSet<Future<HashMap<String, BufferedImage>>>();
 				
 				for(int j = 0; j < productUIListSize;j++){
 					tempProductUI = productUIList.get(j);
@@ -846,17 +846,18 @@ public class AppWindow1 {
 					//}
 
 				}
-				call.shutdown();
-				try {
-					call.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-				} catch (InterruptedException e) {
-					
-				}
-				for (Future<HashMap<String, BufferedImage>> future : set) {
-					//if(future.get()!=null)
-						previewBuffer.putAll(future.get());
-				    }
 				
+				
+			}
+			call.shutdown();
+			try {
+				call.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+			} catch (InterruptedException e) {
+				
+			}
+			for (Future<HashMap<String, BufferedImage>> future : set) {
+				//if(future.get()!=null)
+				previewBuffer.putAll(future.get());
 			}
 			showAllProducts(previewPath,previewBuffer);
 		}else{
@@ -1106,6 +1107,8 @@ public class AppWindow1 {
 		List<ProductUI> tempProductUIList = null;
 		int coreTemplateSize = coreTemplateList.size();
 		labelImage = new HashMap<String, Image>();
+		ExecutorService call = Executors.newFixedThreadPool(100);
+		Set<Future<HashMap<String, Image>>> imageSet = new HashSet<Future<HashMap<String, Image>>>();
 		for(int i = 0; i<coreTemplateSize; i++){
 			model = coreTemplateList.get(i).getModel();
 			coreTemplate = coreTemplateList.get(i);
@@ -1113,8 +1116,6 @@ public class AppWindow1 {
 			int productSize = tempProductUIList.size();
 			ProductUI productUI = null;
 			
-			ExecutorService call = Executors.newFixedThreadPool(productSize);
-			Set<Future<HashMap<String, Image>>> imageSet = new HashSet<Future<HashMap<String, Image>>>();
 			
 			for(int x = 0; x < productSize; x++){
 		    	productUI = tempProductUIList.get(x);
@@ -1128,17 +1129,17 @@ public class AppWindow1 {
 		    	
 		    	//}
 		    }
-			call.shutdown();
-			try {
-				call.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-			} catch (InterruptedException e) {
-				
-			}
-			for (Future<HashMap<String, Image>> future : imageSet) {
-					labelImage.putAll(future.get());
-			    }
+			
 		}
-		
+		call.shutdown();
+		try {
+			call.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+		} catch (InterruptedException e) {
+			
+		}
+		for (Future<HashMap<String, Image>> future : imageSet) {
+			labelImage.putAll(future.get());
+		}
 		setImagesToLabel();
 	}
 	
