@@ -274,10 +274,10 @@
 		{
 			"S190TC":
 			[				
-				{"ProductName":"S190TCxB0", "Top_Left":"447,697", "Top_Right":"100,697", "Bottom_Left":"447,1602", "Bottom_Right":"100,1602"},				
-				{"ProductName":"S190TCxHC", "Top_Left":"447,697", "Top_Right":"100,697", "Bottom_Left":"447,1602", "Bottom_Right":"100,1602"},
-				{"ProductName":"S190TCxHN", "Top_Left":"447,697", "Top_Right":"100,697", "Bottom_Left":"447,1602", "Bottom_Right":"100,1602"},
-				{"ProductName":"S190TCxW0", "Top_Left":"447,697", "Top_Right":"100,697", "Bottom_Left":"447,1602", "Bottom_Right":"100,1602"},
+				{"ProductName":"S190TCxB0", "Top_Left":"447,697", "Top_Right":"1000,697", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},				
+				{"ProductName":"S190TCxHC", "Top_Left":"447,697", "Top_Right":"1000,697", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
+				{"ProductName":"S190TCxHN", "Top_Left":"447,697", "Top_Right":"1000,697", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
+				{"ProductName":"S190TCxW0", "Top_Left":"447,697", "Top_Right":"1000,697", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
 				{"ProductName":"S190TCxHF", "Top_Left":"407,734", "Top_Right":"1052,735", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"},			
 				{"ProductName":"S190TCxHR", "Top_Left":"407,734", "Top_Right":"1052,735", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"},
 				{"ProductName":"S190TCxHU", "Top_Left":"407,734", "Top_Right":"1052,735", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"}
