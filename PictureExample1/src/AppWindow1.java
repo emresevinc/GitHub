@@ -771,13 +771,7 @@ public class AppWindow1 {
 									calculatedPosition.get(0), calculatedPosition.get(1),txtLogoName.getText(),getFileName(productFullPath),resizedLogo,tempProductUI.getRadioParent().getSelection()));
 							
 							
-						}
-						
-						if(j % 5 == 0){
-					    	  System.out.println("Run GC:");
-					    	  System.gc();
-					      }
-
+						}						
 					}
 				}
 				
