@@ -748,7 +748,7 @@ public class AppWindow1 {
 				CoreTemplate coreTemplate = null;
 				List<ProductUI> productUIList = null;
 				int coreTemplateSize = coreTemplateList.size();
-				ExecutorService executor = Executors.newFixedThreadPool(100);
+				ExecutorService executor = Executors.newFixedThreadPool(50);
 				for (int i = 0; i < coreTemplateSize; i++) {
 					coreTemplate = coreTemplateList.get(i);
 					tempModel = coreTemplate.getModel();
@@ -771,7 +771,13 @@ public class AppWindow1 {
 									calculatedPosition.get(0), calculatedPosition.get(1),txtLogoName.getText(),getFileName(productFullPath),resizedLogo,tempProductUI.getRadioParent().getSelection()));
 							
 							
-						}						
+						}
+						
+						if(j % 3 == 0){
+					    	  System.out.println("Run GC:");
+					    	  System.gc();
+					      }
+
 					}
 				}
 				
@@ -831,7 +837,7 @@ public class AppWindow1 {
 			List<ProductUI> productUIList = null;
 			int coreTemplateSize = coreTemplateList.size();
 			previewBuffer = new HashMap<String, BufferedImage>();
-			ExecutorService call = Executors.newFixedThreadPool(100);
+			ExecutorService call = Executors.newFixedThreadPool(50);
 			Set<Future<HashMap<String, BufferedImage>>> set = new HashSet<Future<HashMap<String, BufferedImage>>>();
 			for (int i = 0; i < coreTemplateSize; i++) {
 				coreTemplate = coreTemplateList.get(i);
@@ -867,7 +873,11 @@ public class AppWindow1 {
 			}
 			for (Future<HashMap<String, BufferedImage>> future : set) {
 //				if(future!=null)
-				previewBuffer.putAll(future.get());
+				try {
+					previewBuffer.putAll(future.get());					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 			System.out.println("Run GC:");
 	    	System.gc();
@@ -1119,7 +1129,7 @@ public class AppWindow1 {
 		List<ProductUI> tempProductUIList = null;
 		int coreTemplateSize = coreTemplateList.size();
 		labelImage = new HashMap<String, Image>();
-		ExecutorService call = Executors.newFixedThreadPool(100);
+		ExecutorService call = Executors.newFixedThreadPool(50);
 		Set<Future<HashMap<String, Image>>> imageSet = new HashSet<Future<HashMap<String, Image>>>();
 		for(int i = 0; i<coreTemplateSize; i++){
 			model = coreTemplateList.get(i).getModel();
