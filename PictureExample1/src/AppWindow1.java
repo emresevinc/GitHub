@@ -872,7 +872,7 @@ public class AppWindow1 {
 				
 			}
 			for (Future<HashMap<String, BufferedImage>> future : set) {
-				if(future!=null)
+//				if(future!=null)
 				previewBuffer.putAll(future.get());
 			}
 			System.out.println("Run GC:");
@@ -1149,8 +1149,7 @@ public class AppWindow1 {
 			
 		}
 		call.shutdown();
-		System.out.println("Run GC:");
-  	    System.gc();
+
 		try {
 			call.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
@@ -1191,8 +1190,7 @@ public class AppWindow1 {
 				}
 		    	//}
 			}
-			System.out.println("Run GC:");
-	    	System.gc();
+
 		}
 		
 	}
