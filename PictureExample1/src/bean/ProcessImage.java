@@ -57,8 +57,6 @@ public class ProcessImage implements Runnable{
 			if(isParent){
 				File dest =  new File(createPath+"\\Parents\\"+txtLogoName+fileName+".jpg");
 				Files.copy(preparedImageFile.toPath(), dest.toPath(),StandardCopyOption.REPLACE_EXISTING);
-				
-				
 			}
 			
 			

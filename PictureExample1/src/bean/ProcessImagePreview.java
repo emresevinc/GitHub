@@ -44,7 +44,7 @@ public class ProcessImagePreview implements Callable{
 	
 	public HashMap<String, BufferedImage> call() {
 		BufferedImage productBuff = null;
-		HashMap<String, BufferedImage> imageMap = new HashMap<String, BufferedImage>();
+		HashMap<String, BufferedImage> imageMap = new HashMap<String, BufferedImage>(1);
 		try {
 			productBuff = ImageIO.read(new File(productPath));
 
@@ -52,7 +52,7 @@ public class ProcessImagePreview implements Callable{
 			graphicProduct.drawImage(logoBuff, coordinatX, coordinatY, null);
 			graphicProduct.dispose();			
 			
-			imageMap.put(fileName, productBuff);
+			imageMap.put(fileName.intern(), productBuff);
 			
 		} catch (IOException e) {
 			e.printStackTrace();

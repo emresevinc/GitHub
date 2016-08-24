@@ -747,6 +747,7 @@ public class AppWindow1 {
 				CoreTemplate coreTemplate = null;
 				List<ProductUI> productUIList = null;
 				int coreTemplateSize = coreTemplateList.size();
+				ExecutorService executor = Executors.newFixedThreadPool(100);
 				for (int i = 0; i < coreTemplateSize; i++) {
 					coreTemplate = coreTemplateList.get(i);
 					tempModel = coreTemplate.getModel();
@@ -758,7 +759,6 @@ public class AppWindow1 {
 					//scaleLogoForOriginalProductForTemplate: measure parametresi yerine selectedTemplate 
 					//kullanýlarak template'e göre modelTemplateCoordinate sabit sýnýfýndan ilgili ürün için sabitler okunarak
 					// logonun doðru orantýlý olarak küçültülmesi saðlanacak.
-					ExecutorService executor = Executors.newFixedThreadPool(100);
 					for(int j = 0; j < productUIListSize;j++){
 						tempProductUI = productUIList.get(j);
 						if(tempProductUI.getCheckIsApply().getSelection()){
@@ -769,11 +769,26 @@ public class AppWindow1 {
 							executor.execute(new ProcessImage(productFullPath, scaledLogoPath+"\\"+getFileName(logoPath)+".png", createPath,
 									calculatedPosition.get(0), calculatedPosition.get(1),txtLogoName.getText(),getFileName(productFullPath),resizedLogo,tempProductUI.getRadioParent().getSelection()));
 							
+							
 						}
+						
+						if(j % 5 == 0){
+					    	  System.out.println("Run GC:");
+					    	  System.gc();
+					      }
 
 					}
-					executor.shutdown();
 				}
+				
+				executor.shutdown();
+				
+				try {
+					executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+				} catch (InterruptedException e) {
+					
+				}
+				System.out.println("Run GC:");
+				System.gc();
 				messageBox = new MessageBox(shlLogoapp, SWT.ICON_WORKING);
 				messageBox.setText("BASARILI ISLEM");
 				messageBox.setMessage("ISLEM BASARILI, DIZINI KONTROL EDINIZ!");
@@ -844,14 +859,18 @@ public class AppWindow1 {
 						Future<HashMap<String, BufferedImage>> future = call.submit(callable);
 					      set.add(future);
 					//}
-
+					      if(j % 5 == 0){
+					    	  System.out.println("Run GC:");
+					    	  System.gc();
+					      }
 				}
 				
 				
 			}
 			call.shutdown();
+			
 			try {
-				call.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+				call.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
 			} catch (InterruptedException e) {
 				
 			}
@@ -859,6 +878,8 @@ public class AppWindow1 {
 				//if(future.get()!=null)
 				previewBuffer.putAll(future.get());
 			}
+			System.out.println("Run GC:");
+	    	System.gc();
 			showAllProducts(previewPath,previewBuffer);
 		}else{
 			MessageBox messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
@@ -1127,19 +1148,26 @@ public class AppWindow1 {
 					Future<HashMap<String, Image>> future = call.submit(callable);
 					imageSet.add(future);
 		    	
-		    	//}
+					if(x % 5 == 0){
+				    	  System.out.println("Run GC:");
+				    	  System.gc();
+				      }
 		    }
 			
 		}
 		call.shutdown();
+		System.out.println("Run GC:");
+  	    System.gc();
 		try {
-			call.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+			call.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
 			
 		}
 		for (Future<HashMap<String, Image>> future : imageSet) {
 			labelImage.putAll(future.get());
 		}
+		System.out.println("Run GC:");
+    	System.gc();
 		setImagesToLabel();
 	}
 	
@@ -1160,11 +1188,18 @@ public class AppWindow1 {
 			for(int x = 0; x < productSize; x++){
 		    	productUI = tempProductUIList.get(x);
 		    	//if(productUI.getCheckIsApply().getSelection()){
-					String productName = productUI.getProductName();
-			    	
-					tempProductUIList.get(x).getLblProductImg().setImage(labelImage.get(productName.substring(0, productName.indexOf("."))));	    	
+		    	try {
+		    		String productName = productUI.getProductName();
+		    		
+		    		tempProductUIList.get(x).getLblProductImg().setImage(labelImage.get(productName.substring(0, productName.indexOf("."))));	    	
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 		    	//}
 			}
+			System.out.println("Run GC:");
+	    	System.gc();
 		}
 		
 	}
