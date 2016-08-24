@@ -52,7 +52,7 @@ public class ProcessImagePreview implements Callable{
 			graphicProduct.drawImage(logoBuff, coordinatX, coordinatY, null);
 			graphicProduct.dispose();			
 			
-			imageMap.put(fileName.intern(), productBuff);
+			imageMap.put(fileName, productBuff);
 			
 		} catch (IOException e) {
 			e.printStackTrace();

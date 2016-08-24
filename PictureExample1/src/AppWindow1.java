@@ -292,7 +292,7 @@ public class AppWindow1 {
 
 		
 		
-		Button btnBirLogoSeiniz = formToolkit.createButton(shlLogoapp, "Bir logo seciniz", SWT.NONE);
+		Button btnBirLogoSeiniz = formToolkit.createButton(shlLogoapp, "Bir Logo Se\u00E7iniz", SWT.NONE);
 		btnBirLogoSeiniz.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -415,6 +415,7 @@ public class AppWindow1 {
 		formToolkit.adapt(txtSaveDirectory, true, true);
 		
 		Button btnKaydedilecekYer = new Button(shlLogoapp, SWT.NONE);
+		btnKaydedilecekYer.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\save.jpg"));
 		btnKaydedilecekYer.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -428,7 +429,7 @@ public class AppWindow1 {
 				}
 			}
 		});
-		btnKaydedilecekYer.setBounds(10, 175, 125, 35);
+		btnKaydedilecekYer.setBounds(10, 175, 145, 35);
 		formToolkit.adapt(btnKaydedilecekYer, true, true);
 		btnKaydedilecekYer.setText("Kaydedilecek Yer");
 		
@@ -858,11 +859,7 @@ public class AppWindow1 {
 						
 						Future<HashMap<String, BufferedImage>> future = call.submit(callable);
 					      set.add(future);
-					//}
-					      if(j % 5 == 0){
-					    	  System.out.println("Run GC:");
-					    	  System.gc();
-					      }
+
 				}
 				
 				
@@ -875,7 +872,7 @@ public class AppWindow1 {
 				
 			}
 			for (Future<HashMap<String, BufferedImage>> future : set) {
-				//if(future.get()!=null)
+				if(future!=null)
 				previewBuffer.putAll(future.get());
 			}
 			System.out.println("Run GC:");
@@ -1144,14 +1141,10 @@ public class AppWindow1 {
 					String productName = productUI.getProductName();
 			    	String productNameStr = productName.substring(0, productName.length()-4)+".png";
 			    
-			    	Callable<HashMap<String, Image>> callable = new WriteImagePreview(previewBuffer.get(productName.substring(0, productName.indexOf("."))), 200, 200, scaledAndProgressedPath+"\\"+productNameStr,productName.substring(0, productName.indexOf(".")),display);					
+			    	Callable<HashMap<String, Image>> callable = new WriteImagePreview(previewBuffer.get(productName.substring(0, productName.indexOf("."))), 180, 220, scaledAndProgressedPath+"\\"+productNameStr,productName.substring(0, productName.indexOf(".")),display);					
 					Future<HashMap<String, Image>> future = call.submit(callable);
 					imageSet.add(future);
-		    	
-					if(x % 5 == 0){
-				    	  System.out.println("Run GC:");
-				    	  System.gc();
-				      }
+
 		    }
 			
 		}
