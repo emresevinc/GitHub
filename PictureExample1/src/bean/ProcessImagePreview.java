@@ -44,9 +44,18 @@ public class ProcessImagePreview implements Callable{
 	
 	public HashMap<String, BufferedImage> call() {
 		BufferedImage productBuff = null;
-		HashMap<String, BufferedImage> imageMap = new HashMap<String, BufferedImage>(1);
+		HashMap<String, BufferedImage> imageMap = new HashMap<String, BufferedImage>();
 		try {
-			productBuff = ImageIO.read(new File(productPath));
+			System.out.println("ProcessImagePreview productPath:"+productPath);
+			
+			try {
+				productBuff = ImageIO.read(new File(productPath));				
+			} catch (IOException e) {
+				System.out.println("ProcessImage Error Read ProductPath:");
+				
+				productBuff = ImageIO.read(new File(productPath));
+				
+			}
 
 			Graphics2D graphicProduct = (Graphics2D) productBuff.getGraphics();
 			graphicProduct.drawImage(logoBuff, coordinatX, coordinatY, null);
@@ -55,6 +64,7 @@ public class ProcessImagePreview implements Callable{
 			imageMap.put(fileName, productBuff);
 			
 		} catch (IOException e) {
+			System.out.println("ProcessImage Error :");
 			e.printStackTrace();
 		}
 		return imageMap;

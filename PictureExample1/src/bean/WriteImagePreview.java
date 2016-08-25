@@ -44,17 +44,27 @@ public class WriteImagePreview implements Callable{
 		Graphics2D g2d = outputImage.createGraphics();
         g2d.drawImage(img, 0, 0, widthSc, heightSc, null);
         g2d.dispose();
+        System.out.println("WriteImagePreview outpath : "+outPath);
+        try{
+        	
+        
         try {
 			ImageIO.write(outputImage, "png", new File(outPath));
 		} catch (IOException e) {
+			System.out.println("WriteImagePreview hata..");
 			e.printStackTrace();
+			ImageIO.write(outputImage, "png", new File(outPath));
 		}
 
         Image imgx = new Image(display, outPath); 			
-			imageMap.put(productName, imgx);
+		imageMap.put(productName, imgx);
 
-		return imageMap;
 		
+        }catch(IOException e) {
+        	System.out.println("WriteImagePreview hata2");
+        	e.printStackTrace();
+		}
+        return imageMap;
 		
 	}
 
