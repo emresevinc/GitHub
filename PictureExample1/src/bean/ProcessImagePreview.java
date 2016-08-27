@@ -24,11 +24,12 @@ public class ProcessImagePreview implements Callable{
 	private String fileName;
 	BufferedImage logoBuff;
 	private boolean isParent;
+	private HashMap<String, BufferedImage> imageMap;
 	
 
 
 	public ProcessImagePreview(String productPath,String logoPath,String createPath,
-			Integer coordinatX,Integer coordinatY,String txtLogoName,String fileName,BufferedImage logoBuff,boolean isParent){
+			Integer coordinatX,Integer coordinatY,String txtLogoName,String fileName,BufferedImage logoBuff,boolean isParent,HashMap imageMap){
 	    this.productPath = productPath;
 	    this.logoPath = logoPath;
 	    this.createPath = createPath;
@@ -38,13 +39,14 @@ public class ProcessImagePreview implements Callable{
 	    this.fileName = fileName;
 	    this.logoBuff = logoBuff;
 	    this.isParent = isParent;
+	    this.imageMap = imageMap;
 	    
 	}
 	
 	
 	public HashMap<String, BufferedImage> call() {
 		BufferedImage productBuff = null;
-		HashMap<String, BufferedImage> imageMap = new HashMap<String, BufferedImage>();
+		
 		try {
 			System.out.println("ProcessImagePreview productPath:"+productPath);
 			

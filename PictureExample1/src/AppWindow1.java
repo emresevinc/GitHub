@@ -736,7 +736,7 @@ public class AppWindow1 {
 				messageBox.open();
 				throw new Exception("Kaydedilecek yer secilirken hata!!!");
 			}
-			
+			System.gc();
 			// her ürün için ayný logoyu tekrar tekrar okumamak için for un dýþýna alýndý.
 			logoOriginal = ImageIO.read(new File(logoPath)); 
 			if(!createPath.equals("")){
@@ -748,7 +748,7 @@ public class AppWindow1 {
 				CoreTemplate coreTemplate = null;
 				List<ProductUI> productUIList = null;
 				int coreTemplateSize = coreTemplateList.size();
-				ExecutorService executor = Executors.newFixedThreadPool(30);
+				ExecutorService executor = Executors.newCachedThreadPool();
 				for (int i = 0; i < coreTemplateSize; i++) {
 					coreTemplate = coreTemplateList.get(i);
 					tempModel = coreTemplate.getModel();
@@ -773,10 +773,10 @@ public class AppWindow1 {
 							
 						}
 						
-//						if(j % 3 == 0){
-//					    	  System.out.println("Run GC:");
-//					    	  System.gc();
-//					      }
+						if(j % 3 == 0){
+					    	  System.out.println("Run GC:");
+					    	  System.gc();
+					      }
 
 					}
 				}
@@ -784,7 +784,7 @@ public class AppWindow1 {
 				executor.shutdown();
 				
 				try {
-					executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+					executor.awaitTermination(120, TimeUnit.SECONDS);
 				} catch (InterruptedException e) {
 					
 				}
@@ -837,8 +837,9 @@ public class AppWindow1 {
 			List<ProductUI> productUIList = null;
 			int coreTemplateSize = coreTemplateList.size();
 			previewBuffer = new HashMap<String, BufferedImage>();
-			ExecutorService call = Executors.newFixedThreadPool(100);
+			ExecutorService call = Executors.newCachedThreadPool();
 			Set<Future<HashMap<String, BufferedImage>>> set = new HashSet<Future<HashMap<String, BufferedImage>>>();
+			HashMap<String, BufferedImage> imageMap = new HashMap<String, BufferedImage>();
 			for (int i = 0; i < coreTemplateSize; i++) {
 				coreTemplate = coreTemplateList.get(i);
 				tempModel = coreTemplate.getModel();
@@ -855,7 +856,7 @@ public class AppWindow1 {
 						calculatedPosition = scaleLogoForOriginalProductForTemplate(productFullPath, getFileName(logoPath), selectedTemplate);  
 						
 						Callable<HashMap<String, BufferedImage>> callable = new ProcessImagePreview(productFullPath, scaledLogoPath+"\\"+getFileName(logoPath)+".png", previewPath+"\\"+tempProductUI.getModelName(),
-								calculatedPosition.get(0), calculatedPosition.get(1),txtLogoName.getText(),getFileName(productFullPath),resizedLogo,tempProductUI.getRadioParent().getSelection());
+								calculatedPosition.get(0), calculatedPosition.get(1),txtLogoName.getText(),getFileName(productFullPath),resizedLogo,tempProductUI.getRadioParent().getSelection(),imageMap);
 						
 						Future<HashMap<String, BufferedImage>> future = call.submit(callable);
 					      set.add(future);
@@ -867,9 +868,9 @@ public class AppWindow1 {
 			call.shutdown();
 			
 			try {
-				call.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
+				call.awaitTermination(60, TimeUnit.SECONDS);
 			} catch (InterruptedException e) {
-				
+				System.out.println("preview awaitTermination"+e.getMessage());
 			}
 			for (Future<HashMap<String, BufferedImage>> future : set) {
 //				if(future!=null)
@@ -877,11 +878,11 @@ public class AppWindow1 {
 					
 					previewBuffer.putAll(future.get());					
 				} catch (Exception e) {
+					System.out.println("preview future.get error"+e.getMessage());
 					e.printStackTrace();
 				}
 			}
-			System.out.println("Run GC:");
-	    	System.gc();
+
 			showAllProducts(previewPath,previewBuffer);
 		}else{
 			MessageBox messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
@@ -894,7 +895,7 @@ public class AppWindow1 {
 			 rdBtnSablon4.setSelection(false);
 		}
 		
-		
+		System.gc();
 	}
 	
 	
@@ -1130,8 +1131,10 @@ public class AppWindow1 {
 		List<ProductUI> tempProductUIList = null;
 		int coreTemplateSize = coreTemplateList.size();
 		labelImage = new HashMap<String, Image>();
-		ExecutorService call = Executors.newFixedThreadPool(100);
+//		ExecutorService call = Executors.newFixedThreadPool(100);
+		ExecutorService call = Executors.newCachedThreadPool();
 		Set<Future<HashMap<String, Image>>> imageSet = new HashSet<Future<HashMap<String, Image>>>();
+		HashMap<String, Image> imageMap = new HashMap<String, Image>();
 		for(int i = 0; i<coreTemplateSize; i++){
 			model = coreTemplateList.get(i).getModel();
 			coreTemplate = coreTemplateList.get(i);
@@ -1146,7 +1149,7 @@ public class AppWindow1 {
 					String productName = productUI.getProductName();
 			    	String productNameStr = productName.substring(0, productName.length()-4)+".png";
 			    
-			    	Callable<HashMap<String, Image>> callable = new WriteImagePreview(previewBuffer.get(productName.substring(0, productName.indexOf("."))), 180, 220, scaledAndProgressedPath+"\\"+productNameStr,productName.substring(0, productName.indexOf(".")),display);					
+			    	Callable<HashMap<String, Image>> callable = new WriteImagePreview(previewBuffer.get(productName.substring(0, productName.indexOf("."))), 180, 220, scaledAndProgressedPath+"\\"+productNameStr,productName.substring(0, productName.indexOf(".")),display,imageMap);					
 					Future<HashMap<String, Image>> future = call.submit(callable);
 					imageSet.add(future);
 
@@ -1156,7 +1159,7 @@ public class AppWindow1 {
 		call.shutdown();
 
 		try {
-			call.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
+			call.awaitTermination(30, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
 			
 		}
@@ -1167,8 +1170,7 @@ public class AppWindow1 {
 				System.out.println("showAllProducts future.get"+e.getMessage());
 			}
 		}
-		System.out.println("Run GC:");
-    	System.gc();
+
 		setImagesToLabel();
 	}
 	

@@ -24,22 +24,24 @@ public class WriteImagePreview implements Callable{
 	private String outPath;
 	private String productName;
 	private Display display;
+	private HashMap<String , Image> imageMap;
 	
 
 
-	public WriteImagePreview(BufferedImage img,int widthSc,int heightSc,String outPath,String productName, Display display){
+	public WriteImagePreview(BufferedImage img,int widthSc,int heightSc,String outPath,String productName, Display display,HashMap imageMap){
 	    this.img = img;
 	    this.widthSc = widthSc;
 	    this.heightSc = heightSc;
 	    this.outPath = outPath;
 	    this.productName = productName;
 	    this.display = display;
+	    this.imageMap = imageMap;
 	    
 	}
 	
 	
 	public HashMap<String, Image> call() {
-		HashMap<String, Image> imageMap = new HashMap<String, Image>();
+		
 		BufferedImage outputImage = new BufferedImage(widthSc,heightSc, img.getType());
 		Graphics2D g2d = outputImage.createGraphics();
         g2d.drawImage(img, 0, 0, widthSc, heightSc, null);
