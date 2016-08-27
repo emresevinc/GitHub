@@ -14,12 +14,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
@@ -59,6 +61,7 @@ import bean.CoreTemplate;
 import bean.Model;
 import bean.ProcessImage;
 import bean.ProcessImagePreview;
+import bean.ProcessModel;
 import bean.Product;
 import bean.ProductUI;
 import bean.WriteImagePreview;
@@ -74,6 +77,7 @@ public class AppWindow1 {
 		try {
 			AppWindow1 window = new AppWindow1();
 			window.open();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -328,6 +332,7 @@ public class AppWindow1 {
 		labelTemplate2.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template2.png"));
 		labelTemplate2.setBounds(693, 43, 200, 200);
 		formToolkit.adapt(labelTemplate2, true, true);
+		
 		
 		labelTemplate3 = new Label(shlLogoapp, SWT.BORDER);
 		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.png"));
@@ -720,11 +725,10 @@ public class AppWindow1 {
 			break;
 		}
 	}
-	
 	private void applyToLogo() throws Exception{
 		MessageBox messageBox = null;
 		if(!logoPath.equals("") && !(rdBtnSablon1.getSelection() == false && rdBtnSablon2.getSelection() == false && rdBtnSablon3.getSelection() == false && rdBtnSablon4.getSelection() == false)){
-			List<Integer> calculatedPosition = new ArrayList();
+			
 			String tmpCreate = txtSaveDirectory.getText();
 			String createPath = "";
 			if(tmpCreate != null && !tmpCreate.equals("")){
@@ -749,6 +753,8 @@ public class AppWindow1 {
 				List<ProductUI> productUIList = null;
 				int coreTemplateSize = coreTemplateList.size();
 				ExecutorService executor = Executors.newCachedThreadPool();
+				List<Integer> calculatedPosition = new ArrayList();
+				List<Integer> productTemplateCoodinates = new ArrayList();
 				for (int i = 0; i < coreTemplateSize; i++) {
 					coreTemplate = coreTemplateList.get(i);
 					tempModel = coreTemplate.getModel();
@@ -763,10 +769,13 @@ public class AppWindow1 {
 					for(int j = 0; j < productUIListSize;j++){
 						tempProductUI = productUIList.get(j);
 						if(tempProductUI.getCheckIsApply().getSelection()){
-							String productFullPath = logoAppModelsPath +"\\"+tempProductUI.getModelName()+"\\"+tempProductUI.getProductName();
-							calculatedPosition = scaleLogoForOriginalProductForTemplate(productFullPath, getFileName(logoPath), selectedTemplate);  
 							
-							//drawww(productFullPath, scaledLogoPath+"\\"+getFileName(logoPath)+".png", createPath, calculatedPosition.get(0), calculatedPosition.get(1));
+							calculatedPosition.clear();
+							productTemplateCoodinates.clear();
+							String productFullPath = logoAppModelsPath +"\\"+tempProductUI.getModelName()+"\\"+tempProductUI.getProductName();
+							calculatedPosition = scaleLogoForOriginalProductForTemplate(productFullPath, getFileName(logoPath), selectedTemplate,calculatedPosition,productTemplateCoodinates);  
+							
+							
 							executor.execute(new ProcessImage(productFullPath, scaledLogoPath+"\\"+getFileName(logoPath)+".png", createPath,
 									calculatedPosition.get(0), calculatedPosition.get(1),txtLogoName.getText(),getFileName(productFullPath),resizedLogo,tempProductUI.getRadioParent().getSelection()));
 							
@@ -804,6 +813,68 @@ public class AppWindow1 {
 		}
 	}
 	
+//	private void applyToLogo() throws Exception{
+//		MessageBox messageBox = null;
+//		if(!logoPath.equals("") && !(rdBtnSablon1.getSelection() == false && rdBtnSablon2.getSelection() == false && rdBtnSablon3.getSelection() == false && rdBtnSablon4.getSelection() == false)){
+//			
+//			String tmpCreate = txtSaveDirectory.getText();
+//			String createPath = "";
+//			if(tmpCreate != null && !tmpCreate.equals("")){
+//				createPath = tmpCreate;
+//			}else{
+//			    messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
+//				messageBox.setText("HATA");
+//				messageBox.setMessage("Kaydedilecek dizini belirlemelisiniz!");
+//				messageBox.open();
+//				throw new Exception("Kaydedilecek yer secilirken hata!!!");
+//			}
+//			System.gc();
+//
+//			logoOriginal = ImageIO.read(new File(logoPath)); 
+//			if(!createPath.equals("")){
+//				File parentDir = new File(createPath+"\\Parents");//Parent'lari kaydetmek icin
+//				if(!parentDir.exists())
+//					parentDir.mkdir();
+//
+//				CoreTemplate coreTemplate = null;
+//				List<ProductUI> productUIList = null;
+//				int coreTemplateSize = coreTemplateList.size();
+//				ExecutorService executor = Executors.newCachedThreadPool();
+//
+//				for (int i = 0; i < coreTemplateSize; i++) {
+//					coreTemplate = coreTemplateList.get(i);			
+//					
+//					
+//					productUIList = coreTemplate.getProductUIList();					
+//					
+//					executor.execute(new ProcessModel(productUIList, createPath, txtLogoName.getText(),
+//							selectedTemplate,logoOriginal,jsonMainobj));
+//					
+//				}
+//				
+//				executor.shutdown();
+//				
+//				try {
+//					executor.awaitTermination(120, TimeUnit.SECONDS);
+//				} catch (InterruptedException e) {
+//					
+//				}
+//				System.out.println("Run GC:");
+//				System.gc();
+//				messageBox = new MessageBox(shlLogoapp, SWT.ICON_WORKING);
+//				messageBox.setText("BASARILI ISLEM");
+//				messageBox.setMessage("ISLEM BASARILI, DIZINI KONTROL EDINIZ!");
+//				messageBox.open();
+//
+//			}
+//		}else{
+//			 messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
+//			 messageBox.setText("HATA");
+//			 messageBox.setMessage("Logo seçmelisiniz ve bir sablon belirlemelisiniz!");
+//			 messageBox.open();
+//		}
+//	}
+	
 	public static BufferedImage rotate(BufferedImage image, double angle) {
 	    double sin = Math.abs(Math.sin(angle)), cos = Math.abs(Math.cos(angle));
 	    int w = image.getWidth(), h = image.getHeight();
@@ -826,20 +897,21 @@ public class AppWindow1 {
 	
 	private void preview() throws IOException, InterruptedException, ExecutionException{
 		
-		List<Integer> calculatedPosition = new ArrayList();
 		if(!logoPath.equals("")){
 			
 			logoOriginal = ImageIO.read(new File(logoPath)); 
-		
+			
 			Model tempModel = null;
 			List<Product> productList = null;
 			CoreTemplate coreTemplate = null;
 			List<ProductUI> productUIList = null;
 			int coreTemplateSize = coreTemplateList.size();
 			previewBuffer = new HashMap<String, BufferedImage>();
-			ExecutorService call = Executors.newCachedThreadPool();
+			ThreadPoolExecutor call = (ThreadPoolExecutor) Executors.newFixedThreadPool(20);
 			Set<Future<HashMap<String, BufferedImage>>> set = new HashSet<Future<HashMap<String, BufferedImage>>>();
 			HashMap<String, BufferedImage> imageMap = new HashMap<String, BufferedImage>();
+			List<Integer> calculatedPosition = new ArrayList();
+			List<Integer> productTemplateCoodinates = new ArrayList();
 			for (int i = 0; i < coreTemplateSize; i++) {
 				coreTemplate = coreTemplateList.get(i);
 				tempModel = coreTemplate.getModel();
@@ -851,9 +923,11 @@ public class AppWindow1 {
 				
 				for(int j = 0; j < productUIListSize;j++){
 					tempProductUI = productUIList.get(j);
+					calculatedPosition.clear();
+					productTemplateCoodinates.clear();
 					//if(tempProductUI.getCheckIsApply().getSelection()){
 						String productFullPath = logoAppModelsPath +"\\"+tempProductUI.getModelName()+"\\"+tempProductUI.getProductName();
-						calculatedPosition = scaleLogoForOriginalProductForTemplate(productFullPath, getFileName(logoPath), selectedTemplate);  
+						calculatedPosition = scaleLogoForOriginalProductForTemplate(productFullPath, getFileName(logoPath), selectedTemplate,calculatedPosition,productTemplateCoodinates);  
 						
 						Callable<HashMap<String, BufferedImage>> callable = new ProcessImagePreview(productFullPath, scaledLogoPath+"\\"+getFileName(logoPath)+".png", previewPath+"\\"+tempProductUI.getModelName(),
 								calculatedPosition.get(0), calculatedPosition.get(1),txtLogoName.getText(),getFileName(productFullPath),resizedLogo,tempProductUI.getRadioParent().getSelection(),imageMap);
@@ -899,12 +973,11 @@ public class AppWindow1 {
 	}
 	
 	
-	private List<Integer> scaleLogoForOriginalProductForTemplate(String productOriginalPath, String logoNameForPath,int selectedTemplate){ 
+	private List<Integer> scaleLogoForOriginalProductForTemplate(String productOriginalPath, String logoNameForPath,int selectedTemplate, List<Integer> calculatedPosition, List<Integer> productTemplateCoodinates){ 
 		
-		List<Integer> calculatedPosition = new ArrayList();
+		 
 		try {			
 		BufferedImage productOriginal = null;		
-		List<Integer> productTemplateCoodinates = new ArrayList(); 
 		//productOriginalPath: C:\LogoApp\Models\Gildan 18500 Unisex Hoodie\18500xB00.jpg
 		//String replacedProductPath = productOriginalPath.replace('\\', "\\");
 		String[] paths = productOriginalPath.split("\\\\");
@@ -1132,7 +1205,8 @@ public class AppWindow1 {
 		int coreTemplateSize = coreTemplateList.size();
 		labelImage = new HashMap<String, Image>();
 //		ExecutorService call = Executors.newFixedThreadPool(100);
-		ExecutorService call = Executors.newCachedThreadPool();
+//		ExecutorService call = Executors.newCachedThreadPool();
+		ThreadPoolExecutor call = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
 		Set<Future<HashMap<String, Image>>> imageSet = new HashSet<Future<HashMap<String, Image>>>();
 		HashMap<String, Image> imageMap = new HashMap<String, Image>();
 		for(int i = 0; i<coreTemplateSize; i++){

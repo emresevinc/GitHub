@@ -46,7 +46,7 @@
 			]
 		},
 				{
-			"5000L":
+			"5000L_-_Women_T-Shirt":
 			[
 				{"ProductName":"5000LxAP0", "Top_Left":"594,428", "Top_Right":"1120,428", "Bottom_Left":"594,1317", "Bottom_Right":"1120,1317"},
 				{"ProductName":"5000LxB00", "Top_Left":"594,428", "Top_Right":"1120,428", "Bottom_Left":"594,1317", "Bottom_Right":"1120,1317"},
@@ -80,7 +80,7 @@
 			]
 		},
 		{
-			"ManTankTop":
+			"5200_-_Men_Tank_Top":
 			[				
 				{"ProductName":"2200xSG00", "Top_Left":"543,542", "Top_Right":"1097,542", "Bottom_Left":"543,1387", "Bottom_Right":"1097,1387"},				
 				{"ProductName":"2200xSB00", "Top_Left":"611,424", "Top_Right":"1020,424", "Bottom_Left":"611,1065", "Bottom_Right":"1020,1065"},	
@@ -96,7 +96,7 @@
 			]
 		},
 		{
-			"WomenTankTop":
+			"64200L_-_Women_Tank_Top":
 			[				
 				{"ProductName":"64200LxSG", "Top_Left":"621,620", "Top_Right":"1086,620", "Bottom_Left":"621,1285", "Bottom_Right":"1086,1285"},				
 				{"ProductName":"64200LxW0", "Top_Left":"616,570", "Top_Right":"1080,570", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},	
@@ -107,7 +107,7 @@
 			]
 		},
 		{
-			"Youth":
+			"5000B_-_Youth_Tshirt":
 			[				
 				{"ProductName":"5000BxSG0", "Top_Left":"293,331", "Top_Right":"691,331", "Bottom_Left":"293,886", "Bottom_Right":"691,886"},				
 				{"ProductName":"5000BxDHG", "Top_Left":"293,331", "Top_Right":"691,331", "Bottom_Left":"293,886", "Bottom_Right":"691,886"},				
@@ -124,7 +124,7 @@
 			]
 		},
 		{
-			"Menvneck":
+			"982_-_Men_V-Neck":
 			[				
 				{"ProductName":"982xB0000", "Top_Left":"362,286", "Top_Right":"668,286", "Bottom_Left":"362,787", "Bottom_Right":"668,787"},				
 				{"ProductName":"982xC0000", "Top_Left":"362,286", "Top_Right":"668,286", "Bottom_Left":"362,787", "Bottom_Right":"668,787"},				
@@ -138,7 +138,7 @@
 			]
 		},
 		{
-			"womenvneck":
+			"5V00L_-_Women_V-Neck_T-Shirt":
 			[				
 				{"ProductName":"5V00LxAP0", "Top_Left":"643,430", "Top_Right":"1027,430", "Bottom_Left":"643,1050", "Bottom_Right":"1027,1050"},				
 				{"ProductName":"5V00LxB00", "Top_Left":"643,430", "Top_Right":"1027,430", "Bottom_Left":"643,1050", "Bottom_Right":"1027,1050"},				
@@ -155,7 +155,7 @@
 			]
 		},
 {
-			"raglan":
+			"5700_-_Unisex_Raglan_Sleeve_Baseball_T-Shirt":
 			[				
 				{"ProductName":"5700xWRB0", "Top_Left":"320,293", "Top_Right":"703,293", "Bottom_Left":"320,951", "Bottom_Right":"703,951"},				
 				{"ProductName":"5700xWR00", "Top_Left":"322,315", "Top_Right":"703,315", "Bottom_Left":"322,973", "Bottom_Right":"703,973"},				
@@ -166,7 +166,7 @@
 			]
 		},
 		{
-			"18500B":
+			"18500B_-_Youth_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18500BxLP", "Top_Left":"656,639", "Top_Right":"1384,639", "Bottom_Left":"656,1471", "Bottom_Right":"1384,1471"},				
 				{"ProductName":"18500BxNB", "Top_Left":"656,639", "Top_Right":"1384,639", "Bottom_Left":"656,1471", "Bottom_Right":"1384,1471"},
@@ -183,7 +183,7 @@
 			]
 		},
 		{
-			"18600":
+			"18600_-_Men_Full-Zip_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18600xAP0", "Top_Left":"615,763", "Top_Right":"1063,763", "Bottom_Left":"615,1346", "Bottom_Right":"1063,1346"},				
 				{"ProductName":"18600xB00", "Top_Left":"615,763", "Top_Right":"1063,763", "Bottom_Left":"615,1346", "Bottom_Right":"1063,1346"},
@@ -196,7 +196,7 @@
 			]
 		},
 		{
-			"2000T":
+			"2000T_-_Unisex_Tall_Size_T-Shirt":
 			[				
 				{"ProductName":"2000TxB00", "Top_Left":"624,602", "Top_Right":"1388,602", "Bottom_Left":"624,1906", "Bottom_Right":"1388,1906"},				
 				{"ProductName":"2000TxC00", "Top_Left":"624,602", "Top_Right":"1388,602", "Bottom_Left":"624,1906", "Bottom_Right":"1388,1906"},
@@ -209,7 +209,7 @@
 			]
 		},
 		{
-			"2700":
+			"2700_-_Men_Sleeveless_T-Shirt":
 			[				
 				{"ProductName":"2700xB000", "Top_Left":"645,582", "Top_Right":"1441,582", "Bottom_Left":"645,1992", "Bottom_Right":"1441,1992"},				
 				{"ProductName":"2700xNB00", "Top_Left":"645,582", "Top_Right":"1441,582", "Bottom_Left":"645,1992", "Bottom_Right":"1441,1992"},
@@ -221,7 +221,7 @@
 			]
 		},
 		{
-			"18000B":
+			"18000B_-_Youth_Crewneck_Sweatshirt":
 			[				
 				{"ProductName":"18000BxB0", "Top_Left":"488,458", "Top_Right":"1182,458", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},				
 				{"ProductName":"18000BxCR", "Top_Left":"488,458", "Top_Right":"1182,458", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
@@ -236,7 +236,7 @@
 			]
 		},
 		{
-			"18600FL":
+			"18600FL_-_Women_Full-Zip_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18600FLxA", "Top_Left":"639,744", "Top_Right":"1034,744", "Bottom_Left":"639,1260", "Bottom_Right":"1034,1260"},				
 				{"ProductName":"18600FLxB", "Top_Left":"639,744", "Top_Right":"1034,744", "Bottom_Left":"639,1260", "Bottom_Right":"1034,1260"},
@@ -248,7 +248,7 @@
 			]
 		},
 		{
-			"64400":
+			"64400_-_Unisex_Long_Sleeve_T-Shirt":
 			[				
 				{"ProductName":"64400xB00", "Top_Left":"529,532", "Top_Right":"1136,532", "Bottom_Left":"529,1511", "Bottom_Right":"1136,1511"},				
 				{"ProductName":"64400xC00", "Top_Left":"529,532", "Top_Right":"1136,532", "Bottom_Left":"529,1511", "Bottom_Right":"1136,1511"},
@@ -260,7 +260,7 @@
 			]
 		},
 		{
-			"185C00":
+			"185C00_-_Unisex_Contrast_Color_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"185C00xBG", "Top_Left":"276,296", "Top_Right":"677,296", "Bottom_Left":"276,740", "Bottom_Right":"677,740"},				
 				{"ProductName":"185C00xBR", "Top_Left":"276,296", "Top_Right":"677,296", "Bottom_Left":"276,740", "Bottom_Right":"677,740"},
@@ -272,7 +272,7 @@
 			]
 		},
 		{
-			"S190TC":
+			"6633_-_Women_Jersey_Racerback_Tank_Top":
 			[				
 				{"ProductName":"S190TCxB0", "Top_Left":"447,697", "Top_Right":"1000,697", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},				
 				{"ProductName":"S190TCxHC", "Top_Left":"447,697", "Top_Right":"1000,697", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
@@ -284,7 +284,7 @@
 			]
 		},
 		{
-			"5100P":
+			"5100P_Toodler_T-Shirt_Tee":
 			[				
 				{"ProductName":"5100PxB00", "Top_Left":"644,721", "Top_Right":"1334,721", "Bottom_Left":"644,1809", "Bottom_Right":"1334,1809"},				
 				{"ProductName":"5100PxG00", "Top_Left":"644,721", "Top_Right":"1334,721", "Bottom_Left":"644,1809", "Bottom_Right":"1334,1809"},
@@ -298,7 +298,7 @@
 			]
 		},
 		{
-			"6012":
+			"6012_-_Women's_Jersey_Tank_Dress":
 			[				
 				{"ProductName":"6012xAHG0", "Top_Left":"1492,779", "Top_Right":"2072,779", "Bottom_Left":"1492,1594", "Bottom_Right":"2072,1594"},				
 				{"ProductName":"6012xNB00", "Top_Left":"1492,779", "Top_Right":"2072,779", "Bottom_Left":"1492,1594", "Bottom_Right":"2072,1594"},
@@ -307,7 +307,7 @@
 			]
 		},
 				{
-			"6680":
+			"6680_-_Women's_Crop_Tank_Top":
 			[				
 				{"ProductName":"6680xB000", "Top_Left":"779,711", "Top_Right":"1328,711", "Bottom_Left":"779,1339", "Bottom_Right":"1328,1339"},				
 				{"ProductName":"6680xCP00", "Top_Left":"793,693", "Top_Right":"1342,693", "Bottom_Left":"793,1293", "Bottom_Right":"1342,1293"},
@@ -419,7 +419,7 @@
 			]
 		},
 		{
-			"5000L":
+			"5000L_-_Women_T-Shirt":
 			[
 				{"ProductName":"5000LxAP0", "Top_Left":"594,471", "Top_Right":"1120,471", "Bottom_Left":"594,1317", "Bottom_Right":"1120,1317"},
 				{"ProductName":"5000LxB00", "Top_Left":"594,471", "Top_Right":"1120,471", "Bottom_Left":"594,1317", "Bottom_Right":"1120,1317"},
@@ -453,7 +453,7 @@
 			]
 		},
 		{
-			"ManTankTop":
+			"5200_-_Men_Tank_Top":
 			[				
 				{"ProductName":"2200xSG00", "Top_Left":"543,579", "Top_Right":"1097,579", "Bottom_Left":"543,1387", "Bottom_Right":"1097,1387"},				
 				{"ProductName":"2200xSB00", "Top_Left":"611,451", "Top_Right":"1020,451", "Bottom_Left":"611,1065", "Bottom_Right":"1020,1065"},	
@@ -469,7 +469,7 @@
 			]
 		},
 		{
-			"WomenTankTop":
+			"64200L_-_Women_Tank_Top":
 			[				
 				{"ProductName":"64200LxSG", "Top_Left":"621,646", "Top_Right":"1086,646", "Bottom_Left":"621,1285", "Bottom_Right":"1086,1285"},				
 				{"ProductName":"64200LxW0", "Top_Left":"616,597", "Top_Right":"1080,597", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},	
@@ -480,7 +480,7 @@
 			]
 		},
 		{
-			"Youth":
+			"5000B_-_Youth_Tshirt":
 			[				
 				{"ProductName":"5000BxSG0", "Top_Left":"293,358", "Top_Right":"691,358", "Bottom_Left":"293,886", "Bottom_Right":"691,886"},				
 				{"ProductName":"5000BxDHG", "Top_Left":"293,358", "Top_Right":"691,358", "Bottom_Left":"293,886", "Bottom_Right":"691,886"},				
@@ -497,7 +497,7 @@
 			]
 		},
 		{
-			"Menvneck":
+			"982_-_Men_V-Neck":
 			[				
 				{"ProductName":"982xB0000", "Top_Left":"362,311", "Top_Right":"668,311", "Bottom_Left":"362,787", "Bottom_Right":"668,787"},				
 				{"ProductName":"982xC0000", "Top_Left":"362,311", "Top_Right":"668,311", "Bottom_Left":"362,787", "Bottom_Right":"668,787"},				
@@ -511,7 +511,7 @@
 			]
 		},
 		{
-			"womenvneck":
+			"5V00L_-_Women_V-Neck_T-Shirt":
 			[				
 				{"ProductName":"5V00LxAP0", "Top_Left":"643,460", "Top_Right":"1027,460", "Bottom_Left":"643,1050", "Bottom_Right":"1027,1050"},				
 				{"ProductName":"5V00LxB00", "Top_Left":"643,460", "Top_Right":"1027,460", "Bottom_Left":"643,1050", "Bottom_Right":"1027,1050"},				
@@ -528,7 +528,7 @@
 			]
 		},
 		{
-			"raglan":
+			"5700_-_Unisex_Raglan_Sleeve_Baseball_T-Shirt":
 			[				
 				{"ProductName":"5700xWRB0", "Top_Left":"320,325", "Top_Right":"703,325", "Bottom_Left":"320,951", "Bottom_Right":"703,951"},				
 				{"ProductName":"5700xWR00", "Top_Left":"322,348", "Top_Right":"703,348", "Bottom_Left":"322,973", "Bottom_Right":"703,973"},				
@@ -539,7 +539,7 @@
 			]
 		},
 		{
-			"18500B":
+			"18500B_-_Youth_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18500BxLP", "Top_Left":"656,682", "Top_Right":"1384,682", "Bottom_Left":"656,1471", "Bottom_Right":"1384,1471"},				
 				{"ProductName":"18500BxNB", "Top_Left":"656,682", "Top_Right":"1384,682", "Bottom_Left":"656,1471", "Bottom_Right":"1384,1471"},
@@ -556,7 +556,7 @@
 			]
 		},
 		{
-			"18600":
+			"18600_-_Men_Full-Zip_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18600xAP0", "Top_Left":"615,778", "Top_Right":"1063,778", "Bottom_Left":"615,1346", "Bottom_Right":"1063,1346"},				
 				{"ProductName":"18600xB00", "Top_Left":"615,778", "Top_Right":"1063,778", "Bottom_Left":"615,1346", "Bottom_Right":"1063,1346"},
@@ -569,7 +569,7 @@
 			]
 		},
 		{
-			"2000T":
+			"2000T_-_Unisex_Tall_Size_T-Shirt":
 			[				
 				{"ProductName":"2000TxB00", "Top_Left":"624,681", "Top_Right":"1388,681", "Bottom_Left":"624,1906", "Bottom_Right":"1388,1906"},				
 				{"ProductName":"2000TxC00", "Top_Left":"624,681", "Top_Right":"1388,681", "Bottom_Left":"624,1906", "Bottom_Right":"1388,1906"},
@@ -582,7 +582,7 @@
 			]
 		},
 		{
-			"2700":
+			"2700_-_Men_Sleeveless_T-Shirt":
 			[				
 				{"ProductName":"2700xB000", "Top_Left":"645,656", "Top_Right":"1441,656", "Bottom_Left":"645,1992", "Bottom_Right":"1441,1992"},				
 				{"ProductName":"2700xNB00", "Top_Left":"645,656", "Top_Right":"1441,656", "Bottom_Left":"645,1992", "Bottom_Right":"1441,1992"},
@@ -594,7 +594,7 @@
 			]
 		},
 		{
-			"18000B":
+			"18000B_-_Youth_Crewneck_Sweatshirt":
 			[				
 				{"ProductName":"18000BxB0", "Top_Left":"488,506", "Top_Right":"1182,506", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},				
 				{"ProductName":"18000BxCR", "Top_Left":"488,506", "Top_Right":"1182,506", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
@@ -609,7 +609,7 @@
 			]
 		},
 		{
-			"18600FL":
+			"18600FL_-_Women_Full-Zip_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18600FLxA", "Top_Left":"639,756", "Top_Right":"1034,756", "Bottom_Left":"639,1260", "Bottom_Right":"1034,1260"},				
 				{"ProductName":"18600FLxB", "Top_Left":"639,756", "Top_Right":"1034,756", "Bottom_Left":"639,1260", "Bottom_Right":"1034,1260"},
@@ -621,7 +621,7 @@
 			]
 		},
 		{
-			"64400":
+			"64400_-_Unisex_Long_Sleeve_T-Shirt":
 			[				
 				{"ProductName":"64400xB00", "Top_Left":"529,584", "Top_Right":"1136,584", "Bottom_Left":"529,1511", "Bottom_Right":"1136,1511"},				
 				{"ProductName":"64400xC00", "Top_Left":"529,584", "Top_Right":"1136,584", "Bottom_Left":"529,1511", "Bottom_Right":"1136,1511"},
@@ -645,7 +645,7 @@
 			]
 		},
 		{
-			"S190TC":
+			"6633_-_Women_Jersey_Racerback_Tank_Top":
 			[				
 				{"ProductName":"S190TCxB0", "Top_Left":"447,734", "Top_Right":"100,734", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},				
 				{"ProductName":"S190TCxHC", "Top_Left":"447,734", "Top_Right":"100,734", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
@@ -657,7 +657,7 @@
 			]
 		},
 				{
-			"5100P":
+			"5100P_Toodler_T-Shirt_Tee":
 			[				
 				{"ProductName":"5100PxB00", "Top_Left":"644,774", "Top_Right":"1334,774", "Bottom_Left":"644,1809", "Bottom_Right":"1334,1809"},				
 				{"ProductName":"5100PxG00", "Top_Left":"644,774", "Top_Right":"1334,774", "Bottom_Left":"644,1809", "Bottom_Right":"1334,1809"},
@@ -671,7 +671,7 @@
 			]
 		},
 				{
-			"6012":
+			"6012_-_Women's_Jersey_Tank_Dress":
 			[				
 				{"ProductName":"6012xAHG0", "Top_Left":"1492,818", "Top_Right":"2072,818", "Bottom_Left":"1492,1594", "Bottom_Right":"2072,1594"},				
 				{"ProductName":"6012xNB00", "Top_Left":"1492,818", "Top_Right":"2072,818", "Bottom_Left":"1492,1594", "Bottom_Right":"2072,1594"},
@@ -680,7 +680,7 @@
 			]
 		},
 		{
-			"6680":
+			"6680_-_Women's_Crop_Tank_Top":
 			[				
 				{"ProductName":"6680xB000", "Top_Left":"779,741", "Top_Right":"1328,741", "Bottom_Left":"779,1339", "Bottom_Right":"1328,1339"},				
 				{"ProductName":"6680xCP00", "Top_Left":"793,722", "Top_Right":"1342,722", "Bottom_Left":"793,1293", "Bottom_Right":"1342,1293"},
@@ -791,7 +791,7 @@
 			]
 		},
 		{
-			"5000L":
+			"5000L_-_Women_T-Shirt":
 			[
 				{"ProductName":"5000LxAP0", "Top_Left":"594,552", "Top_Right":"1120,552", "Bottom_Left":"594,1317", "Bottom_Right":"1120,1317"},
 				{"ProductName":"5000LxB00", "Top_Left":"594,552", "Top_Right":"1120,552", "Bottom_Left":"594,1317", "Bottom_Right":"1120,1317"},
@@ -825,7 +825,7 @@
 			]
 		},
 		{
-			"ManTankTop":
+			"5200_-_Men_Tank_Top":
 			[				
 				{"ProductName":"2200xSG00", "Top_Left":"543,647", "Top_Right":"1097,647", "Bottom_Left":"543,1387", "Bottom_Right":"1097,1387"},				
 				{"ProductName":"2200xSB00", "Top_Left":"611,502", "Top_Right":"1020,502", "Bottom_Left":"611,1065", "Bottom_Right":"1020,1065"},	
@@ -841,7 +841,7 @@
 			]
 		},
 		{
-			"WomenTankTop":
+			"64200L_-_Women_Tank_Top":
 			[				
 				{"ProductName":"64200LxSG", "Top_Left":"621,694", "Top_Right":"1086,694", "Bottom_Left":"621,1285", "Bottom_Right":"1086,1285"},				
 				{"ProductName":"64200LxW0", "Top_Left":"616,648", "Top_Right":"1080,648", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},	
@@ -852,7 +852,7 @@
 			]
 		},
 				{
-			"Youth":
+			"5000B_-_Youth_Tshirt":
 			[				
 				{"ProductName":"5000BxSG0", "Top_Left":"293,409", "Top_Right":"691,409", "Bottom_Left":"293,886", "Bottom_Right":"691,886"},				
 				{"ProductName":"5000BxDHG", "Top_Left":"293,409", "Top_Right":"691,409", "Bottom_Left":"293,886", "Bottom_Right":"691,886"},				
@@ -869,7 +869,7 @@
 			]
 		},
 		{
-			"Menvneck":
+			"982_-_Men_V-Neck":
 			[				
 				{"ProductName":"982xB0000", "Top_Left":"362,356", "Top_Right":"668,356", "Bottom_Left":"362,787", "Bottom_Right":"668,787"},				
 				{"ProductName":"982xC0000", "Top_Left":"362,356", "Top_Right":"668,356", "Bottom_Left":"362,787", "Bottom_Right":"668,787"},				
@@ -883,7 +883,7 @@
 			]
 		},
 		{
-			"womenvneck":
+			"5V00L_-_Women_V-Neck_T-Shirt":
 			[				
 				{"ProductName":"5V00LxAP0", "Top_Left":"643,514", "Top_Right":"1027,514", "Bottom_Left":"643,1050", "Bottom_Right":"1027,1050"},				
 				{"ProductName":"5V00LxB00", "Top_Left":"643,514", "Top_Right":"1027,514", "Bottom_Left":"643,1050", "Bottom_Right":"1027,1050"},				
@@ -900,7 +900,7 @@
 			]
 		},
 		{
-			"raglan":
+			"5700_-_Unisex_Raglan_Sleeve_Baseball_T-Shirt":
 			[				
 				{"ProductName":"5700xWRB0", "Top_Left":"320,385", "Top_Right":"703,385", "Bottom_Left":"320,951", "Bottom_Right":"703,951"},				
 				{"ProductName":"5700xWR00", "Top_Left":"322,407", "Top_Right":"703,407", "Bottom_Left":"322,973", "Bottom_Right":"703,973"},				
@@ -911,7 +911,7 @@
 			]
 		},
 		{
-			"18500B":
+			"18500B_-_Youth_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18500BxLP", "Top_Left":"656,760", "Top_Right":"1384,760", "Bottom_Left":"656,1471", "Bottom_Right":"1384,1471"},				
 				{"ProductName":"18500BxNB", "Top_Left":"656,760", "Top_Right":"1384,760", "Bottom_Left":"656,1471", "Bottom_Right":"1384,1471"},
@@ -928,7 +928,7 @@
 			]
 		},
 		{
-			"18600":
+			"18600_-_Men_Full-Zip_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18600xAP0", "Top_Left":"615,804", "Top_Right":"1063,804", "Bottom_Left":"615,1346", "Bottom_Right":"1063,1346"},				
 				{"ProductName":"18600xB00", "Top_Left":"615,804", "Top_Right":"1063,804", "Bottom_Left":"615,1346", "Bottom_Right":"1063,1346"},
@@ -941,7 +941,7 @@
 			]
 		},
 		{
-			"2000T":
+			"2000T_-_Unisex_Tall_Size_T-Shirt":
 			[				
 				{"ProductName":"2000TxB00", "Top_Left":"624,827", "Top_Right":"1388,827", "Bottom_Left":"624,1906", "Bottom_Right":"1388,1906"},				
 				{"ProductName":"2000TxC00", "Top_Left":"624,827", "Top_Right":"1388,827", "Bottom_Left":"624,1906", "Bottom_Right":"1388,1906"},
@@ -954,7 +954,7 @@
 			]
 		},
 		{
-			"2700":
+			"2700_-_Men_Sleeveless_T-Shirt":
 			[				
 				{"ProductName":"2700xB000", "Top_Left":"645,794", "Top_Right":"1441,794", "Bottom_Left":"645,1992", "Bottom_Right":"1441,1992"},				
 				{"ProductName":"2700xNB00", "Top_Left":"645,794", "Top_Right":"1441,794", "Bottom_Left":"645,1992", "Bottom_Right":"1441,1992"},
@@ -966,7 +966,7 @@
 			]
 		},
 		{
-			"18000B":
+			"18000B_-_Youth_Crewneck_Sweatshirt":
 			[				
 				{"ProductName":"18000BxB0", "Top_Left":"488,597", "Top_Right":"1182,597", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},				
 				{"ProductName":"18000BxCR", "Top_Left":"488,597", "Top_Right":"1182,597", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
@@ -981,7 +981,7 @@
 			]
 		},
 		{
-			"18600FL":
+			"18600FL_-_Women_Full-Zip_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18600FLxA", "Top_Left":"639,779", "Top_Right":"1034,779", "Bottom_Left":"639,1260", "Bottom_Right":"1034,1260"},				
 				{"ProductName":"18600FLxB", "Top_Left":"639,779", "Top_Right":"1034,779", "Bottom_Left":"639,1260", "Bottom_Right":"1034,1260"},
@@ -993,7 +993,7 @@
 			]
 		},
 		{
-			"64400":
+			"64400_-_Unisex_Long_Sleeve_T-Shirt":
 			[				
 				{"ProductName":"64400xB00", "Top_Left":"529,681", "Top_Right":"1136,681", "Bottom_Left":"529,1511", "Bottom_Right":"1136,1511"},				
 				{"ProductName":"64400xC00", "Top_Left":"529,681", "Top_Right":"1136,681", "Bottom_Left":"529,1511", "Bottom_Right":"1136,1511"},
@@ -1005,7 +1005,7 @@
 			]
 		},
 		{
-			"185C00":
+			"185C00_-_Unisex_Contrast_Color_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"185C00xBG", "Top_Left":"276,361", "Top_Right":"677,361", "Bottom_Left":"276,740", "Bottom_Right":"677,740"},				
 				{"ProductName":"185C00xBR", "Top_Left":"276,361", "Top_Right":"677,361", "Bottom_Left":"276,740", "Bottom_Right":"677,740"},
@@ -1017,7 +1017,7 @@
 			]
 		},
 		{
-			"S190TC":
+			"6633_-_Women_Jersey_Racerback_Tank_Top":
 			[				
 				{"ProductName":"S190TCxB0", "Top_Left":"447,803", "Top_Right":"100,803", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},				
 				{"ProductName":"S190TCxHC", "Top_Left":"447,803", "Top_Right":"100,803", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
@@ -1029,7 +1029,7 @@
 			]
 		},
 						{
-			"5100P":
+			"5100P_Toodler_T-Shirt_Tee":
 			[				
 				{"ProductName":"5100PxB00", "Top_Left":"644,873", "Top_Right":"1334,873", "Bottom_Left":"644,1809", "Bottom_Right":"1334,1809"},				
 				{"ProductName":"5100PxG00", "Top_Left":"644,873", "Top_Right":"1334,873", "Bottom_Left":"644,1809", "Bottom_Right":"1334,1809"},
@@ -1043,7 +1043,7 @@
 			]
 		},
 		{
-			"6012":
+			"6012_-_Women's_Jersey_Tank_Dress":
 			[				
 				{"ProductName":"6012xAHG0", "Top_Left":"1492,892", "Top_Right":"2072,892", "Bottom_Left":"1492,1594", "Bottom_Right":"2072,1594"},				
 				{"ProductName":"6012xNB00", "Top_Left":"1492,892", "Top_Right":"2072,892", "Bottom_Left":"1492,1594", "Bottom_Right":"2072,1594"},
@@ -1052,7 +1052,7 @@
 			]
 		},
 		{
-			"6680":
+			"6680_-_Women's_Crop_Tank_Top":
 			[				
 				{"ProductName":"6680xB000", "Top_Left":"779,798", "Top_Right":"1328,798", "Bottom_Left":"779,1339", "Bottom_Right":"1328,1339"},				
 				{"ProductName":"6680xCP00", "Top_Left":"793,776", "Top_Right":"1342,776", "Bottom_Left":"793,1293", "Bottom_Right":"1342,1293"},
@@ -1163,7 +1163,7 @@
 			]
 		},
 		{
-			"5000L":
+			"5000L_-_Women_T-Shirt":
 			[
 				{"ProductName":"5000LxAP0", "Top_Left":"632,511", "Top_Right":"1082,511", "Bottom_Left":"632,1317", "Bottom_Right":"1082,1317"},
 				{"ProductName":"5000LxB00", "Top_Left":"632,511", "Top_Right":"1082,511", "Bottom_Left":"632,1317", "Bottom_Right":"1082,1317"},
@@ -1197,7 +1197,7 @@
 			]
 		},
 		{
-			"ManTankTop":
+			"5200_-_Men_Tank_Top":
 			[				
 				{"ProductName":"2200xSG00", "Top_Left":"584,613", "Top_Right":"1056,613", "Bottom_Left":"584,1387", "Bottom_Right":"1056,1387"},				
 				{"ProductName":"2200xSB00", "Top_Left":"641,476", "Top_Right":"990,476", "Bottom_Left":"641,1065", "Bottom_Right":"990,1065"},	
@@ -1213,7 +1213,7 @@
 			]
 		},
 		{
-			"WomenTankTop":
+			"64200L_-_Women_Tank_Top":
 			[				
 				{"ProductName":"64200LxSG", "Top_Left":"655,670", "Top_Right":"1052,670", "Bottom_Left":"655,1285", "Bottom_Right":"1052,1285"},				
 				{"ProductName":"64200LxW0", "Top_Left":"650,623", "Top_Right":"1046,623", "Bottom_Left":"650,1257", "Bottom_Right":"1046,1257"},	
@@ -1224,7 +1224,7 @@
 			]
 		},
 				{
-			"Youth":
+			"5000B_-_Youth_Tshirt":
 			[				
 				{"ProductName":"5000BxSG0", "Top_Left":"323,384", "Top_Right":"662,384", "Bottom_Left":"323,886", "Bottom_Right":"662,886"},				
 				{"ProductName":"5000BxDHG", "Top_Left":"323,384", "Top_Right":"662,384", "Bottom_Left":"323,886", "Bottom_Right":"662,886"},				
@@ -1241,7 +1241,7 @@
 			]
 		},
 		{
-			"Menvneck":
+			"982_-_Men_V-Neck":
 			[				
 				{"ProductName":"982xB0000", "Top_Left":"384,333", "Top_Right":"646,333", "Bottom_Left":"384,787", "Bottom_Right":"646,787"},				
 				{"ProductName":"982xC0000", "Top_Left":"384,333", "Top_Right":"646,333", "Bottom_Left":"384,787", "Bottom_Right":"646,787"},				
@@ -1255,7 +1255,7 @@
 			]
 		},
 		{
-			"womenvneck":
+			"5V00L_-_Women_V-Neck_T-Shirt":
 			[				
 				{"ProductName":"5V00LxAP0", "Top_Left":"671,486", "Top_Right":"999,486", "Bottom_Left":"671,1050", "Bottom_Right":"999,1050"},				
 				{"ProductName":"5V00LxB00", "Top_Left":"671,486", "Top_Right":"999,486", "Bottom_Left":"671,1050", "Bottom_Right":"999,1050"},				
@@ -1272,7 +1272,7 @@
 			]
 		},
 		{
-			"raglan":
+			"5700_-_Unisex_Raglan_Sleeve_Baseball_T-Shirt":
 			[				
 				{"ProductName":"5700xWRB0", "Top_Left":"348,355", "Top_Right":"673,355", "Bottom_Left":"348,951", "Bottom_Right":"673,951"},				
 				{"ProductName":"5700xWR00", "Top_Left":"350,377", "Top_Right":"675,377", "Bottom_Left":"350,973", "Bottom_Right":"675,973"},				
@@ -1283,7 +1283,7 @@
 			]
 		},
 		{
-			"18500B":
+			"18500B_-_Youth_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18500BxLP", "Top_Left":"709,721", "Top_Right":"1331,721", "Bottom_Left":"709,1471", "Bottom_Right":"1331,1471"},				
 				{"ProductName":"18500BxNB", "Top_Left":"709,721", "Top_Right":"1331,721", "Bottom_Left":"709,1471", "Bottom_Right":"1331,1471"},
@@ -1300,7 +1300,7 @@
 			]
 		},
 		{
-			"18600":
+			"18600_-_Men_Full-Zip_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18600xAP0", "Top_Left":"648,791", "Top_Right":"1030,791", "Bottom_Left":"648,1346", "Bottom_Right":"1030,1346"},				
 				{"ProductName":"18600xB00", "Top_Left":"648,791", "Top_Right":"1030,791", "Bottom_Left":"648,1346", "Bottom_Right":"1030,1346"},
@@ -1313,7 +1313,7 @@
 			]
 		},
 		{
-			"2000T":
+			"2000T_-_Unisex_Tall_Size_T-Shirt":
 			[				
 				{"ProductName":"2000TxB00", "Top_Left":"679,753", "Top_Right":"1333,753", "Bottom_Left":"679,1906", "Bottom_Right":"1333,1906"},				
 				{"ProductName":"2000TxC00", "Top_Left":"679,753", "Top_Right":"1333,753", "Bottom_Left":"679,1906", "Bottom_Right":"1333,1906"},
@@ -1326,7 +1326,7 @@
 			]
 		},
 		{
-			"2700":
+			"2700_-_Men_Sleeveless_T-Shirt":
 			[				
 				{"ProductName":"2700xB000", "Top_Left":"703,725", "Top_Right":"1383,725", "Bottom_Left":"703,1992", "Bottom_Right":"1383,1992"},				
 				{"ProductName":"2700xNB00", "Top_Left":"703,725", "Top_Right":"1383,725", "Bottom_Left":"703,1992", "Bottom_Right":"1383,1992"},
@@ -1338,7 +1338,7 @@
 			]
 		},
 		{
-			"18000B":
+			"18000B_-_Youth_Crewneck_Sweatshirt":
 			[				
 				{"ProductName":"18000BxB0", "Top_Left":"538,551", "Top_Right":"1132,551", "Bottom_Left":"538,1456", "Bottom_Right":"1132,1456"},				
 				{"ProductName":"18000BxCR", "Top_Left":"538,551", "Top_Right":"1132,551", "Bottom_Left":"538,1456", "Bottom_Right":"1132,1456"},
@@ -1353,7 +1353,7 @@
 			]
 		},
 		{
-			"18600FL":
+			"18600FL_-_Women_Full-Zip_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"18600FLxA", "Top_Left":"668,768", "Top_Right":"1005,768", "Bottom_Left":"668,1260", "Bottom_Right":"1005,1260"},				
 				{"ProductName":"18600FLxB", "Top_Left":"668,768", "Top_Right":"1005,768", "Bottom_Left":"668,1260", "Bottom_Right":"1005,1260"},
@@ -1365,7 +1365,7 @@
 			]
 		},
 		{
-			"64400":
+			"64400_-_Unisex_Long_Sleeve_T-Shirt":
 			[				
 				{"ProductName":"64400xB00", "Top_Left":"573,632", "Top_Right":"1092,632", "Bottom_Left":"573,1511", "Bottom_Right":"1092,1511"},				
 				{"ProductName":"64400xC00", "Top_Left":"573,632", "Top_Right":"1092,632", "Bottom_Left":"573,1511", "Bottom_Right":"1092,1511"},
@@ -1377,7 +1377,7 @@
 			]
 		},
 		{
-			"185C00":
+			"185C00_-_Unisex_Contrast_Color_Hooded_Sweatshirt":
 			[				
 				{"ProductName":"185C00xBG", "Top_Left":"306,340", "Top_Right":"648,340", "Bottom_Left":"306,740", "Bottom_Right":"648,740"},				
 				{"ProductName":"185C00xBR", "Top_Left":"306,340", "Top_Right":"648,340", "Bottom_Left":"306,740", "Bottom_Right":"648,740"},
@@ -1389,7 +1389,7 @@
 			]
 		},
 		{
-			"S190TC":
+			"6633_-_Women_Jersey_Racerback_Tank_Top":
 			[				
 				{"ProductName":"S190TCxB0", "Top_Left":"494,769", "Top_Right":"1043,769", "Bottom_Left":"494,1602", "Bottom_Right":"1043,1602"},				
 				{"ProductName":"S190TCxHC", "Top_Left":"494,769", "Top_Right":"1043,769", "Bottom_Left":"494,1602", "Bottom_Right":"1043,1602"},
@@ -1401,7 +1401,7 @@
 			]
 		},
 		{
-			"5100P":
+			"5100P_Toodler_T-Shirt_Tee":
 			[				
 				{"ProductName":"5100PxB00", "Top_Left":"694,823", "Top_Right":"1283,823", "Bottom_Left":"694,1809", "Bottom_Right":"1283,1809"},				
 				{"ProductName":"5100PxG00", "Top_Left":"694,823", "Top_Right":"1283,823", "Bottom_Left":"694,1809", "Bottom_Right":"1283,1809"},
@@ -1415,7 +1415,7 @@
 			]
 		},
 		{
-			"6012":
+			"6012_-_Women's_Jersey_Tank_Dress":
 			[				
 				{"ProductName":"6012xAHG0", "Top_Left":"1534,855", "Top_Right":"2030,855", "Bottom_Left":"1534,1594", "Bottom_Right":"2030,1594"},				
 				{"ProductName":"6012xNB00", "Top_Left":"1534,855", "Top_Right":"2030,855", "Bottom_Left":"1534,1594", "Bottom_Right":"2030,1594"},
@@ -1424,7 +1424,7 @@
 			]
 		},
 				{
-			"6680":
+			"6680_-_Women's_Crop_Tank_Top":
 			[				
 				{"ProductName":"6680xB000", "Top_Left":"819,770", "Top_Right":"1288,770", "Bottom_Left":"819,1339", "Bottom_Right":"1288,1339"},				
 				{"ProductName":"6680xCP00", "Top_Left":"833,749", "Top_Right":"1302,749", "Bottom_Left":"833,1293", "Bottom_Right":"1302,1293"},

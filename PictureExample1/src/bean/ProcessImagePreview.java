@@ -62,7 +62,7 @@ public class ProcessImagePreview implements Callable{
 			Graphics2D graphicProduct = (Graphics2D) productBuff.getGraphics();
 			graphicProduct.drawImage(logoBuff, coordinatX, coordinatY, null);
 			graphicProduct.dispose();			
-			
+
 			imageMap.put(fileName, productBuff);
 			
 		} catch (IOException e) {
