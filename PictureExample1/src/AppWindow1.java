@@ -395,22 +395,22 @@ public class AppWindow1 {
 		
 		// radio button operations	
 		rdBtnSablon1 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon1.setBounds(533, 10, 82, 20);
+		rdBtnSablon1.setBounds(554, 10, 66, 20);
 		formToolkit.adapt(rdBtnSablon1, true, true);
 		rdBtnSablon1.setText("\u015Eablon 1");
 		
 		rdBtnSablon2 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon2.setBounds(749, 10, 82, 20);
+		rdBtnSablon2.setBounds(761, 10, 66, 20);
 		formToolkit.adapt(rdBtnSablon2, true, true);
 		rdBtnSablon2.setText("\u015Eablon 2");
 		
 		rdBtnSablon3 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon3.setBounds(957, 10, 82, 20);
+		rdBtnSablon3.setBounds(970, 10, 66, 20);
 		formToolkit.adapt(rdBtnSablon3, true, true);
 		rdBtnSablon3.setText("\u015Eablon 3");
 		
 		rdBtnSablon4 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon4.setBounds(1165, 10, 82, 20);
+		rdBtnSablon4.setBounds(1173, 10, 66, 20);
 		formToolkit.adapt(rdBtnSablon4, true, true);
 		rdBtnSablon4.setText("\u015Eablon 4");
 		
