@@ -137,7 +137,17 @@ public class ProcessModel implements Runnable{
 			
 				angle = getAngle(new Point(productTemplateCoodinates.get(4),productTemplateCoodinates.get(5)),
 						new Point(productTemplateCoodinates.get(6),productTemplateCoodinates.get(7)));				
-
+				
+				if(productName.equals("8880xNP00")){
+					angle= -0.15;
+					calculatedPosition.set(1, productTemplateCoodinates.get(7));
+				}else if(productName.equals("8880xNY00")){
+					angle= +0.13;					
+				}else if((productName.equals("S190TCxHF") 
+						|| productName.equals("S190TCxHR")||productName.equals("S190TCxHU"))){
+					angle= +0.05;
+				}
+				
 			tempLogoOriginal = rotate(tempLogoOriginal,angle);
 			
 			Graphics2D graphic = resizedLogo.createGraphics();

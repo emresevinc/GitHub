@@ -753,7 +753,7 @@ public class AppWindow1 {
 				List<ProductUI> productUIList = null;
 				int coreTemplateSize = coreTemplateList.size();
 //				ExecutorService executor = Executors.newCachedThreadPool();
-				ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(20);
+				ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
 				List<Integer> calculatedPosition = new ArrayList();
 				List<Integer> productTemplateCoodinates = new ArrayList();
 				for (int i = 0; i < coreTemplateSize; i++) {
@@ -908,7 +908,7 @@ public class AppWindow1 {
 			List<ProductUI> productUIList = null;
 			int coreTemplateSize = coreTemplateList.size();
 			previewBuffer = new HashMap<String, BufferedImage>();
-			ThreadPoolExecutor call = (ThreadPoolExecutor) Executors.newFixedThreadPool(20);
+			ThreadPoolExecutor call = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
 			Set<Future<HashMap<String, BufferedImage>>> set = new HashSet<Future<HashMap<String, BufferedImage>>>();
 			HashMap<String, BufferedImage> imageMap = new HashMap<String, BufferedImage>();
 			List<Integer> calculatedPosition = new ArrayList();
