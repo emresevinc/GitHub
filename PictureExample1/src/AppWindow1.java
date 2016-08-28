@@ -752,7 +752,8 @@ public class AppWindow1 {
 				CoreTemplate coreTemplate = null;
 				List<ProductUI> productUIList = null;
 				int coreTemplateSize = coreTemplateList.size();
-				ExecutorService executor = Executors.newCachedThreadPool();
+//				ExecutorService executor = Executors.newCachedThreadPool();
+				ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(20);
 				List<Integer> calculatedPosition = new ArrayList();
 				List<Integer> productTemplateCoodinates = new ArrayList();
 				for (int i = 0; i < coreTemplateSize; i++) {
@@ -989,7 +990,7 @@ public class AppWindow1 {
 		
 		//productTemplateCoodinates Seçilen þablona göre ilgili ürünün o þablona ait koordinatlarýný dönecek
 		// productTemplateCoodinates [Bottom_LeftX , Bottom_LeftY , Bottom_RightX , Bottom_RightY , TopLeftX , TopLeftY , TopRightX , TopRightY]
-		System.out.println("productName:"+productName+" modelName:"+modelName);
+		System.out.println("productName:"+productName+" modelName:"+modelName + " selectedTemplate:"+selectedTemplate);
 		productTemplateCoodinates = getProductTemplateCoordinates(selectedTemplate,productTemplateCoodinates,modelName,productName);
 		
 		int templateHeight = productTemplateCoodinates.get(1) - productTemplateCoodinates.get(5); // Bottom_LeftY - TopLeftY
@@ -1010,7 +1011,18 @@ public class AppWindow1 {
 			
 				angle = getAngle(new Point(productTemplateCoodinates.get(4),productTemplateCoodinates.get(5)),
 						new Point(productTemplateCoodinates.get(6),productTemplateCoodinates.get(7)));				
-
+				
+				
+				if(productName.equals("8880xNP00")){
+					angle= -0.15;
+					calculatedPosition.set(1, productTemplateCoodinates.get(7));
+				}else if(productName.equals("8880xNY00")){
+					angle= +0.13;					
+				}else if((productName.equals("S190TCxHF") 
+						|| productName.equals("S190TCxHR")||productName.equals("S190TCxHU"))){
+					angle= +0.05;
+				}
+				
 			tempLogoOriginal = rotate(tempLogoOriginal,angle);
 			
 			Graphics2D graphic = resizedLogo.createGraphics();

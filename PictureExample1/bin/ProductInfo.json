@@ -8,7 +8,7 @@
 			]
 		},
 		{
-			"Gildan_5000_Mens_Tee":
+			"5000_-_Men_T-Shirt":
 			[
 				{"ProductName":"5000xB000", "Top_Left":"542,425", "Top_Right":"1122,425", "Bottom_Left":"542,1374", "Bottom_Right":"1122,1374"},				
 				{"ProductName":"5000xOR00", "Top_Left":"602,291", "Top_Right":"1029,291", "Bottom_Left":"602,990", "Bottom_Right":"1029,990"},
@@ -28,7 +28,7 @@
 			]
 		},
 		{
-			"Gildan_18500_Unisex_Hoodie":
+			"18500_-_Unisex_Hooded_Sweatshirt":
 			[
 				{"ProductName":"18500xDHG", "Top_Left":"319,289", "Top_Right":"741,289", "Bottom_Left":"319,765", "Bottom_Right":"741,765"},
 				{"ProductName":"18500xSG0", "Top_Left":"319,289", "Top_Right":"741,289", "Bottom_Left":"319,765", "Bottom_Right":"741,765"},				
@@ -64,7 +64,7 @@
 			]
 		},
 				{
-			"Gildan_18000_Unisex_Crewneck":
+			"18000_-_Unisex_Crewneck_Sweatshirt":
 			[
 				{"ProductName":"18000xB00", "Top_Left":"245,285", "Top_Right":"736,285", "Bottom_Left":"245,871", "Bottom_Right":"736,871"},
 				{"ProductName":"18000xDHG", "Top_Left":"245,285", "Top_Right":"736,285", "Bottom_Left":"245,871", "Bottom_Right":"736,871"},				
@@ -381,7 +381,7 @@
 			]
 		},
 		{
-			"Gildan_5000_Mens_Tee":
+			"5000_-_Men_T-Shirt":
 			[
 				{"ProductName":"5000xB000", "Top_Left":"542,471", "Top_Right":"1122,471", "Bottom_Left":"542,1374", "Bottom_Right":"1122,1374"},				
 				{"ProductName":"5000xOR00", "Top_Left":"602,325", "Top_Right":"1029,325", "Bottom_Left":"602,990", "Bottom_Right":"1029,990"},
@@ -401,7 +401,7 @@
 			]
 		},
 		{
-			"Gildan_18500_Unisex_Hoodie":
+			"18500_-_Unisex_Hooded_Sweatshirt":
 			[
 				{"ProductName":"18500xDHG", "Top_Left":"319,314", "Top_Right":"741,314", "Bottom_Left":"319,765", "Bottom_Right":"741,765"},
 				{"ProductName":"18500xSG0", "Top_Left":"319,314", "Top_Right":"741,314", "Bottom_Left":"319,765", "Bottom_Right":"741,765"},				
@@ -437,7 +437,7 @@
 			]
 		},
 				{
-			"Gildan_18000_Unisex_Crewneck":
+			"18000_-_Unisex_Crewneck_Sweatshirt":
 			[
 				{"ProductName":"18000xB00", "Top_Left":"245,309", "Top_Right":"736,309", "Bottom_Left":"245,871", "Bottom_Right":"736,871"},
 				{"ProductName":"18000xDHG", "Top_Left":"245,309", "Top_Right":"736,309", "Bottom_Left":"245,871", "Bottom_Right":"736,871"},				
@@ -753,7 +753,7 @@
 			]
 		},
 		{
-			"Gildan_5000_Mens_Tee":
+			"5000_-_Men_T-Shirt":
 			[
 				{"ProductName":"5000xB000", "Top_Left":"542,557", "Top_Right":"1122,557", "Bottom_Left":"542,1374", "Bottom_Right":"1122,1374"},				
 				{"ProductName":"5000xOR00", "Top_Left":"602,388", "Top_Right":"1029,388", "Bottom_Left":"602,990", "Bottom_Right":"1029,990"},
@@ -773,7 +773,7 @@
 			]
 		},
 		{
-			"Gildan_18500_Unisex_Hoodie":
+			"18500_-_Unisex_Hooded_Sweatshirt":
 			[
 				{"ProductName":"18500xDHG", "Top_Left":"319,383", "Top_Right":"741,383", "Bottom_Left":"319,765", "Bottom_Right":"741,765"},
 				{"ProductName":"18500xSG0", "Top_Left":"319,383", "Top_Right":"741,383", "Bottom_Left":"319,765", "Bottom_Right":"741,765"},				
@@ -809,7 +809,7 @@
 			]
 		},
 				{
-			"Gildan_18000_Unisex_Crewneck":
+			"18000_-_Unisex_Crewneck_Sweatshirt":
 			[
 				{"ProductName":"18000xB00", "Top_Left":"245,362", "Top_Right":"736,362", "Bottom_Left":"245,871", "Bottom_Right":"736,871"},
 				{"ProductName":"18000xDHG", "Top_Left":"245,362", "Top_Right":"736,362", "Bottom_Left":"245,871", "Bottom_Right":"736,871"},				
@@ -1125,7 +1125,7 @@
 			]
 		},
 		{
-			"Gildan_5000_Mens_Tee":
+			"5000_-_Men_T-Shirt":
 			[
 				{"ProductName":"5000xB000", "Top_Left":"584,514", "Top_Right":"1080,514", "Bottom_Left":"584,1374", "Bottom_Right":"1080,1374"},				
 				{"ProductName":"5000xOR00", "Top_Left":"633,356", "Top_Right":"998,356", "Bottom_Left":"633,990", "Bottom_Right":"998,990"},
@@ -1145,7 +1145,7 @@
 			]
 		},
 		{
-			"Gildan_18500_Unisex_Hoodie":
+			"18500_-_Unisex_Hooded_Sweatshirt":
 			[
 				{"ProductName":"18500xDHG", "Top_Left":"350,337", "Top_Right":"710,337", "Bottom_Left":"350,765", "Bottom_Right":"710,765"},
 				{"ProductName":"18500xSG0", "Top_Left":"350,337", "Top_Right":"710,337", "Bottom_Left":"350,765", "Bottom_Right":"710,765"},				
@@ -1181,7 +1181,7 @@
 			]
 		},
 				{
-			"Gildan_18000_Unisex_Crewneck":
+			"18000_-_Unisex_Crewneck_Sweatshirt":
 			[
 				{"ProductName":"18000xB00", "Top_Left":"309,333", "Top_Right":"670,333", "Bottom_Left":"309,871", "Bottom_Right":"670,871"},
 				{"ProductName":"18000xDHG", "Top_Left":"309,333", "Top_Right":"670,333", "Bottom_Left":"309,871", "Bottom_Right":"670,871"},				
