@@ -309,7 +309,7 @@ public class AppWindow1 {
 			}
 		});
 		btnBirLogoSeiniz.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\fileChooser.png"));
-		btnBirLogoSeiniz.setBounds(10, 36, 155, 35);
+		btnBirLogoSeiniz.setBounds(10, 36, 162, 35);
 		
 		txtLogo = formToolkit.createText(shlLogoapp, "New Text", SWT.BORDER | SWT.WRAP | SWT.MULTI);
 		txtLogo.setText("");
@@ -395,22 +395,22 @@ public class AppWindow1 {
 		
 		// radio button operations	
 		rdBtnSablon1 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon1.setBounds(554, 10, 66, 20);
+		rdBtnSablon1.setBounds(547, 10, 82, 20);
 		formToolkit.adapt(rdBtnSablon1, true, true);
 		rdBtnSablon1.setText("\u015Eablon 1");
 		
 		rdBtnSablon2 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon2.setBounds(761, 10, 66, 20);
+		rdBtnSablon2.setBounds(754, 10, 82, 20);
 		formToolkit.adapt(rdBtnSablon2, true, true);
 		rdBtnSablon2.setText("\u015Eablon 2");
 		
 		rdBtnSablon3 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon3.setBounds(970, 10, 66, 20);
+		rdBtnSablon3.setBounds(963, 10, 82, 20);
 		formToolkit.adapt(rdBtnSablon3, true, true);
 		rdBtnSablon3.setText("\u015Eablon 3");
 		
 		rdBtnSablon4 = new Button(shlLogoapp, SWT.RADIO);
-		rdBtnSablon4.setBounds(1173, 10, 66, 20);
+		rdBtnSablon4.setBounds(1166, 10, 82, 20);
 		formToolkit.adapt(rdBtnSablon4, true, true);
 		rdBtnSablon4.setText("\u015Eablon 4");
 		
@@ -434,7 +434,7 @@ public class AppWindow1 {
 				}
 			}
 		});
-		btnKaydedilecekYer.setBounds(10, 175, 145, 35);
+		btnKaydedilecekYer.setBounds(10, 175, 162, 35);
 		formToolkit.adapt(btnKaydedilecekYer, true, true);
 		btnKaydedilecekYer.setText("Kaydedilecek Yer");
 		
@@ -593,7 +593,7 @@ public class AppWindow1 {
 			rdBtnSablon2.setSelection(false);
 			rdBtnSablon3.setSelection(false);
 			rdBtnSablon4.setSelection(false);
-			clearAllTemplates();
+			//clearAllTemplates();
         	txtLogo.setText(logoPath);
             LogoName = logoPath.split("\\\\");
             LogoNameStr = LogoName[LogoName.length-1];
@@ -605,9 +605,9 @@ public class AppWindow1 {
 	}
 	
 	private void processTemplates() throws IOException {// Ek gelistirme ile istedikleri urunun sablon olmasý istenirse bu metoda 'modelName' ve 'productName' parametre olarak gelmesi yeterli olur
-		String modelName = "BaseTemplate"; //"Gildan 18500 Unisex Hoodie";
+		String modelName = "BaseTemplate"; 
 		String modelNameStr = modelName.replace(" ", "_");
-		String productName = "BaseTemplate"; //"18500xB00";
+		String productName = "BaseTemplate"; 
 		List<Integer> templateCoordinates = null;
 		List<Integer> calculatedPosition = new ArrayList<Integer>();
 
@@ -926,7 +926,7 @@ public class AppWindow1 {
 					tempProductUI = productUIList.get(j);
 					calculatedPosition.clear();
 					productTemplateCoodinates.clear();
-					//if(tempProductUI.getCheckIsApply().getSelection()){
+					if(tempProductUI.getCheckIsApply().getSelection()){
 						String productFullPath = logoAppModelsPath +"\\"+tempProductUI.getModelName()+"\\"+tempProductUI.getProductName();
 						calculatedPosition = scaleLogoForOriginalProductForTemplate(productFullPath, getFileName(logoPath), selectedTemplate,calculatedPosition,productTemplateCoodinates);  
 						
@@ -934,8 +934,8 @@ public class AppWindow1 {
 								calculatedPosition.get(0), calculatedPosition.get(1),txtLogoName.getText(),getFileName(productFullPath),resizedLogo,tempProductUI.getRadioParent().getSelection(),imageMap);
 						
 						Future<HashMap<String, BufferedImage>> future = call.submit(callable);
-					      set.add(future);
-
+					    set.add(future);
+					}
 				}
 				
 				
@@ -948,15 +948,18 @@ public class AppWindow1 {
 				System.out.println("preview awaitTermination"+e.getMessage());
 			}
 			for (Future<HashMap<String, BufferedImage>> future : set) {
-//				if(future!=null)
 				try {
-					
+//					if(future.get() == null)
+//						future.wait();
 					previewBuffer.putAll(future.get());					
 				} catch (Exception e) {
 					System.out.println("preview future.get error"+e.getMessage());
+					System.out.println(future+" futureeee");
+					System.out.println(future.get()+" future getttttt");
 					e.printStackTrace();
 				}
 			}
+			
 
 			showAllProducts(previewPath,previewBuffer);
 		}else{
@@ -1175,29 +1178,6 @@ public class AppWindow1 {
 	}
 	
 	
-
-	public void drawww(String productPath,String logoPath,String createPath,int coordinatX,int coordinatY){
-		BufferedImage productBuff = null;
-		BufferedImage logoBuff = null;
-		File f = null;
-		try {
-			productBuff = ImageIO.read(f = new File(productPath));
-			logoBuff = ImageIO.read(new File(logoPath));
-			
-			Graphics2D graphicProduct = (Graphics2D) productBuff.getGraphics();
-			graphicProduct.drawImage(logoBuff, coordinatX, coordinatY, null);
-			graphicProduct.dispose();
-			
-//			File modelDirectory = new File(createPath+"\\"F+f.getParentFile().getName());
-//			if(!modelDirectory.exists())
-//				modelDirectory.mkdir();
-//			ImageIO.write(productBuff, "png", new File(createPath+"\\"+f.getParentFile().getName()+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
-			ImageIO.write(productBuff, "png", new File(createPath+"\\"+txtLogoName.getText()+getFileName(productPath)+".png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
 	
 	public BufferedImage drawForTemplate(BufferedImage productBuff,BufferedImage logoBuff,String createPath,int coordinatX,int coordinatY){
 
@@ -1231,14 +1211,14 @@ public class AppWindow1 {
 			
 			for(int x = 0; x < productSize; x++){
 		    	productUI = tempProductUIList.get(x);
-		    	//if(productUI.getCheckIsApply().getSelection()){
+		    	if(productUI.getCheckIsApply().getSelection()){
 					String productName = productUI.getProductName();
 			    	String productNameStr = productName.substring(0, productName.length()-4)+".png";
 			    
 			    	Callable<HashMap<String, Image>> callable = new WriteImagePreview(previewBuffer.get(productName.substring(0, productName.indexOf("."))), 180, 220, scaledAndProgressedPath+"\\"+productNameStr,productName.substring(0, productName.indexOf(".")),display,imageMap);					
 					Future<HashMap<String, Image>> future = call.submit(callable);
 					imageSet.add(future);
-
+		    	}
 		    }
 			
 		}
@@ -1251,6 +1231,10 @@ public class AppWindow1 {
 		}
 		for (Future<HashMap<String, Image>> future : imageSet) {
 			try {
+				if(future == null)
+					System.out.println("null future showAllProducts"+future);
+				if(future.get() == null)
+					System.out.println("null future.get() showAllProducts"+future);
 				labelImage.putAll(future.get());				
 			} catch (Exception e) {
 				System.out.println("showAllProducts future.get"+e.getMessage());
@@ -1276,16 +1260,16 @@ public class AppWindow1 {
 
 			for(int x = 0; x < productSize; x++){
 		    	productUI = tempProductUIList.get(x);
-		    	//if(productUI.getCheckIsApply().getSelection()){
-		    	try {
-		    		String productName = productUI.getProductName();
-		    		
-		    		tempProductUIList.get(x).getLblProductImg().setImage(labelImage.get(productName.substring(0, productName.indexOf("."))));	    	
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-		    	//}
+		    	if(productUI.getCheckIsApply().getSelection()){
+			    	try {
+			    		String productName = productUI.getProductName();
+			    		
+			    		tempProductUIList.get(x).getLblProductImg().setImage(labelImage.get(productName.substring(0, productName.indexOf("."))));	    	
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+		    	}
 			}
 
 		}

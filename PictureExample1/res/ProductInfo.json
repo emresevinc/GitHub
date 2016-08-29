@@ -82,7 +82,7 @@
 		{
 			"5200_-_Men_Tank_Top":
 			[				
-				{"ProductName":"2200xSG00", "Top_Left":"543,542", "Top_Right":"1097,542", "Bottom_Left":"543,1387", "Bottom_Right":"1097,1387"},				
+				{"ProductName":"2200xSG00", "Top_Left":"543,524", "Top_Right":"1094,524", "Bottom_Left":"543,1368", "Bottom_Right":"1094,1368"},				
 				{"ProductName":"2200xSB00", "Top_Left":"611,424", "Top_Right":"1020,424", "Bottom_Left":"611,1065", "Bottom_Right":"1020,1065"},	
 				{"ProductName":"2200xLG00", "Top_Left":"611,424", "Top_Right":"1020,424", "Bottom_Left":"611,1065", "Bottom_Right":"1020,1065"},				
 				{"ProductName":"2200xC000", "Top_Left":"553,542", "Top_Right":"1107,542", "Bottom_Left":"553,1375", "Bottom_Right":"1107,1375"},
@@ -98,7 +98,7 @@
 		{
 			"64200L_-_Women_Tank_Top":
 			[				
-				{"ProductName":"64200LxSG", "Top_Left":"621,620", "Top_Right":"1086,620", "Bottom_Left":"621,1285", "Bottom_Right":"1086,1285"},				
+				{"ProductName":"64200LxSG", "Top_Left":"621,602", "Top_Right":"1085,602", "Bottom_Left":"621,1267", "Bottom_Right":"1085,1267"},				
 				{"ProductName":"64200LxW0", "Top_Left":"616,570", "Top_Right":"1080,570", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},	
 				{"ProductName":"64200LxR0", "Top_Left":"616,570", "Top_Right":"1080,570", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},				
 				{"ProductName":"64200LxNB", "Top_Left":"616,570", "Top_Right":"1080,570", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},
@@ -223,16 +223,16 @@
 		{
 			"18000B_-_Youth_Crewneck_Sweatshirt":
 			[				
-				{"ProductName":"18000BxB0", "Top_Left":"488,458", "Top_Right":"1182,458", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},				
-				{"ProductName":"18000BxCR", "Top_Left":"488,458", "Top_Right":"1182,458", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxGB", "Top_Left":"488,458", "Top_Right":"1182,458", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxMG", "Top_Left":"488,458", "Top_Right":"1182,458", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxNB", "Top_Left":"488,458", "Top_Right":"1182,458", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},				
-				{"ProductName":"18000BxR0", "Top_Left":"488,458", "Top_Right":"1182,458", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxRB", "Top_Left":"488,458", "Top_Right":"1182,458", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxSG", "Top_Left":"506,457", "Top_Right":"1166,457", "Bottom_Left":"506,1456", "Bottom_Right":"1166,1456"},
-				{"ProductName":"18000BxAP", "Top_Left":"657,367", "Top_Right":"1175,367", "Bottom_Left":"657,1095", "Bottom_Right":"1175,1095"},
-				{"ProductName":"18000BxDG", "Top_Left":"657,367", "Top_Right":"1175,367", "Bottom_Left":"657,1095", "Bottom_Right":"1175,1095"}
+				{"ProductName":"18000BxB0", "Top_Left":"551,491", "Top_Right":"1136,491", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},				
+				{"ProductName":"18000BxCR", "Top_Left":"551,491", "Top_Right":"1136,491", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxGB", "Top_Left":"551,491", "Top_Right":"1136,491", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxMG", "Top_Left":"551,491", "Top_Right":"1136,491", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxNB", "Top_Left":"551,491", "Top_Right":"1136,491", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},				
+				{"ProductName":"18000BxR0", "Top_Left":"551,491", "Top_Right":"1136,491", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxRB", "Top_Left":"551,491", "Top_Right":"1136,491", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxSG", "Top_Left":"543,491", "Top_Right":"1128,491", "Bottom_Left":"543,1346", "Bottom_Right":"1128,1346"},
+				{"ProductName":"18000BxAP", "Top_Left":"689,385", "Top_Right":"1142,385", "Bottom_Left":"689,1048", "Bottom_Right":"1142,1048"},
+				{"ProductName":"18000BxDG", "Top_Left":"689,385", "Top_Right":"1142,385", "Bottom_Left":"689,1048", "Bottom_Right":"1142,1048"}
 			]
 		},
 		{
@@ -274,10 +274,10 @@
 		{
 			"6633_-_Women_Jersey_Racerback_Tank_Top":
 			[				
-				{"ProductName":"S190TCxB0", "Top_Left":"447,697", "Top_Right":"1000,697", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},				
-				{"ProductName":"S190TCxHC", "Top_Left":"447,697", "Top_Right":"1000,697", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
-				{"ProductName":"S190TCxHN", "Top_Left":"447,697", "Top_Right":"1000,697", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
-				{"ProductName":"S190TCxW0", "Top_Left":"447,697", "Top_Right":"1000,697", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
+				{"ProductName":"S190TCxB0", "Top_Left":"447,697", "Top_Right":"1090,697", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},				
+				{"ProductName":"S190TCxHC", "Top_Left":"447,697", "Top_Right":"1090,697", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},
+				{"ProductName":"S190TCxHN", "Top_Left":"447,697", "Top_Right":"1090,697", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},
+				{"ProductName":"S190TCxW0", "Top_Left":"447,697", "Top_Right":"1090,697", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},
 				{"ProductName":"S190TCxHF", "Top_Left":"407,734", "Top_Right":"1052,735", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"},			
 				{"ProductName":"S190TCxHR", "Top_Left":"407,734", "Top_Right":"1052,735", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"},
 				{"ProductName":"S190TCxHU", "Top_Left":"407,734", "Top_Right":"1052,735", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"}
@@ -320,7 +320,7 @@
 			"8816_-_Women's_Slouchy_T-Shirt":
 			[				
 				{"ProductName":"8816xAHG0", "Top_Left":"763,805", "Top_Right":"1485,805", "Bottom_Left":"763,1676", "Bottom_Right":"1485,1676"},				
-				{"ProductName":"8816xB000", "Top_Left":"838,608", "Top_Right":"1414,608", "Bottom_Left":"838,1237", "Bottom_Right":"1414,1237"},
+				{"ProductName":"8816xB000", "Top_Left":"838,608", "Top_Right":"1414,608", "Bottom_Left":"838,1452", "Bottom_Right":"1414,1452"},
 				{"ProductName":"8816xBRR0", "Top_Left":"798,685", "Top_Right":"1429,685", "Bottom_Left":"798,1619", "Bottom_Right":"1429,1619"},
 				{"ProductName":"8816xKLL0", "Top_Left":"777,659", "Top_Right":"1402,659", "Bottom_Left":"777,1518", "Bottom_Right":"1402,1518"},
 				{"ProductName":"8816xMDN0", "Top_Left":"835,659", "Top_Right":"1422,659", "Bottom_Left":"835,1517", "Bottom_Right":"1422,1517"},				
@@ -455,7 +455,7 @@
 		{
 			"5200_-_Men_Tank_Top":
 			[				
-				{"ProductName":"2200xSG00", "Top_Left":"543,579", "Top_Right":"1097,579", "Bottom_Left":"543,1387", "Bottom_Right":"1097,1387"},				
+				{"ProductName":"2200xSG00", "Top_Left":"543,561", "Top_Right":"1094,561", "Bottom_Left":"543,1368", "Bottom_Right":"1094,1368"},				
 				{"ProductName":"2200xSB00", "Top_Left":"611,451", "Top_Right":"1020,451", "Bottom_Left":"611,1065", "Bottom_Right":"1020,1065"},	
 				{"ProductName":"2200xLG00", "Top_Left":"611,451", "Top_Right":"1020,451", "Bottom_Left":"611,1065", "Bottom_Right":"1020,1065"},				
 				{"ProductName":"2200xC000", "Top_Left":"553,579", "Top_Right":"1107,579", "Bottom_Left":"553,1375", "Bottom_Right":"1107,1375"},
@@ -471,7 +471,7 @@
 		{
 			"64200L_-_Women_Tank_Top":
 			[				
-				{"ProductName":"64200LxSG", "Top_Left":"621,646", "Top_Right":"1086,646", "Bottom_Left":"621,1285", "Bottom_Right":"1086,1285"},				
+				{"ProductName":"64200LxSG", "Top_Left":"621,630", "Top_Right":"1085,630", "Bottom_Left":"621,1267", "Bottom_Right":"1085,1267"},				
 				{"ProductName":"64200LxW0", "Top_Left":"616,597", "Top_Right":"1080,597", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},	
 				{"ProductName":"64200LxR0", "Top_Left":"616,597", "Top_Right":"1080,597", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},				
 				{"ProductName":"64200LxNB", "Top_Left":"616,597", "Top_Right":"1080,597", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},
@@ -596,16 +596,16 @@
 		{
 			"18000B_-_Youth_Crewneck_Sweatshirt":
 			[				
-				{"ProductName":"18000BxB0", "Top_Left":"488,506", "Top_Right":"1182,506", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},				
-				{"ProductName":"18000BxCR", "Top_Left":"488,506", "Top_Right":"1182,506", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxGB", "Top_Left":"488,506", "Top_Right":"1182,506", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxMG", "Top_Left":"488,506", "Top_Right":"1182,506", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxNB", "Top_Left":"488,506", "Top_Right":"1182,506", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},				
-				{"ProductName":"18000BxR0", "Top_Left":"488,506", "Top_Right":"1182,506", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxRB", "Top_Left":"488,506", "Top_Right":"1182,506", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxSG", "Top_Left":"506,506", "Top_Right":"1116,506", "Bottom_Left":"506,1456", "Bottom_Right":"1166,1456"},
-				{"ProductName":"18000BxAP", "Top_Left":"657,403", "Top_Right":"1175,403", "Bottom_Left":"657,1095", "Bottom_Right":"1175,1095"},
-				{"ProductName":"18000BxDG", "Top_Left":"657,403", "Top_Right":"1175,403", "Bottom_Left":"657,1095", "Bottom_Right":"1175,1095"}
+				{"ProductName":"18000BxB0", "Top_Left":"551,533", "Top_Right":"1136,533", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},				
+				{"ProductName":"18000BxCR", "Top_Left":"551,533", "Top_Right":"1136,533", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxGB", "Top_Left":"551,533", "Top_Right":"1136,533", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxMG", "Top_Left":"551,533", "Top_Right":"1136,533", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxNB", "Top_Left":"551,533", "Top_Right":"1136,533", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},				
+				{"ProductName":"18000BxR0", "Top_Left":"551,533", "Top_Right":"1136,533", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxRB", "Top_Left":"551,533", "Top_Right":"1136,533", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxSG", "Top_Left":"543,533", "Top_Right":"1128,533", "Bottom_Left":"543,1346", "Bottom_Right":"1128,1346"},
+				{"ProductName":"18000BxAP", "Top_Left":"689,417", "Top_Right":"1142,417", "Bottom_Left":"689,1048", "Bottom_Right":"1142,1048"},
+				{"ProductName":"18000BxDG", "Top_Left":"689,417", "Top_Right":"1142,417", "Bottom_Left":"689,1048", "Bottom_Right":"1142,1048"}
 			]
 		},
 		{
@@ -647,10 +647,10 @@
 		{
 			"6633_-_Women_Jersey_Racerback_Tank_Top":
 			[				
-				{"ProductName":"S190TCxB0", "Top_Left":"447,734", "Top_Right":"100,734", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},				
-				{"ProductName":"S190TCxHC", "Top_Left":"447,734", "Top_Right":"100,734", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
-				{"ProductName":"S190TCxHN", "Top_Left":"447,734", "Top_Right":"100,734", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
-				{"ProductName":"S190TCxW0", "Top_Left":"447,734", "Top_Right":"100,734", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
+				{"ProductName":"S190TCxB0", "Top_Left":"447,734", "Top_Right":"1090,734", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},				
+				{"ProductName":"S190TCxHC", "Top_Left":"447,734", "Top_Right":"1090,734", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},
+				{"ProductName":"S190TCxHN", "Top_Left":"447,734", "Top_Right":"1090,734", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},
+				{"ProductName":"S190TCxW0", "Top_Left":"447,734", "Top_Right":"1090,734", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},
 				{"ProductName":"S190TCxHF", "Top_Left":"406,770", "Top_Right":"1050,771", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"},			
 				{"ProductName":"S190TCxHR", "Top_Left":"406,770", "Top_Right":"1050,771", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"},
 				{"ProductName":"S190TCxHU", "Top_Left":"406,770", "Top_Right":"1050,771", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"}
@@ -658,7 +658,7 @@
 		},
 				{
 			"5100P_Toodler_T-Shirt_Tee":
-			[				
+			[				 
 				{"ProductName":"5100PxB00", "Top_Left":"644,774", "Top_Right":"1334,774", "Bottom_Left":"644,1809", "Bottom_Right":"1334,1809"},				
 				{"ProductName":"5100PxG00", "Top_Left":"644,774", "Top_Right":"1334,774", "Bottom_Left":"644,1809", "Bottom_Right":"1334,1809"},
 				{"ProductName":"5100PxLB0", "Top_Left":"644,774", "Top_Right":"1334,774", "Bottom_Left":"644,1809", "Bottom_Right":"1334,1809"},
@@ -693,7 +693,7 @@
 			"8816_-_Women's_Slouchy_T-Shirt":
 			[				
 				{"ProductName":"8816xAHG0", "Top_Left":"763,847", "Top_Right":"1485,847", "Bottom_Left":"763,1676", "Bottom_Right":"1485,1676"},				
-				{"ProductName":"8816xB000", "Top_Left":"838,638", "Top_Right":"1414,638", "Bottom_Left":"838,1237", "Bottom_Right":"1414,1237"},
+				{"ProductName":"8816xB000", "Top_Left":"838,650", "Top_Right":"1414,650", "Bottom_Left":"838,1452", "Bottom_Right":"1414,1452"},
 				{"ProductName":"8816xBRR0", "Top_Left":"798,730", "Top_Right":"1429,730", "Bottom_Left":"798,1619", "Bottom_Right":"1429,1619"},
 				{"ProductName":"8816xKLL0", "Top_Left":"777,701", "Top_Right":"1402,701", "Bottom_Left":"777,1518", "Bottom_Right":"1402,1518"},
 				{"ProductName":"8816xMDN0", "Top_Left":"835,701", "Top_Right":"1422,701", "Bottom_Left":"835,1517", "Bottom_Right":"1422,1517"},				
@@ -827,7 +827,7 @@
 		{
 			"5200_-_Men_Tank_Top":
 			[				
-				{"ProductName":"2200xSG00", "Top_Left":"543,647", "Top_Right":"1097,647", "Bottom_Left":"543,1387", "Bottom_Right":"1097,1387"},				
+				{"ProductName":"2200xSG00", "Top_Left":"543,630", "Top_Right":"1094,630", "Bottom_Left":"543,1368", "Bottom_Right":"1094,1368"},				
 				{"ProductName":"2200xSB00", "Top_Left":"611,502", "Top_Right":"1020,502", "Bottom_Left":"611,1065", "Bottom_Right":"1020,1065"},	
 				{"ProductName":"2200xLG00", "Top_Left":"611,502", "Top_Right":"1020,502", "Bottom_Left":"611,1065", "Bottom_Right":"1020,1065"},				
 				{"ProductName":"2200xC000", "Top_Left":"553,648", "Top_Right":"1107,648", "Bottom_Left":"553,1375", "Bottom_Right":"1107,1375"},
@@ -843,7 +843,7 @@
 		{
 			"64200L_-_Women_Tank_Top":
 			[				
-				{"ProductName":"64200LxSG", "Top_Left":"621,694", "Top_Right":"1086,694", "Bottom_Left":"621,1285", "Bottom_Right":"1086,1285"},				
+				{"ProductName":"64200LxSG", "Top_Left":"621,680", "Top_Right":"1085,680", "Bottom_Left":"621,1267", "Bottom_Right":"1085,1267"},				
 				{"ProductName":"64200LxW0", "Top_Left":"616,648", "Top_Right":"1080,648", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},	
 				{"ProductName":"64200LxR0", "Top_Left":"616,648", "Top_Right":"1080,648", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},				
 				{"ProductName":"64200LxNB", "Top_Left":"616,648", "Top_Right":"1080,648", "Bottom_Left":"616,1257", "Bottom_Right":"1080,1257"},
@@ -857,7 +857,7 @@
 				{"ProductName":"5000BxSG0", "Top_Left":"293,409", "Top_Right":"691,409", "Bottom_Left":"293,886", "Bottom_Right":"691,886"},				
 				{"ProductName":"5000BxDHG", "Top_Left":"293,409", "Top_Right":"691,409", "Bottom_Left":"293,886", "Bottom_Right":"691,886"},				
 				{"ProductName":"5000BxW00", "Top_Left":"321,349", "Top_Right":"681,349", "Bottom_Left":"321,871", "Bottom_Right":"681,871"},				
-				{"ProductName":"5000BxAP0", "Top_Left":"321,349", "Top_Right":"681,349", "Bottom_Left":"321,871", "Bottom_Right":"681,871"},
+				{"ProductName":"5000BxAP0", "Top_Left":"321,439", "Top_Right":"681,439", "Bottom_Left":"321,871", "Bottom_Right":"681,871"},
 				{"ProductName":"5000BxB00", "Top_Left":"321,349", "Top_Right":"681,349", "Bottom_Left":"321,871", "Bottom_Right":"681,871"},
 				{"ProductName":"5000BxHP0", "Top_Left":"321,349", "Top_Right":"681,349", "Bottom_Left":"321,871", "Bottom_Right":"681,871"},
 				{"ProductName":"5000BxIG0", "Top_Left":"321,349", "Top_Right":"681,349", "Bottom_Left":"321,871", "Bottom_Right":"681,871"},				
@@ -968,16 +968,16 @@
 		{
 			"18000B_-_Youth_Crewneck_Sweatshirt":
 			[				
-				{"ProductName":"18000BxB0", "Top_Left":"488,597", "Top_Right":"1182,597", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},				
-				{"ProductName":"18000BxCR", "Top_Left":"488,597", "Top_Right":"1182,597", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxGB", "Top_Left":"488,597", "Top_Right":"1182,597", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxMG", "Top_Left":"488,597", "Top_Right":"1182,597", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxNB", "Top_Left":"488,597", "Top_Right":"1182,597", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},				
-				{"ProductName":"18000BxR0", "Top_Left":"488,597", "Top_Right":"1182,597", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxRB", "Top_Left":"488,597", "Top_Right":"1182,597", "Bottom_Left":"488,1456", "Bottom_Right":"1182,1456"},
-				{"ProductName":"18000BxSG", "Top_Left":"506,597", "Top_Right":"1116,597", "Bottom_Left":"506,1456", "Bottom_Right":"1166,1456"},
-				{"ProductName":"18000BxAP", "Top_Left":"657,469", "Top_Right":"1175,469", "Bottom_Left":"657,1095", "Bottom_Right":"1175,1095"},
-				{"ProductName":"18000BxDG", "Top_Left":"657,469", "Top_Right":"1175,469", "Bottom_Left":"657,1095", "Bottom_Right":"1175,1095"}
+				{"ProductName":"18000BxB0", "Top_Left":"551,610", "Top_Right":"1136,610", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},				
+				{"ProductName":"18000BxCR", "Top_Left":"551,610", "Top_Right":"1136,610", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxGB", "Top_Left":"551,610", "Top_Right":"1136,610", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxMG", "Top_Left":"551,610", "Top_Right":"1136,610", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxNB", "Top_Left":"551,610", "Top_Right":"1136,610", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},				
+				{"ProductName":"18000BxR0", "Top_Left":"551,610", "Top_Right":"1136,610", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxRB", "Top_Left":"551,610", "Top_Right":"1136,610", "Bottom_Left":"551,1346", "Bottom_Right":"1136,1346"},
+				{"ProductName":"18000BxSG", "Top_Left":"543,610", "Top_Right":"1128,610", "Bottom_Left":"543,1346", "Bottom_Right":"1128,1346"},
+				{"ProductName":"18000BxAP", "Top_Left":"689,477", "Top_Right":"1142,477", "Bottom_Left":"689,1048", "Bottom_Right":"1142,1048"},
+				{"ProductName":"18000BxDG", "Top_Left":"689,477", "Top_Right":"1142,477", "Bottom_Left":"689,1048", "Bottom_Right":"1142,1048"}
 			]
 		},
 		{
@@ -1019,10 +1019,10 @@
 		{
 			"6633_-_Women_Jersey_Racerback_Tank_Top":
 			[				
-				{"ProductName":"S190TCxB0", "Top_Left":"447,803", "Top_Right":"100,803", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},				
-				{"ProductName":"S190TCxHC", "Top_Left":"447,803", "Top_Right":"100,803", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
-				{"ProductName":"S190TCxHN", "Top_Left":"447,803", "Top_Right":"100,803", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
-				{"ProductName":"S190TCxW0", "Top_Left":"447,803", "Top_Right":"100,803", "Bottom_Left":"447,1602", "Bottom_Right":"1000,1602"},
+				{"ProductName":"S190TCxB0", "Top_Left":"447,803", "Top_Right":"1090,803", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},				
+				{"ProductName":"S190TCxHC", "Top_Left":"447,803", "Top_Right":"1090,803", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},
+				{"ProductName":"S190TCxHN", "Top_Left":"447,803", "Top_Right":"1090,803", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},
+				{"ProductName":"S190TCxW0", "Top_Left":"447,803", "Top_Right":"1090,803", "Bottom_Left":"447,1602", "Bottom_Right":"1090,1602"},
 				{"ProductName":"S190TCxHF", "Top_Left":"405,841", "Top_Right":"1048,842", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"},			
 				{"ProductName":"S190TCxHR", "Top_Left":"405,841", "Top_Right":"1048,842", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"},
 				{"ProductName":"S190TCxHU", "Top_Left":"405,841", "Top_Right":"1048,842", "Bottom_Left":"384,1660", "Bottom_Right":"1037,1661"}
@@ -1065,7 +1065,7 @@
 			"8816_-_Women's_Slouchy_T-Shirt":
 			[				
 				{"ProductName":"8816xAHG0", "Top_Left":"763,926", "Top_Right":"1485,926", "Bottom_Left":"763,1676", "Bottom_Right":"1485,1676"},				
-				{"ProductName":"8816xB000", "Top_Left":"838,696", "Top_Right":"1414,696", "Bottom_Left":"838,1237", "Bottom_Right":"1414,1237"},
+				{"ProductName":"8816xB000", "Top_Left":"838,726", "Top_Right":"1414,726", "Bottom_Left":"838,1452", "Bottom_Right":"1414,1452"},
 				{"ProductName":"8816xBRR0", "Top_Left":"798,815", "Top_Right":"1429,815", "Bottom_Left":"798,1619", "Bottom_Right":"1429,1619"},
 				{"ProductName":"8816xKLL0", "Top_Left":"777,778", "Top_Right":"1402,778", "Bottom_Left":"777,1518", "Bottom_Right":"1402,1518"},
 				{"ProductName":"8816xMDN0", "Top_Left":"835,779", "Top_Right":"1422,779", "Bottom_Left":"835,1517", "Bottom_Right":"1422,1517"},				
@@ -1199,7 +1199,7 @@
 		{
 			"5200_-_Men_Tank_Top":
 			[				
-				{"ProductName":"2200xSG00", "Top_Left":"584,613", "Top_Right":"1056,613", "Bottom_Left":"584,1387", "Bottom_Right":"1056,1387"},				
+				{"ProductName":"2200xSG00", "Top_Left":"584,596", "Top_Right":"1056,596", "Bottom_Left":"584,1368", "Bottom_Right":"1056,1368"},				
 				{"ProductName":"2200xSB00", "Top_Left":"641,476", "Top_Right":"990,476", "Bottom_Left":"641,1065", "Bottom_Right":"990,1065"},	
 				{"ProductName":"2200xLG00", "Top_Left":"641,476", "Top_Right":"990,476", "Bottom_Left":"641,1065", "Bottom_Right":"990,1065"},				
 				{"ProductName":"2200xC000", "Top_Left":"594,613", "Top_Right":"1066,613", "Bottom_Left":"594,1375", "Bottom_Right":"1066,1375"},
@@ -1215,7 +1215,7 @@
 		{
 			"64200L_-_Women_Tank_Top":
 			[				
-				{"ProductName":"64200LxSG", "Top_Left":"655,670", "Top_Right":"1052,670", "Bottom_Left":"655,1285", "Bottom_Right":"1052,1285"},				
+				{"ProductName":"64200LxSG", "Top_Left":"655,655", "Top_Right":"1051,655", "Bottom_Left":"655,1267", "Bottom_Right":"1051,1267"},				
 				{"ProductName":"64200LxW0", "Top_Left":"650,623", "Top_Right":"1046,623", "Bottom_Left":"650,1257", "Bottom_Right":"1046,1257"},	
 				{"ProductName":"64200LxR0", "Top_Left":"650,623", "Top_Right":"1046,623", "Bottom_Left":"650,1257", "Bottom_Right":"1046,1257"},				
 				{"ProductName":"64200LxNB", "Top_Left":"650,623", "Top_Right":"1046,623", "Bottom_Left":"650,1257", "Bottom_Right":"1046,1257"},
@@ -1340,16 +1340,16 @@
 		{
 			"18000B_-_Youth_Crewneck_Sweatshirt":
 			[				
-				{"ProductName":"18000BxB0", "Top_Left":"538,551", "Top_Right":"1132,551", "Bottom_Left":"538,1456", "Bottom_Right":"1132,1456"},				
-				{"ProductName":"18000BxCR", "Top_Left":"538,551", "Top_Right":"1132,551", "Bottom_Left":"538,1456", "Bottom_Right":"1132,1456"},
-				{"ProductName":"18000BxGB", "Top_Left":"538,551", "Top_Right":"1132,551", "Bottom_Left":"538,1456", "Bottom_Right":"1132,1456"},
-				{"ProductName":"18000BxMG", "Top_Left":"538,551", "Top_Right":"1132,551", "Bottom_Left":"538,1456", "Bottom_Right":"1132,1456"},
-				{"ProductName":"18000BxNB", "Top_Left":"538,551", "Top_Right":"1132,551", "Bottom_Left":"538,1456", "Bottom_Right":"1132,1456"},				
-				{"ProductName":"18000BxR0", "Top_Left":"538,551", "Top_Right":"1132,551", "Bottom_Left":"538,1456", "Bottom_Right":"1132,1456"},
-				{"ProductName":"18000BxRB", "Top_Left":"538,551", "Top_Right":"1132,551", "Bottom_Left":"538,1456", "Bottom_Right":"1132,1456"},
-				{"ProductName":"18000BxSG", "Top_Left":"553,551", "Top_Right":"1118,551", "Bottom_Left":"553,1456", "Bottom_Right":"1118,1456"},
-				{"ProductName":"18000BxAP", "Top_Left":"694,436", "Top_Right":"1137,436", "Bottom_Left":"694,1095", "Bottom_Right":"1137,1095"},
-				{"ProductName":"18000BxDG", "Top_Left":"694,436", "Top_Right":"1137,436", "Bottom_Left":"694,1095", "Bottom_Right":"1137,1095"}
+				{"ProductName":"18000BxB0", "Top_Left":"593,571", "Top_Right":"1093,571", "Bottom_Left":"593,1346", "Bottom_Right":"1093,1346"},				
+				{"ProductName":"18000BxCR", "Top_Left":"593,571", "Top_Right":"1093,571", "Bottom_Left":"593,1346", "Bottom_Right":"1093,1346"},
+				{"ProductName":"18000BxGB", "Top_Left":"593,571", "Top_Right":"1093,571", "Bottom_Left":"593,1346", "Bottom_Right":"1093,1346"},
+				{"ProductName":"18000BxMG", "Top_Left":"593,571", "Top_Right":"1093,571", "Bottom_Left":"593,1346", "Bottom_Right":"1093,1346"},
+				{"ProductName":"18000BxNB", "Top_Left":"593,571", "Top_Right":"1093,571", "Bottom_Left":"593,1346", "Bottom_Right":"1093,1346"},				
+				{"ProductName":"18000BxR0", "Top_Left":"593,571", "Top_Right":"1093,571", "Bottom_Left":"593,1346", "Bottom_Right":"1093,1346"},
+				{"ProductName":"18000BxRB", "Top_Left":"593,571", "Top_Right":"1093,571", "Bottom_Left":"593,1346", "Bottom_Right":"1093,1346"},
+				{"ProductName":"18000BxSG", "Top_Left":"585,571", "Top_Right":"1085,571", "Bottom_Left":"585,1346", "Bottom_Right":"1085,1346"},
+				{"ProductName":"18000BxAP", "Top_Left":"721,447", "Top_Right":"1109,447", "Bottom_Left":"721,1048", "Bottom_Right":"1109,1048"},
+				{"ProductName":"18000BxDG", "Top_Left":"721,447", "Top_Right":"1109,447", "Bottom_Left":"721,1048", "Bottom_Right":"1109,1048"}
 			]
 		},
 		{
@@ -1438,7 +1438,7 @@
 			"8816_-_Women's_Slouchy_T-Shirt":
 			[				
 				{"ProductName":"8816xAHG0", "Top_Left":"815,886", "Top_Right":"1431,886", "Bottom_Left":"815,1676", "Bottom_Right":"1431,1676"},				
-				{"ProductName":"8816xB000", "Top_Left":"880,666", "Top_Right":"1372,666", "Bottom_Left":"880,1237", "Bottom_Right":"1372,1237"},
+				{"ProductName":"8816xB000", "Top_Left":"880,688", "Top_Right":"1372,688", "Bottom_Left":"880,1452", "Bottom_Right":"1372,1452"},
 				{"ProductName":"8816xBRR0", "Top_Left":"844,773", "Top_Right":"1383,773", "Bottom_Left":"844,1619", "Bottom_Right":"1383,1619"},
 				{"ProductName":"8816xKLL0", "Top_Left":"823,740", "Top_Right":"1357,740", "Bottom_Left":"823,1518", "Bottom_Right":"1357,1518"},
 				{"ProductName":"8816xMDN0", "Top_Left":"878,740", "Top_Right":"1379,740", "Bottom_Left":"878,1517", "Bottom_Right":"1379,1517"},				
