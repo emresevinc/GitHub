@@ -14,11 +14,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -61,7 +59,6 @@ import bean.CoreTemplate;
 import bean.Model;
 import bean.ProcessImage;
 import bean.ProcessImagePreview;
-import bean.ProcessModel;
 import bean.Product;
 import bean.ProductUI;
 import bean.WriteImagePreview;
@@ -111,6 +108,7 @@ public class AppWindow1 {
 	Button rdBtnSablon2 = null;
 	Button rdBtnSablon3 = null;
 	Button rdBtnSablon4 = null;
+	Button btnIsApplyPreviewChk = null;
 	private static final String logoAppModelsPath = "C:\\LogoApp\\Models";
 	private static final String scaledLogoPath = "C:\\LogoApp\\ScaledLogos";
 	private static final String scaledAndProgressedPath = "C:\\LogoApp\\ScaledAndProgressed"; // Bu path iþlenmiþ ürünleri scale edilmiþ hallerinin bulunduðu path'tir. Ürünler iþlendikten sonra ekranda scale halini buradan alýyoruz
@@ -127,11 +125,14 @@ public class AppWindow1 {
 	BufferedImage resizedLogo = null;
 	BufferedImage logoOriginalForTemplate = null;
 	private static final String previewPath ="C:\\LogoApp\\Preview";
-	private static HashMap<String, BufferedImage> previewBuffer;
-	private static HashMap<String, Image> labelImage;
+	private HashMap<String, BufferedImage> previewBuffer;
+	private HashMap<String, Image> labelImage;
 	private Text txtSaveDirectory;
 	private HashMap<TableItem, CoreTemplate> mapControlModel = null;
 	private static final String baseTemplate = "C:\\LogoApp\\Templates\\SizeChart.png";
+	private ExpandBar expandBar = null;
+	private static File logoAppFolder = null;
+	private static File[] listOfFiles = null;
 	
 	//Program ilk çalistiginda bu static blok ilk json dosyasý sadece bir kereye mahsus read edilir
 	static Object jsonMainobj = null;
@@ -141,6 +142,8 @@ public class AppWindow1 {
 	{
 	JSONParser parser = new JSONParser();
 		try {
+			logoAppFolder =  new File(logoAppModelsPath);
+			listOfFiles = logoAppFolder.listFiles();
 			InputStream is = AppWindow1.class.getClassLoader().getResourceAsStream("ProductInfo.json");
 			String json = null;
 			if(is != null)
@@ -177,90 +180,25 @@ public class AppWindow1 {
 		
 		// Bu kod bloðu model ürün hiyerarþisini saðlýyor ve model ürün bilgisini elde ediyor
 		modelList = new ArrayList<Model>();// Orjinal model bilgilerini alýyor
+		mapControlModel = new HashMap<TableItem,CoreTemplate>();
 		
-		File folder = new File(logoAppModelsPath);
-		File[] listOfFiles = folder.listFiles();
-		Model tempModel = null;
-	    for (int i = 0; i < listOfFiles.length; i++) {
-	    	tempModel = new Model();
-	    	if (listOfFiles[i].isDirectory()) {
-	    		String modelFullPath = logoAppModelsPath +"\\"+listOfFiles[i].getName();
-	    		String modelName = listOfFiles[i].getName();
-	    		tempModel.setModelFullPath(modelFullPath);
-	    		tempModel.setModelName(modelName);
-	    		File folderIn = new File(modelFullPath);
-	    		File[] listOfFiles2 = folderIn.listFiles();
-	    		List<Product> productList = new ArrayList<Product>();
-	    		Product tempProduct = null;
-	    		for (int j = 0; j < listOfFiles2.length; j++) {
-					tempProduct = new Product();
-					tempProduct.setModelName(modelName);
-					tempProduct.setProductFullPath(listOfFiles2[j].getPath());
-					tempProduct.setProductName(listOfFiles2[j].getName());
-					productList.add(tempProduct);
-				}
-	    		tempModel.setProductList(productList);
-	    		modelList.add(tempModel);
-	    	}
-	    }
-	    ////////////////////////////////////////////
 	    
 	    tblModels = new Table(shlLogoapp, SWT.BORDER | SWT.CHECK);
 	    tblModels.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		tblModels.setBounds(10, 280, 252, 312);
+		tblModels.setBounds(10, 280, 252, 356);
 		formToolkit.adapt(tblModels);
 		formToolkit.paintBordersFor(tblModels);
 		tblModels.setHeaderVisible(false);
-		mapControlModel = new HashMap<TableItem,CoreTemplate>();
+		
 		
 	 // Expandbar ve ExpandItem oluþturan kod bloðu
-	 	ExpandBar expandBar = new ExpandBar(shlLogoapp, SWT.V_SCROLL);
+	    expandBar = new ExpandBar(shlLogoapp, SWT.V_SCROLL);
 	 	expandBar.setSpacing(6);
 	 	expandBar.setBounds(269, 280, 1036, 1500);		
-
-	 	//ExpandItem oluþturma iþlemi
-	    Composite composite = null;
-		GridLayout gridLayout = null;
-		CoreTemplate coreTemplate = null;
-		ExpandItem xpndtmNewExpanditem = null; 
-		Model currentModel = null;
-		TableItem tableItem = null;
-		for (int i = 0; i < modelList.size(); i++) {
-			currentModel = modelList.get(i);
-			
-			composite = new Composite(expandBar, SWT.NONE);
-			gridLayout = new GridLayout(9, false); //3
-			gridLayout.horizontalSpacing = 20;
-			composite.setLayout(gridLayout);
-			
-			//model bazlý logo isleme checkbox kontrolu icin duzenleme
-			tableItem = new TableItem(tblModels, SWT.NONE);
-			tableItem.setText(currentModel.getModelName());
-			tableItem.setChecked(true);
-			
-			//ExpandBar'a ExpandItem eklenmesi
-			xpndtmNewExpanditem = new ExpandItem(expandBar, SWT.NONE,i);
-			xpndtmNewExpanditem.setExpanded(false);
-			xpndtmNewExpanditem.setText(modelList.get(i).getModelName());
-			
-			//ExpandItem icin componentleri iceren CoreTemplate nesnesinin olusturulmasi
-			coreTemplate = new CoreTemplate(composite,currentModel); // label'larý gride teker teker uygun sýrada dolduracaktýr
-			
-			mapControlModel.put(tableItem, coreTemplate);
-			
-			coreTemplateList.add(coreTemplate);
-			
-			showProducts(coreTemplate); // Siradaki model altýndaki urunlerin ekrana basilmasi icin tetikleniyor
-			
-			xpndtmNewExpanditem.setHeight(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);//(coreTemplate.getAllRegionList().size() / 3) + 1) * 300);
-			xpndtmNewExpanditem.setControl(composite);
-			
-			
-			
-		}
-		expandBar.getVerticalBar().setIncrement(10);
+		expandBar.getVerticalBar().setIncrement(16);
 		expandBar.setBounds(269, 280, 1036, 356);
 
+		
 	    
 	    // Not : Ürünlerin iþlenmemiþ hallerinin ölçeklenmiþ halini program açýlýrken scale edip bir yere kaydederek guc harcamak yerine
 	    // C:/LogoApp/ScaledImages altýna direk küçük hale scale edilmis halini koymak is yukunu hafifletir.
@@ -325,23 +263,19 @@ public class AppWindow1 {
 		logoLabel.setBounds(269, 43, 200, 200);
 		
 		labelTemplate1 = new Label(shlLogoapp, SWT.BORDER);
-		labelTemplate1.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template1.png"));
 		labelTemplate1.setBounds(487, 43, 200, 200);
 		formToolkit.adapt(labelTemplate1, true, true);
 		
 		labelTemplate2 = new Label(shlLogoapp, SWT.BORDER);
-		labelTemplate2.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template2.png"));
 		labelTemplate2.setBounds(693, 43, 200, 200);
 		formToolkit.adapt(labelTemplate2, true, true);
 		
 		
 		labelTemplate3 = new Label(shlLogoapp, SWT.BORDER);
-		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.png"));
 		labelTemplate3.setBounds(899, 43, 200, 200);
 		formToolkit.adapt(labelTemplate3, true, true);
 		
 		labelTemplate4 = new Label(shlLogoapp, SWT.BORDER);
-		labelTemplate4.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template4.png"));
 		labelTemplate4.setBounds(1105, 43, 200, 200);
 		formToolkit.adapt(labelTemplate4, true, true);
 		
@@ -382,10 +316,9 @@ public class AppWindow1 {
 		btnTemizle.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				shlLogoapp.setVisible(false);
-				AppWindow1 app = new AppWindow1();
-				app.open();
-				shlLogoapp.dispose();
+				
+				prepareFileHierarchyForScreen();
+			
 			}
 		});
 		btnTemizle.setBounds(957, 650, 132, 39);
@@ -439,10 +372,29 @@ public class AppWindow1 {
 		formToolkit.adapt(btnKaydedilecekYer, true, true);
 		btnKaydedilecekYer.setText("Kaydedilecek Yer");
 		
+		btnIsApplyPreviewChk = new Button(shlLogoapp, SWT.CHECK);
+		btnIsApplyPreviewChk.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if(btnIsApplyPreviewChk.getSelection())
+					unselectTemplateOptions();
+			}
+		});
+		btnIsApplyPreviewChk.setBounds(284, 10, 169, 20);
+		formToolkit.adapt(btnIsApplyPreviewChk, true, true);
+		btnIsApplyPreviewChk.setText("\u00D6nizleme yap\u0131ls\u0131n m\u0131?");
+		
 		
 		rdBtnSablon4.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				
+				try {
+					controlLogoIsEmpty();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
 				boolean isSelected = ((Button)e.getSource()).getSelection();
 				
 				if(isSelected){
@@ -450,7 +402,8 @@ public class AppWindow1 {
 				try {
 					try {
 						manageRadioButtons();
-						preview();
+						if(btnIsApplyPreviewChk.getSelection())
+							preview();
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -458,7 +411,7 @@ public class AppWindow1 {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				} catch (IOException e1) {
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -469,6 +422,13 @@ public class AppWindow1 {
 		rdBtnSablon3.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				
+				try {
+					controlLogoIsEmpty();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
 				boolean isSelected = ((Button)e.getSource()).getSelection();
 				
 				if(isSelected){
@@ -476,7 +436,8 @@ public class AppWindow1 {
 				try {
 					try {
 						manageRadioButtons();
-						preview();
+						if(btnIsApplyPreviewChk.getSelection())
+							preview();
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -484,7 +445,7 @@ public class AppWindow1 {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				} catch (IOException e1) {
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -496,6 +457,12 @@ public class AppWindow1 {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				
+				try {
+					controlLogoIsEmpty();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
 				boolean isSelected = ((Button)e.getSource()).getSelection();
 				
 				if(isSelected){
@@ -503,7 +470,8 @@ public class AppWindow1 {
 				try {
 					try {
 						manageRadioButtons();
-						preview();
+						if(btnIsApplyPreviewChk.getSelection())
+							preview();
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -511,7 +479,7 @@ public class AppWindow1 {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				} catch (IOException e1) {
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -523,6 +491,12 @@ public class AppWindow1 {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				
+				try {
+					controlLogoIsEmpty();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
 				boolean isSelected = ((Button)e.getSource()).getSelection();
 				
 				if(isSelected){
@@ -531,7 +505,8 @@ public class AppWindow1 {
 				try {
 					try {
 						manageRadioButtons();
-						preview();
+						if(btnIsApplyPreviewChk.getSelection())
+							preview();
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -539,7 +514,7 @@ public class AppWindow1 {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				} catch (IOException e1) {
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -549,7 +524,102 @@ public class AppWindow1 {
 		});
 		//radio button operations
 		
+		prepareFileHierarchyForScreen();
+	}
 
+	
+	private void prepareFileHierarchyForScreen(){
+		modelList.clear();
+		mapControlModel.clear();
+		coreTemplateList.clear();
+		unselectTemplateOptions();
+		setDefaultImagesToTemplates();
+		btnIsApplyPreviewChk.setSelection(false);
+		txtLogoName.setText("");
+		txtSaveDirectory.setText("");
+		
+		for(TableItem item: tblModels.getItems()){
+			item.dispose();
+		}
+		for(ExpandItem item: expandBar.getItems()){
+			item.setExpanded(false);
+			item.dispose();
+		}
+		expandBar.setBounds(269, 280, 1036, 1500);		
+		
+		
+		Model tempModel = null;
+	    for (int i = 0; i < listOfFiles.length; i++) {
+	    	tempModel = new Model();
+	    	if (listOfFiles[i].isDirectory()) {
+	    		String modelFullPath = logoAppModelsPath +"\\"+listOfFiles[i].getName();
+	    		String modelName = listOfFiles[i].getName();
+	    		tempModel.setModelFullPath(modelFullPath);
+	    		tempModel.setModelName(modelName);
+	    		File folderIn = new File(modelFullPath);
+	    		File[] listOfFiles2 = folderIn.listFiles();
+	    		List<Product> productList = new ArrayList<Product>();
+	    		Product tempProduct = null;
+	    		for (int j = 0; j < listOfFiles2.length; j++) {
+					tempProduct = new Product();
+					tempProduct.setModelName(modelName);
+					tempProduct.setProductFullPath(listOfFiles2[j].getPath());
+					tempProduct.setProductName(listOfFiles2[j].getName());
+					productList.add(tempProduct);
+				}
+	    		tempModel.setProductList(productList);
+	    		modelList.add(tempModel);
+	    	}
+	    }
+	    ////////////////////////////////////////////
+
+	 	//ExpandItem oluþturma iþlemi
+	    Composite composite = null;
+		GridLayout gridLayout = null;
+		CoreTemplate coreTemplate = null;
+		ExpandItem xpndtmNewExpanditem = null; 
+		Model currentModel = null;
+		TableItem tableItem = null;
+		for (int i = 0; i < modelList.size(); i++) {
+			currentModel = modelList.get(i);
+			
+			composite = new Composite(expandBar, SWT.NONE);
+			gridLayout = new GridLayout(9, false); //3
+			gridLayout.horizontalSpacing = 20;
+			composite.setLayout(gridLayout);
+			
+			//model bazlý logo isleme checkbox kontrolu icin duzenleme
+			tableItem = new TableItem(tblModels, SWT.NONE);
+			tableItem.setText(currentModel.getModelName());
+			tableItem.setChecked(true);
+			
+			//ExpandBar'a ExpandItem eklenmesi
+			xpndtmNewExpanditem = new ExpandItem(expandBar, SWT.NONE,i);
+			xpndtmNewExpanditem.setExpanded(false);
+			xpndtmNewExpanditem.setText(modelList.get(i).getModelName());
+			
+			//ExpandItem icin componentleri iceren CoreTemplate nesnesinin olusturulmasi
+			coreTemplate = new CoreTemplate(composite,currentModel); // label'larý gride teker teker uygun sýrada dolduracaktýr
+			
+			mapControlModel.put(tableItem, coreTemplate);
+			
+			coreTemplateList.add(coreTemplate);
+			
+			showProducts(coreTemplate); // Siradaki model altýndaki urunlerin ekrana basilmasi icin tetikleniyor
+			
+			xpndtmNewExpanditem.setHeight(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);//(coreTemplate.getAllRegionList().size() / 3) + 1) * 300);
+			xpndtmNewExpanditem.setControl(composite);
+		}
+		expandBar.setBounds(269, 280, 1036, 356);
+	}
+	
+	
+	private void setDefaultImagesToTemplates(){
+		logoLabel.setImage(null);
+		labelTemplate1.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template1.png"));
+		labelTemplate2.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template2.png"));
+		labelTemplate3.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template3.png"));
+		labelTemplate4.setImage(SWTResourceManager.getImage("C:\\LogoApp\\Templates\\Template4.png"));
 	}
 	
 	public Image scaleToImage(BufferedImage img,int widthSc,int heightSc,String outPath){
@@ -590,10 +660,7 @@ public class AppWindow1 {
         }
        
         if(!logoPath.equals("")){
-        	rdBtnSablon1.setSelection(false);
-			rdBtnSablon2.setSelection(false);
-			rdBtnSablon3.setSelection(false);
-			rdBtnSablon4.setSelection(false);
+        	unselectTemplateOptions();
 			//clearAllTemplates();
         	txtLogo.setText(logoPath);
             LogoName = logoPath.split("\\\\");
@@ -603,6 +670,13 @@ public class AppWindow1 {
         	processLogo();
         	processTemplates();
         }
+	}
+	
+	private void unselectTemplateOptions(){
+		rdBtnSablon1.setSelection(false);
+		rdBtnSablon2.setSelection(false);
+		rdBtnSablon3.setSelection(false);
+		rdBtnSablon4.setSelection(false);
 	}
 	
 	private void processTemplates() throws IOException {// Ek gelistirme ile istedikleri urunun sablon olmasý istenirse bu metoda 'modelName' ve 'productName' parametre olarak gelmesi yeterli olur
@@ -815,67 +889,7 @@ public class AppWindow1 {
 		}
 	}
 	
-//	private void applyToLogo() throws Exception{
-//		MessageBox messageBox = null;
-//		if(!logoPath.equals("") && !(rdBtnSablon1.getSelection() == false && rdBtnSablon2.getSelection() == false && rdBtnSablon3.getSelection() == false && rdBtnSablon4.getSelection() == false)){
-//			
-//			String tmpCreate = txtSaveDirectory.getText();
-//			String createPath = "";
-//			if(tmpCreate != null && !tmpCreate.equals("")){
-//				createPath = tmpCreate;
-//			}else{
-//			    messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
-//				messageBox.setText("HATA");
-//				messageBox.setMessage("Kaydedilecek dizini belirlemelisiniz!");
-//				messageBox.open();
-//				throw new Exception("Kaydedilecek yer secilirken hata!!!");
-//			}
-//			System.gc();
-//
-//			logoOriginal = ImageIO.read(new File(logoPath)); 
-//			if(!createPath.equals("")){
-//				File parentDir = new File(createPath+"\\Parents");//Parent'lari kaydetmek icin
-//				if(!parentDir.exists())
-//					parentDir.mkdir();
-//
-//				CoreTemplate coreTemplate = null;
-//				List<ProductUI> productUIList = null;
-//				int coreTemplateSize = coreTemplateList.size();
-//				ExecutorService executor = Executors.newCachedThreadPool();
-//
-//				for (int i = 0; i < coreTemplateSize; i++) {
-//					coreTemplate = coreTemplateList.get(i);			
-//					
-//					
-//					productUIList = coreTemplate.getProductUIList();					
-//					
-//					executor.execute(new ProcessModel(productUIList, createPath, txtLogoName.getText(),
-//							selectedTemplate,logoOriginal,jsonMainobj));
-//					
-//				}
-//				
-//				executor.shutdown();
-//				
-//				try {
-//					executor.awaitTermination(120, TimeUnit.SECONDS);
-//				} catch (InterruptedException e) {
-//					
-//				}
-//				System.out.println("Run GC:");
-//				System.gc();
-//				messageBox = new MessageBox(shlLogoapp, SWT.ICON_WORKING);
-//				messageBox.setText("BASARILI ISLEM");
-//				messageBox.setMessage("ISLEM BASARILI, DIZINI KONTROL EDINIZ!");
-//				messageBox.open();
-//
-//			}
-//		}else{
-//			 messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
-//			 messageBox.setText("HATA");
-//			 messageBox.setMessage("Logo seçmelisiniz ve bir sablon belirlemelisiniz!");
-//			 messageBox.open();
-//		}
-//	}
+
 	
 	public static BufferedImage rotate(BufferedImage image, double angle) {
 	    double sin = Math.abs(Math.sin(angle)), cos = Math.abs(Math.cos(angle));
@@ -897,74 +911,9 @@ public class AppWindow1 {
 	    return gd.getDefaultConfiguration();
 	}
 	
-	private void preview() throws IOException, InterruptedException, ExecutionException{
-		
-		if(!logoPath.equals("")){
-			
-			logoOriginal = ImageIO.read(new File(logoPath)); 
-			
-			Model tempModel = null;
-			List<Product> productList = null;
-			CoreTemplate coreTemplate = null;
-			List<ProductUI> productUIList = null;
-			int coreTemplateSize = coreTemplateList.size();
-			previewBuffer = new HashMap<String, BufferedImage>();
-			ThreadPoolExecutor call = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
-			Set<Future<HashMap<String, BufferedImage>>> set = new HashSet<Future<HashMap<String, BufferedImage>>>();
-			HashMap<String, BufferedImage> imageMap = new HashMap<String, BufferedImage>();
-			List<Integer> calculatedPosition = new ArrayList();
-			List<Integer> productTemplateCoodinates = new ArrayList();
-			for (int i = 0; i < coreTemplateSize; i++) {
-				coreTemplate = coreTemplateList.get(i);
-				tempModel = coreTemplate.getModel();
-				productList = tempModel.getProductList();
-				productUIList = coreTemplate.getProductUIList();
-				ProductUI tempProductUI = null;
-				int productUIListSize = productUIList.size();
-
-				
-				for(int j = 0; j < productUIListSize;j++){
-					tempProductUI = productUIList.get(j);
-					calculatedPosition.clear();
-					productTemplateCoodinates.clear();
-					if(tempProductUI.getCheckIsApply().getSelection()){
-						String productFullPath = logoAppModelsPath +"\\"+tempProductUI.getModelName()+"\\"+tempProductUI.getProductName();
-						calculatedPosition = scaleLogoForOriginalProductForTemplate(productFullPath, getFileName(logoPath), selectedTemplate,calculatedPosition,productTemplateCoodinates);  
-						
-						Callable<HashMap<String, BufferedImage>> callable = new ProcessImagePreview(productFullPath, scaledLogoPath+"\\"+getFileName(logoPath)+".png", previewPath+"\\"+tempProductUI.getModelName(),
-								calculatedPosition.get(0), calculatedPosition.get(1),txtLogoName.getText(),getFileName(productFullPath),resizedLogo,tempProductUI.getRadioParent().getSelection(),imageMap);
-						
-						Future<HashMap<String, BufferedImage>> future = call.submit(callable);
-					    set.add(future);
-					}
-				}
-				
-				
-			}
-			call.shutdown();
-			
-			try {
-				call.awaitTermination(60, TimeUnit.SECONDS);
-			} catch (InterruptedException e) {
-				System.out.println("preview awaitTermination"+e.getMessage());
-			}
-			for (Future<HashMap<String, BufferedImage>> future : set) {
-				try {
-//					if(future.get() == null)
-//						future.wait();
-					previewBuffer.putAll(future.get());					
-				} catch (Exception e) {
-					System.out.println("preview future.get error"+e.getMessage());
-					System.out.println(future+" futureeee");
-					System.out.println(future.get()+" future getttttt");
-					e.printStackTrace();
-				}
-			}
-			
-
-			showAllProducts(previewPath,previewBuffer);
-		}else{
-			MessageBox messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
+	private void controlLogoIsEmpty() throws Exception{
+		if(txtLogoName.getText().equals("") || logoPath == null){
+			 MessageBox messageBox = new MessageBox(shlLogoapp, SWT.ERROR);
 			 messageBox.setText("HATA");
 			 messageBox.setMessage("Logo seçmelisiniz!");
 			 messageBox.open();
@@ -972,7 +921,76 @@ public class AppWindow1 {
 			 rdBtnSablon2.setSelection(false);
 			 rdBtnSablon3.setSelection(false);
 			 rdBtnSablon4.setSelection(false);
+			 
+			 throw new Exception("Logo secmelisiniz");
 		}
+		
+	}
+	
+	private void preview() throws Exception{
+		
+		logoOriginal = ImageIO.read(new File(logoPath)); 
+		
+		Model tempModel = null;
+		List<Product> productList = null;
+		CoreTemplate coreTemplate = null;
+		List<ProductUI> productUIList = null;
+		int coreTemplateSize = coreTemplateList.size();
+		previewBuffer = new HashMap<String, BufferedImage>();
+		ThreadPoolExecutor call = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
+		Set<Future<HashMap<String, BufferedImage>>> set = new HashSet<Future<HashMap<String, BufferedImage>>>();
+		HashMap<String, BufferedImage> imageMap = new HashMap<String, BufferedImage>();
+		List<Integer> calculatedPosition = new ArrayList();
+		List<Integer> productTemplateCoodinates = new ArrayList();
+		for (int i = 0; i < coreTemplateSize; i++) {
+			coreTemplate = coreTemplateList.get(i);
+			tempModel = coreTemplate.getModel();
+			productList = tempModel.getProductList();
+			productUIList = coreTemplate.getProductUIList();
+			ProductUI tempProductUI = null;
+			int productUIListSize = productUIList.size();
+
+			
+			for(int j = 0; j < productUIListSize;j++){
+				tempProductUI = productUIList.get(j);
+				calculatedPosition.clear();
+				productTemplateCoodinates.clear();
+				if(tempProductUI.getCheckIsApply().getSelection()){
+					String productFullPath = logoAppModelsPath +"\\"+tempProductUI.getModelName()+"\\"+tempProductUI.getProductName();
+					calculatedPosition = scaleLogoForOriginalProductForTemplate(productFullPath, getFileName(logoPath), selectedTemplate,calculatedPosition,productTemplateCoodinates);  
+					
+					Callable<HashMap<String, BufferedImage>> callable = new ProcessImagePreview(productFullPath, scaledLogoPath+"\\"+getFileName(logoPath)+".png", previewPath+"\\"+tempProductUI.getModelName(),
+							calculatedPosition.get(0), calculatedPosition.get(1),txtLogoName.getText(),getFileName(productFullPath),resizedLogo,tempProductUI.getRadioParent().getSelection(),imageMap);
+					
+					Future<HashMap<String, BufferedImage>> future = call.submit(callable);
+				    set.add(future);
+				}
+			}
+			
+			
+		}
+		call.shutdown();
+		
+		try {
+			call.awaitTermination(60, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			System.out.println("preview awaitTermination"+e.getMessage());
+		}
+		for (Future<HashMap<String, BufferedImage>> future : set) {
+			try {
+//					if(future.get() == null)
+//						future.wait();
+				previewBuffer.putAll(future.get());					
+			} catch (Exception e) {
+				System.out.println("preview future.get error"+e.getMessage());
+				System.out.println(future+" futureeee");
+				System.out.println(future.get()+" future getttttt");
+				e.printStackTrace();
+			}
+		}
+		
+
+		showAllProducts(previewPath,previewBuffer);
 		
 		System.gc();
 	}
@@ -1018,13 +1036,13 @@ public class AppWindow1 {
 				
 				
 				if(productName.equals("8880xNP00")){
-					angle= -0.15;
-					calculatedPosition.set(1, productTemplateCoodinates.get(7));
+					angle= -0.55;
+				    calculatedPosition.set(1, calculatedPosition.get(1)-60);
 				}else if(productName.equals("8880xNY00")){
-					angle= +0.13;					
+				     angle= +0.13;     
 				}else if((productName.equals("S190TCxHF") 
-						|| productName.equals("S190TCxHR")||productName.equals("S190TCxHU"))){
-					angle= +0.05;
+				      || productName.equals("S190TCxHR")||productName.equals("S190TCxHU"))){
+				     angle= +0.03;
 				}
 				
 			tempLogoOriginal = rotate(tempLogoOriginal,angle);
