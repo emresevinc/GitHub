@@ -5,7 +5,10 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Transparency;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -902,8 +905,28 @@ public class AppWindow1 {
 	    g.rotate(angle, w / 2, h / 2);
 	    g.drawRenderedImage(image, null);
 	    g.dispose();
+	    
 	    return result;
 	}
+	
+//	public static BufferedImage rotate(BufferedImage image, double angle) {
+//	   
+//		AffineTransform at = new AffineTransform();
+//
+//        at.translate(image.getWidth() / 2, image.getHeight() / 2);
+//        at.rotate(angle);
+//
+//        // 1. translate the object so that you rotate it around the 
+//        //    center (easier :))
+////        at.translate(-image.getWidth()/2, -image.getHeight()/2);
+//
+//        // draw the image
+//        Graphics2D g2d = (Graphics2D) image.getGraphics();
+//        g2d.drawImage(image, at, null);
+//        return image;
+//        
+//	}
+
 
 	private static GraphicsConfiguration getDefaultConfiguration() {
 	    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -1031,12 +1054,10 @@ public class AppWindow1 {
 			tempLogoOriginal = logoOriginal;
 			double angle = 0 ;
 			
-				angle = getAngle(new Point(productTemplateCoodinates.get(4),productTemplateCoodinates.get(5)),
-						new Point(productTemplateCoodinates.get(6),productTemplateCoodinates.get(7)));				
 				
 				
 				if(productName.equals("8880xNP00")){
-					angle= -0.55;
+					angle= -0.40;
 					
 				    calculatedPosition.set(1, calculatedPosition.get(1)-60);
 				}else if(productName.equals("8880xNY00")){
@@ -1046,11 +1067,15 @@ public class AppWindow1 {
 				     angle= +0.03;
 				}
 				
-			tempLogoOriginal = rotate(tempLogoOriginal,angle);
-			
-			Graphics2D graphic = resizedLogo.createGraphics();
-			graphic.drawImage(tempLogoOriginal, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
-			graphic.dispose();
+				Graphics2D graphic = resizedLogo.createGraphics();
+				graphic.drawImage(logoOriginal, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
+				graphic.dispose();
+				
+				resizedLogo = rotate(resizedLogo,angle);
+
+				Graphics2D graphic2 = resizedLogo.createGraphics();
+				graphic2.drawImage(resizedLogo, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
+				graphic2.dispose();
 			
 		}else{
 			
