@@ -258,7 +258,7 @@ public class AppWindow1 {
 			
 			
 		}
-		expandBar.getVerticalBar().setIncrement(10);
+		expandBar.getVerticalBar().setIncrement(16);
 		expandBar.setBounds(269, 280, 1036, 356);
 
 	    
@@ -1018,13 +1018,14 @@ public class AppWindow1 {
 				
 				
 				if(productName.equals("8880xNP00")){
-					angle= -0.15;
-					calculatedPosition.set(1, productTemplateCoodinates.get(7));
+					angle= -0.55;
+					
+					calculatedPosition.set(1, calculatedPosition.get(1)-60);
 				}else if(productName.equals("8880xNY00")){
 					angle= +0.13;					
 				}else if((productName.equals("S190TCxHF") 
 						|| productName.equals("S190TCxHR")||productName.equals("S190TCxHU"))){
-					angle= +0.05;
+					angle= +0.03;
 				}
 				
 			tempLogoOriginal = rotate(tempLogoOriginal,angle);
