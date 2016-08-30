@@ -1065,6 +1065,7 @@ public class AppWindow1 {
 				    calculatedPosition.set(1, calculatedPosition.get(1)-72);
 				}else if(productName.equals("8880xNY00")){
 				     angle= +0.11;     
+				     calculatedPosition.set(0, calculatedPosition.get(0)-5);
 
 				}else if((productName.equals("S190TCxHF") 
 				      || productName.equals("S190TCxHR")||productName.equals("S190TCxHU"))){
@@ -1271,16 +1272,16 @@ public class AppWindow1 {
 		call.shutdown();
 
 		try {
-			call.awaitTermination(30, TimeUnit.SECONDS);
+			call.awaitTermination(60, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
 			
 		}
 		for (Future<HashMap<String, Image>> future : imageSet) {
 			try {
-				if(future == null)
-					System.out.println("null future showAllProducts"+future);
-				if(future.get() == null)
-					System.out.println("null future.get() showAllProducts"+future);
+//				if(future == null)
+//					System.out.println("null future showAllProducts"+future);
+//				if(future.get() == null)
+//					System.out.println("null future.get() showAllProducts"+future);
 				labelImage.putAll(future.get());				
 			} catch (Exception e) {
 				System.out.println("showAllProducts future.get"+e.getMessage());
