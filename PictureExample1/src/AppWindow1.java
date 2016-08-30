@@ -1057,9 +1057,12 @@ public class AppWindow1 {
 				
 				
 				if(productName.equals("8880xNP00")){
-					angle= -0.40;
+					angle= -0.17;
 					
-				    calculatedPosition.set(1, calculatedPosition.get(1)-60);
+					if(selectedTemplate==4){
+						calculatedPosition.set(1, calculatedPosition.get(1)-62);
+					}else
+				    calculatedPosition.set(1, calculatedPosition.get(1)-72);
 				}else if(productName.equals("8880xNY00")){
 				     angle= +0.13;     
 				}else if((productName.equals("S190TCxHF") 
@@ -1073,9 +1076,6 @@ public class AppWindow1 {
 				
 				resizedLogo = rotate(resizedLogo,angle);
 
-//				Graphics2D graphic2 = resizedLogo.createGraphics();
-//				graphic2.drawImage(resizedLogo, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
-//				graphic2.dispose();
 			
 		}else{
 			
