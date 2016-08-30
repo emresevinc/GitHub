@@ -258,7 +258,7 @@ public class AppWindow1 {
 			
 			
 		}
-		
+		expandBar.getVerticalBar().setIncrement(16);
 
 	    
 	    // Not : Ürünlerin iþlenmemiþ hallerinin ölçeklenmiþ halini program açýlýrken scale edip bir yere kaydederek guc harcamak yerine
