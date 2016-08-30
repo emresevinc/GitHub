@@ -1037,6 +1037,7 @@ public class AppWindow1 {
 				
 				if(productName.equals("8880xNP00")){
 					angle= -0.55;
+					
 				    calculatedPosition.set(1, calculatedPosition.get(1)-60);
 				}else if(productName.equals("8880xNY00")){
 				     angle= +0.13;     
