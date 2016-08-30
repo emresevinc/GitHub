@@ -216,7 +216,7 @@ public class AppWindow1 {
 	 // Expandbar ve ExpandItem oluþturan kod bloðu
 	 	ExpandBar expandBar = new ExpandBar(shlLogoapp, SWT.V_SCROLL);
 	 	expandBar.setSpacing(6);
-	 	expandBar.setBounds(269, 280, 1036, 312);		
+	 	expandBar.setBounds(269, 280, 1036, 1500);		
 
 	 	//ExpandItem oluþturma iþlemi
 	    Composite composite = null;
@@ -258,7 +258,8 @@ public class AppWindow1 {
 			
 			
 		}
-		expandBar.getVerticalBar().setIncrement(16);
+		expandBar.getVerticalBar().setIncrement(10);
+		expandBar.setBounds(269, 280, 1036, 356);
 
 	    
 	    // Not : Ürünlerin iþlenmemiþ hallerinin ölçeklenmiþ halini program açýlýrken scale edip bir yere kaydederek guc harcamak yerine
