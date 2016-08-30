@@ -1068,14 +1068,14 @@ public class AppWindow1 {
 				}
 				
 				Graphics2D graphic = resizedLogo.createGraphics();
-				graphic.drawImage(logoOriginal, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
+				graphic.drawImage(tempLogoOriginal, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
 				graphic.dispose();
 				
 				resizedLogo = rotate(resizedLogo,angle);
 
-				Graphics2D graphic2 = resizedLogo.createGraphics();
-				graphic2.drawImage(resizedLogo, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
-				graphic2.dispose();
+//				Graphics2D graphic2 = resizedLogo.createGraphics();
+//				graphic2.drawImage(resizedLogo, 0, 0, resizedLogoDimension.width, resizedLogoDimension.height, null);
+//				graphic2.dispose();
 			
 		}else{
 			
