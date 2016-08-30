@@ -1064,7 +1064,8 @@ public class AppWindow1 {
 					}else
 				    calculatedPosition.set(1, calculatedPosition.get(1)-72);
 				}else if(productName.equals("8880xNY00")){
-				     angle= +0.13;     
+				     angle= +0.11;     
+
 				}else if((productName.equals("S190TCxHF") 
 				      || productName.equals("S190TCxHR")||productName.equals("S190TCxHU"))){
 				     angle= +0.03;
