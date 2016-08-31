@@ -989,7 +989,7 @@ public class AppWindow1 {
 				    set.add(future);
 				}
 			}
-			
+			System.gc();
 			
 		}
 		call.shutdown();
@@ -1065,7 +1065,7 @@ public class AppWindow1 {
 				    calculatedPosition.set(1, calculatedPosition.get(1)-72);
 				}else if(productName.equals("8880xNY00")){
 				     angle= +0.11;     
-				     calculatedPosition.set(0, calculatedPosition.get(0)-5);
+				     calculatedPosition.set(0, calculatedPosition.get(0)-51);
 
 				}else if((productName.equals("S190TCxHF") 
 				      || productName.equals("S190TCxHR")||productName.equals("S190TCxHU"))){
