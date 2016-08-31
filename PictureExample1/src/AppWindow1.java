@@ -34,6 +34,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -1261,13 +1262,17 @@ public class AppWindow1 {
 		    	if(productUI.getCheckIsApply().getSelection()){
 					String productName = productUI.getProductName();
 			    	String productNameStr = productName.substring(0, productName.length()-4)+".png";
-			    
-			    	Callable<HashMap<String, Image>> callable = new WriteImagePreview(previewBuffer.get(productName.substring(0, productName.indexOf("."))), 180, 220, scaledAndProgressedPath+"\\"+productNameStr,productName.substring(0, productName.indexOf(".")),display,imageMap);					
+			    	BufferedImage image = previewBuffer.get(productName.substring(0, productName.indexOf(".")));
+			    	//GridData gridData = new GridData(SWT.FILL, SWT.BEGINNING,true,false)
+			    	productUI.getLblProductImg().setLayoutData(GridData.VERTICAL_ALIGN_FILL | GridData.HORIZONTAL_ALIGN_FILL);
+			    	int heigth = (int) (190*((double)image.getHeight()/(double)image.getWidth()));
+			    	System.out.println(heigth);
+			    	Callable<HashMap<String, Image>> callable = new WriteImagePreview(image, 190, heigth, scaledAndProgressedPath+"\\"+productNameStr,productName.substring(0, productName.indexOf(".")),display,imageMap);					
 					Future<HashMap<String, Image>> future = call.submit(callable);
 					imageSet.add(future);
 		    	}
 		    }
-			
+			 
 		}
 		call.shutdown();
 
