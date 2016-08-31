@@ -386,7 +386,7 @@ public class AppWindow1 {
 		});
 		btnIsApplyPreviewChk.setBounds(284, 10, 169, 20);
 		formToolkit.adapt(btnIsApplyPreviewChk, true, true);
-		btnIsApplyPreviewChk.setText("\u00D6nizleme yap\u0131ls\u0131n m\u0131?");
+		btnIsApplyPreviewChk.setText("\u00D6nizleme yap");
 		
 		
 		rdBtnSablon4.addSelectionListener(new SelectionAdapter() {
@@ -1065,8 +1065,11 @@ public class AppWindow1 {
 					}else
 				    calculatedPosition.set(1, calculatedPosition.get(1)-72);
 				}else if(productName.equals("8880xNY00")){
-				     angle= +0.11;     
-				     calculatedPosition.set(0, calculatedPosition.get(0)-51);
+				     angle= +0.11;
+				     if(selectedTemplate==3){
+				    	 calculatedPosition.set(0, calculatedPosition.get(0)-20);
+				     }else
+				    	 calculatedPosition.set(0, calculatedPosition.get(0)-20);
 
 				}else if((productName.equals("S190TCxHF") 
 				      || productName.equals("S190TCxHR")||productName.equals("S190TCxHU"))){
