@@ -1269,7 +1269,7 @@ public class AppWindow1 {
 			    	//GridData gridData = new GridData(SWT.FILL, SWT.BEGINNING,true,false)
 			    	productUI.getLblProductImg().setLayoutData(GridData.VERTICAL_ALIGN_FILL | GridData.HORIZONTAL_ALIGN_FILL);
 			    	int heigth = (int) (190*((double)image.getHeight()/(double)image.getWidth()));
-			    	System.out.println(heigth);
+
 			    	Callable<HashMap<String, Image>> callable = new WriteImagePreview(image, 190, heigth, scaledAndProgressedPath+"\\"+productNameStr,productName.substring(0, productName.indexOf(".")),display,imageMap);					
 					Future<HashMap<String, Image>> future = call.submit(callable);
 					imageSet.add(future);
@@ -1351,7 +1351,9 @@ public class AppWindow1 {
 			try {
 				if(scaledImgcount == 0){ // Program ilk calistirildiginda scale edilip logo islenmemis urunlerin ilgili klasor altýnda olmamasina karsin burada o urunleri olusturuyor. Bunlar program acildiginda ekrana basilan ilk gorsellerdir
 					originalImg = ImageIO.read(new File(model.getModelFullPath()+"\\"+tempProduct.getProductName()));
-					tempProductUI.getLblProductImg().setImage(scaleToImage(originalImg, 200, 200, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));
+					int heigth = (int) (190*((double)originalImg.getHeight()/(double)originalImg.getWidth()));
+					tempProductUI.getLblProductImg().setImage(scaleToImage(originalImg, 190, heigth, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));
+					
 				}else{
 					tempProductUI.getLblProductImg().setImage(new Image(display, nonProgressedScaledProductPath+"\\"+model.getModelName()+"\\"+productName+".png"));					
 				}

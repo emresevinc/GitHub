@@ -51,7 +51,8 @@ public class ProcessImagePreview implements Callable{
 			System.out.println("ProcessImagePreview productPath:"+productPath);
 			
 			try {
-				productBuff = ImageIO.read(new File(productPath));				
+//				productBuff = ImageIO.read(new File(productPath));
+				productBuff = readImage(productPath,productBuff);
 			} catch (IOException e) {
 				System.out.println("ProcessImage Error Read ProductPath:");
 				
@@ -70,6 +71,12 @@ public class ProcessImagePreview implements Callable{
 			e.printStackTrace();
 		}
 		return imageMap;
+		
+		
+	}
+	
+	private synchronized  BufferedImage readImage(String productPath,BufferedImage productBuff) throws IOException{
+		return productBuff = ImageIO.read(new File(productPath));		
 		
 		
 	}
