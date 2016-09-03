@@ -213,7 +213,6 @@ public class AppWindow1 {
 		    	boolean control = false;
 		    	TableItem tableItem = (TableItem) event.item;
 		    	
-		    	//if(event.detail == SWT.CHECK)
 		    	if(tableItem.getChecked())	
 		    		control = true;
 		    	
@@ -1002,13 +1001,10 @@ public class AppWindow1 {
 		}
 		for (Future<HashMap<String, BufferedImage>> future : set) {
 			try {
-//					if(future.get() == null)
-//						future.wait();
+
 				previewBuffer.putAll(future.get());					
 			} catch (Exception e) {
 				System.out.println("preview future.get error"+e.getMessage());
-				System.out.println(future+" futureeee");
-				System.out.println(future.get()+" future getttttt");
 				e.printStackTrace();
 			}
 		}
@@ -1247,8 +1243,6 @@ public class AppWindow1 {
 		List<ProductUI> tempProductUIList = null;
 		int coreTemplateSize = coreTemplateList.size();
 		labelImage = new HashMap<String, Image>();
-//		ExecutorService call = Executors.newFixedThreadPool(100);
-//		ExecutorService call = Executors.newCachedThreadPool();
 		ThreadPoolExecutor call = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
 		Set<Future<HashMap<String, Image>>> imageSet = new HashSet<Future<HashMap<String, Image>>>();
 		HashMap<String, Image> imageMap = new HashMap<String, Image>();
@@ -1286,10 +1280,7 @@ public class AppWindow1 {
 		}
 		for (Future<HashMap<String, Image>> future : imageSet) {
 			try {
-//				if(future == null)
-//					System.out.println("null future showAllProducts"+future);
-//				if(future.get() == null)
-//					System.out.println("null future.get() showAllProducts"+future);
+
 				labelImage.putAll(future.get());				
 			} catch (Exception e) {
 				System.out.println("showAllProducts future.get"+e.getMessage());

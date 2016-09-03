@@ -44,7 +44,7 @@ public class ProcessImagePreview implements Callable{
 	}
 	
 	
-	public HashMap<String, BufferedImage> call() {
+	public  HashMap<String, BufferedImage> call() {
 		BufferedImage productBuff = null;
 		
 		try {
@@ -75,7 +75,7 @@ public class ProcessImagePreview implements Callable{
 		
 	}
 	
-	private synchronized  BufferedImage readImage(String productPath,BufferedImage productBuff) throws IOException{
+	private synchronized BufferedImage readImage(String productPath,BufferedImage productBuff) throws IOException{
 		return productBuff = ImageIO.read(new File(productPath));		
 		
 		
