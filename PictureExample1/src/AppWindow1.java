@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -108,6 +109,13 @@ public class AppWindow1 {
 	private static String logoPath = "";
 	Label logoLabel = null;
 	private static int selectedTemplate = 1;
+	boolean selectedGrup = false;
+	Button btnCheckGrp1 = null;
+	Button btnCheckGrp2 = null;
+	Button btnCheckGrp3 = null;
+	Button btnCheckGrp4 = null;
+	Button btnUnCheckBlack = null;
+	Button btnUnCheckWhite = null;
 	Button rdBtnSablon1 = null;
 	Button rdBtnSablon2 = null;
 	Button rdBtnSablon3 = null;
@@ -137,6 +145,16 @@ public class AppWindow1 {
 	private ExpandBar expandBar = null;
 	private static File logoAppFolder = null;
 	private static File[] listOfFiles = null;
+	private List<String> whiteModels = new ArrayList<String>(
+		    Arrays.asList("18000xW00","18500xW00","5700xWB00","5700xWN00","5700xWR00","5700xWRB0","2000TxW00","5000BxW00","5100PxW00","18500BxW0","5000xW000",
+		    		"2200xW000","18600xW00","2700xW000","982xW0000","64400xW00","5000LxW00","64200LxW0","8880xW000","5V00LxW00","S190TCxW0","18600FLxW",
+		    		"6680xW000","6012xW000","8816xW000","8850xW000","8881xW000"));
+	
+	private List<String> blackModels = new ArrayList<String>(
+		    Arrays.asList("18000xB00","18500xB00","185C00xBG","185C00xBR","2000TxB00","5000BxB00","5100PxB00","18000BxB0","18500BxB0","5000xB000","2200xB000",
+		    		"18600xB00","2700xB000","982xB0000","64400xB00","5000LxB00","64200LxB0","8880xB000","5V00LxB00","S190TCxB0","18600FLxB","6680xB000",
+		    		"6012xB000","8816xB000","8850xB000","8881xB000"));
+	
 	
 	//Program ilk çalistiginda bu static blok ilk json dosyasý sadece bir kereye mahsus read edilir
 	static Object jsonMainobj = null;
@@ -251,7 +269,7 @@ public class AppWindow1 {
 			}
 		});
 		btnBirLogoSeiniz.setImage(SWTResourceManager.getImage("C:\\LogoApp\\ButtonIcons\\fileChooser.png"));
-		btnBirLogoSeiniz.setBounds(10, 36, 162, 35);
+		btnBirLogoSeiniz.setBounds(10, 21, 162, 35);
 		
 		txtLogo = formToolkit.createText(shlLogoapp, "New Text", SWT.BORDER | SWT.WRAP | SWT.MULTI);
 		txtLogo.setText("");
@@ -300,7 +318,7 @@ public class AppWindow1 {
 		btnApplyLogo.setText("Logoyu Uygula");
 		
 		txtLogoName = new Text(shlLogoapp, SWT.BORDER | SWT.WRAP | SWT.MULTI);
-		txtLogoName.setBounds(10, 122, 200, 27);
+		txtLogoName.setBounds(10, 108, 200, 27);
 		formToolkit.adapt(txtLogoName, true, true);
 		
 		Label lblLogoDizini = new Label(shlLogoapp, SWT.NONE);
@@ -310,7 +328,7 @@ public class AppWindow1 {
 		lblLogoDizini.setVisible(false);
 		
 		Label lblLogoAd = new Label(shlLogoapp, SWT.NONE);
-		lblLogoAd.setBounds(10, 96, 75, 20);
+		lblLogoAd.setBounds(10, 82, 75, 20);
 		formToolkit.adapt(lblLogoAd, true, true);
 		lblLogoAd.setText("Logo Ad\u0131:");
 		
@@ -353,7 +371,7 @@ public class AppWindow1 {
 		
 		
 		txtSaveDirectory = new Text(shlLogoapp, SWT.BORDER);
-		txtSaveDirectory.setBounds(10, 216, 200, 27);
+		txtSaveDirectory.setBounds(10, 196, 200, 27);
 		formToolkit.adapt(txtSaveDirectory, true, true);
 		
 		Button btnKaydedilecekYer = new Button(shlLogoapp, SWT.NONE);
@@ -371,7 +389,7 @@ public class AppWindow1 {
 				}
 			}
 		});
-		btnKaydedilecekYer.setBounds(10, 175, 162, 35);
+		btnKaydedilecekYer.setBounds(10, 155, 162, 35);
 		formToolkit.adapt(btnKaydedilecekYer, true, true);
 		btnKaydedilecekYer.setText("Kaydedilecek Yer");
 		
@@ -386,6 +404,138 @@ public class AppWindow1 {
 		btnIsApplyPreviewChk.setBounds(284, 10, 169, 20);
 		formToolkit.adapt(btnIsApplyPreviewChk, true, true);
 		btnIsApplyPreviewChk.setText("\u00D6nizleme yap");
+		
+		Label lblIstisnaRenk = new Label(shlLogoapp, SWT.NONE);
+		lblIstisnaRenk.setBounds(269, 254, 90, 15);
+		formToolkit.adapt(lblIstisnaRenk, true, true);
+		lblIstisnaRenk.setText("\u0130stisna Renk:");
+		
+		btnUnCheckWhite = new Button(shlLogoapp, SWT.CHECK);
+		btnUnCheckWhite.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				unSelectWhiteTemplates();
+			}
+		});
+		btnUnCheckWhite.setBounds(365, 254, 93, 16);
+		formToolkit.adapt(btnUnCheckWhite, true, true);
+		btnUnCheckWhite.setText("Beyaz");
+		
+		btnUnCheckBlack = new Button(shlLogoapp, SWT.CHECK);
+		btnUnCheckBlack.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				unSelectBlackTemplates();
+			}
+		});
+		btnUnCheckBlack.setBounds(471, 254, 93, 16);
+		formToolkit.adapt(btnUnCheckBlack, true, true);
+		btnUnCheckBlack.setText("Siyah");
+		
+		btnCheckGrp1 = new Button(shlLogoapp, SWT.CHECK);
+		btnCheckGrp1.setSelection(true);
+		btnCheckGrp1.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {			
+			
+				selectedGrup = btnCheckGrp1.getSelection();
+				
+				for (int j = 0; j < 5; j++) {
+					
+					if(selectedGrup){
+						tblModels.getItem(j).setChecked(true);						
+					}else
+						tblModels.getItem(j).setChecked(false);
+				
+					ChangeModelsCheckedValues(j);
+		    		
+			}
+			
+				
+			}
+
+			
+		});
+		btnCheckGrp1.setBounds(10, 227, 93, 16);
+		formToolkit.adapt(btnCheckGrp1, true, true);
+		btnCheckGrp1.setText("Grup 1");
+		
+		btnCheckGrp2 = new Button(shlLogoapp, SWT.CHECK);
+		btnCheckGrp2.setSelection(true);
+		btnCheckGrp2.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+				selectedGrup = btnCheckGrp2.getSelection();
+				
+				for (int j = 5; j < 9; j++) {
+					
+					if(selectedGrup){
+						tblModels.getItem(j).setChecked(true);						
+					}else
+						tblModels.getItem(j).setChecked(false);
+				
+					ChangeModelsCheckedValues(j);
+		    		
+			}
+				
+			}
+		});
+		btnCheckGrp2.setBounds(10, 253, 93, 16);
+		formToolkit.adapt(btnCheckGrp2, true, true);
+		btnCheckGrp2.setText("Grup 2");
+		
+		btnCheckGrp3 = new Button(shlLogoapp, SWT.CHECK);
+		btnCheckGrp3.setSelection(true);
+		btnCheckGrp3.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+				selectedGrup = btnCheckGrp3.getSelection();
+				
+				for (int j = 9; j < 15; j++) {
+					
+					if(selectedGrup){
+						tblModels.getItem(j).setChecked(true);						
+					}else
+						tblModels.getItem(j).setChecked(false);
+				
+					ChangeModelsCheckedValues(j);
+		    		
+			}
+				
+				
+			}
+		});
+		btnCheckGrp3.setBounds(117, 227, 93, 16);
+		formToolkit.adapt(btnCheckGrp3, true, true);
+		btnCheckGrp3.setText("Grup 3");
+		
+		btnCheckGrp4 = new Button(shlLogoapp, SWT.CHECK);
+		btnCheckGrp4.setSelection(true);
+		btnCheckGrp4.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+				selectedGrup = btnCheckGrp4.getSelection();
+				
+				for (int j = 15; j < 26; j++) {
+					
+					if(selectedGrup){
+						tblModels.getItem(j).setChecked(true);						
+					}else
+						tblModels.getItem(j).setChecked(false);
+				
+					ChangeModelsCheckedValues(j);
+		    		
+			}
+				
+				
+			}
+		});
+		btnCheckGrp4.setBounds(117, 253, 93, 16);
+		formToolkit.adapt(btnCheckGrp4, true, true);
+		btnCheckGrp4.setText("Grup 4");
 		
 		
 		rdBtnSablon4.addSelectionListener(new SelectionAdapter() {
@@ -830,7 +980,7 @@ public class AppWindow1 {
 				CoreTemplate coreTemplate = null;
 				List<ProductUI> productUIList = null;
 				int coreTemplateSize = coreTemplateList.size();
-//				ExecutorService executor = Executors.newCachedThreadPool();
+
 				ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
 				List<Integer> calculatedPosition = new ArrayList();
 				List<Integer> productTemplateCoodinates = new ArrayList();
@@ -1357,7 +1507,7 @@ public class AppWindow1 {
 	}
 	
 	
-	private void clearAllTemplates(){
+	private void unSelectWhiteTemplates(){
 		
 		Model model = null;
 		CoreTemplate coreTemplate = null;
@@ -1373,10 +1523,72 @@ public class AppWindow1 {
 
 			for(int x = 0; x < productSize; x++){
 		    	productUI = tempProductUIList.get(x);
-				productUI.getCheckIsApply().setSelection(true);
-				productUI.getRadioParent().setSelection(false);
+		    	
+		    	if(whiteModels.contains(productUI.getProductName().substring(0,productUI.getProductName().indexOf('.')))){
+		    		
+		    		if(btnUnCheckWhite.getSelection()){
+		    			productUI.getCheckIsApply().setSelection(false);
+		    		}else
+		    			productUI.getCheckIsApply().setSelection(true);
+		    	}
+
 			}
 		}
 		
 	}
+	
+	private void unSelectBlackTemplates(){
+		
+		Model model = null;
+		CoreTemplate coreTemplate = null;
+		List<ProductUI> tempProductUIList = null;
+		int coreTemplateSize = coreTemplateList.size();
+
+		for(int i = 0; i<coreTemplateSize; i++){
+			model = coreTemplateList.get(i).getModel();
+			coreTemplate = coreTemplateList.get(i);
+			tempProductUIList = coreTemplate.getProductUIList();
+			int productSize = tempProductUIList.size();
+			ProductUI productUI = null;
+
+			for(int x = 0; x < productSize; x++){
+		    	productUI = tempProductUIList.get(x);
+		    	
+		    	if(blackModels.contains(productUI.getProductName().substring(0,productUI.getProductName().indexOf('.')))){
+		    		
+		    		if(btnUnCheckBlack.getSelection()){
+		    			productUI.getCheckIsApply().setSelection(false);
+		    		}else
+		    			productUI.getCheckIsApply().setSelection(true);
+		    	}
+
+			}
+		}
+		
+	}
+	
+	private void ChangeModelsCheckedValues(int j) {
+		
+		CoreTemplate currentCoreTemplate = mapControlModel.get(tblModels.getItem(j));
+    	int checkSize = currentCoreTemplate.getProductUIList().size();
+    	ProductUI tempProductUI = null;
+    	
+    	if(selectedGrup){
+    		for (int i = 0; i < checkSize; i++) {
+    			tempProductUI = currentCoreTemplate.getProductUIList().get(i);
+    			tempProductUI.getCheckIsApply().setSelection(true);
+    			tempProductUI.getCheckIsApply().setEnabled(true);
+    		}
+    	}else{
+    		for (int i = 0; i < checkSize; i++) {
+    			tempProductUI = currentCoreTemplate.getProductUIList().get(i);
+    			tempProductUI.getCheckIsApply().setSelection(false);
+    			tempProductUI.getCheckIsApply().setEnabled(false);
+    		}
+    	}
+    
+    	
+		
+	}
+	
 }
